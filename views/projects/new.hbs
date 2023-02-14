@@ -1,0 +1,26 @@
+<div class="container">
+
+  <h1>Create new proyect</h1>
+
+  <form action="/projects" method="POST">
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="name" placeholder="Your project name">
+      <label for="floatingInput">Project Name</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="description" placeholder="Describe your project">
+      <label for="floatingInput">Description</label>
+    </div>
+
+    <div class="mb-3">
+      <label for="formFile" class="form-label">Project image</label>
+      <input class="form-control" type="file" id="image">
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Create</button>
+
+  </form>
+</div>
