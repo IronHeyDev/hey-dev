@@ -18,31 +18,39 @@ const schema = new mongoose.Schema({
         type: 'String',
         //TO DO: Default image
     },
-    duration: {
+    weeks: {
         type: 'Number',
     },
     location: {
-        type: 'String',
+        type: String,
         enum: ['Remote', 'Andalucía', 'Aragón', 'Asturias', 'Islas Baleares', 'Canarias', 'Cantabria', 'Castilla y León', 'Castilla-La Mancha', 'Cataluña', 'Comunidad Valenciana', 'Extremadura', 'Galicia', 'Comunidad de Madrid', 'Murcia', 'Navarra', 'País Vasco', 'La Rioja', 'Ceuta', 'Melilla'],
         default: 'Remote'    
     },
-    contributors: {
+    maxContributors: {
         type: 'Number',
         required: [true, "Please, specify the maximum number of contributors"]
     },
+    contributors: {
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: 'User',
+        required: true
+    },
     devLanguages: {
-        type: 'String',
+        type: [String],
         enum: ['JavaScript', 'HTML', 'CSS', 'PHP', 'Java', 'Python', 'C#', 'C++'],
         required: [true, "Please, select at least one language"]
     },
     languages: {
-        type: 'String',
+        type: [String],
         enum: ['English', 'Spanish', 'French', 'German', 'Chinese', 'Portuguese', 'Other'],
         default: 'English'
     },
     state: {
         type: 'String',
         enum: ['Open', 'In progress', 'Completed']
+    },
+    github: {
+        type: 'String'
     }
 },
 { timestamps: true }

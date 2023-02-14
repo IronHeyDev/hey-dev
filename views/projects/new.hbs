@@ -10,7 +10,7 @@
 
     <div class="form-floating mb-3">
       <input type="text" class="form-control" id="description" placeholder="Describe your project">
-      <label for="floatingInput">Description</label>
+      <label for="description">Description</label>
     </div>
 
     <div class="mb-3">
@@ -18,7 +18,54 @@
       <input class="form-control" type="file" id="image">
     </div>
 
+  <!-- TO DO: duration input -->
 
+  <select class="form-select" aria-label="Default select example">
+    <option selected>Choose</option>
+    <option value="Remote">Remote</option>
+    <option value="Local">Local</option>
+  </select>
+
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="weeks" placeholder="Set the duration">
+    <label for="weeks">Weeks of development</label>
+  </div>
+
+  <div>
+    <label for="devLanguages" class="form-label">Programming languages</label>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="JavaScript">
+      <label class="form-check-label" for="JavaScript">JavaScript</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="HTML">
+      <label class="form-check-label" for="HTML">HTML</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="CSS">
+      <label class="form-check-label" for="CSS">CSS</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="PHP">
+      <label class="form-check-label" for="PHP">PHP</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="Python">
+      <label class="form-check-label" for="Python">Python</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="Java">
+      <label class="form-check-label" for="Java">Java</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="C#">
+      <label class="form-check-label" for="C#">C#</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="C++">
+      <label class="form-check-label" for="C++">C++</label>
+    </div>
+  </div>
 
     <button type="submit" class="btn btn-primary">Create</button>
 
