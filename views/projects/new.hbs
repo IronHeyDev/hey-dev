@@ -4,35 +4,35 @@
 
   <form action="/projects" method="POST">
     <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="name" placeholder="Your project name">
+      <input type="text" class="form-control {{#if errors.name}}is-invalid{{/if}}" id="name" placeholder="Your project name">
       <label for="floatingInput">Project Name</label>
     </div>
 
     <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="description" placeholder="Describe your project">
+      <input type="text" class="form-control {{#if errors.description}}is-invalid{{/if}}" id="description" placeholder="Describe your project">
       <label for="description">Description</label>
     </div>
 
     <div class="mb-3">
       <label for="formFile" class="form-label">Project image</label>
-      <input class="form-control" type="file" id="image">
+      <input class="form-control {{#if errors.image}}is-invalid{{/if}}" type="file" id="image">
     </div>
 
-  <!-- TO DO: duration input -->
+  <!-- TO DO: location input -->
 
-  <select class="form-select" aria-label="Default select example">
+  <select class="form-select mb-3 {{#if errors.location}}is-invalid{{/if}}" aria-label="Default select example" id="location">
     <option selected>Choose</option>
     <option value="Remote">Remote</option>
     <option value="Local">Local</option>
   </select>
 
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="weeks" placeholder="Set the duration">
+    <input type="text" class="form-control {{#if errors.weeks}}is-invalid{{/if}}" id="weeks" placeholder="Set the duration">
     <label for="weeks">Weeks of development</label>
   </div>
 
   <div>
-    <label for="devLanguages" class="form-label">Programming languages</label>
+    <label for="devLanguages mb-3" class="form-label">Programming languages</label>
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="JavaScript">
       <label class="form-check-label" for="JavaScript">JavaScript</label>
@@ -67,7 +67,7 @@
     </div>
   </div>
 
-    <button type="submit" class="btn btn-primary">Create</button>
+  <button type="submit" class="btn btn-primary">Create</button>
 
   </form>
 </div>
