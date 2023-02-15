@@ -6,16 +6,32 @@
     <div class="form-floating mb-3">
       <input type="text" class="form-control {{#if errors.name}}is-invalid{{/if}}" id="name" placeholder="Your project name">
       <label for="floatingInput">Project Name</label>
+      {{#if errors.name}}
+        <div class="invalid-feedback">
+          {{errors.name.message}}
+        </div>
+      {{/if}}
     </div>
+
 
     <div class="form-floating mb-3">
       <input type="text" class="form-control {{#if errors.description}}is-invalid{{/if}}" id="description" placeholder="Describe your project">
       <label for="description">Description</label>
+      {{#if errors.description}}
+        <div class="invalid-feedback">
+          {{errors.description.message}}
+        </div>
+      {{/if}}
     </div>
 
     <div class="mb-3">
       <label for="formFile" class="form-label">Project image</label>
       <input class="form-control {{#if errors.image}}is-invalid{{/if}}" type="file" id="image">
+      {{#if errors.image}}
+        <div class="invalid-feedback">
+          {{errors.image.message}}
+        </div>
+      {{/if}}
     </div>
 
   <!-- TO DO: location input -->
@@ -24,11 +40,21 @@
     <option selected>Choose</option>
     <option value="Remote">Remote</option>
     <option value="Local">Local</option>
+      {{#if errors.location}}
+        <div class="invalid-feedback">
+          {{errors.location.message}}
+        </div>
+      {{/if}}
   </select>
 
   <div class="form-floating mb-3">
     <input type="text" class="form-control {{#if errors.weeks}}is-invalid{{/if}}" id="weeks" placeholder="Set the duration">
     <label for="weeks">Weeks of development</label>
+    {{#if errors.weeks}}
+        <div class="invalid-feedback">
+          {{errors.weeks.message}}
+        </div>
+      {{/if}}
   </div>
 
   <div>

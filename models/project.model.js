@@ -20,6 +20,7 @@ const schema = new mongoose.Schema({
     },
     weeks: {
         type: 'Number',
+        required: [true, "Weeks is required"]
     },
     location: {
         type: String,

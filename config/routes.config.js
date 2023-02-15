@@ -6,6 +6,7 @@ const projects = require('../controllers/projects.controller');
 router.get('/', common.home);
 
 router.get('/projects/new', projects.create);
+router.post('/projects', projects.doCreate);
 
 
 
