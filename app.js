@@ -4,6 +4,8 @@ require('./config/db.config');
 const express = require('express');
 const app = express();
 
+app.use(express.urlencoded());
+
 const logger = require('morgan');
 app.use(logger('dev'));
 

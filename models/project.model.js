@@ -4,7 +4,7 @@ const schema = new mongoose.Schema({
     author: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true
+        //required: true
     },
     name: {
         type: 'String',
@@ -29,7 +29,8 @@ const schema = new mongoose.Schema({
     },
     maxContributors: {
         type: 'Number',
-        required: [true, "Please, specify the maximum number of contributors"]
+        required: [true, "Please, specify the maximum number of contributors"],
+
     },
     contributors: {
         type: [mongoose.Schema.Types.ObjectId],
@@ -39,7 +40,7 @@ const schema = new mongoose.Schema({
     devLanguages: {
         type: [String],
         enum: ['JavaScript', 'HTML', 'CSS', 'PHP', 'Java', 'Python', 'C#', 'C++'],
-        required: [true, "Please, select at least one language"]
+       required: [true, "Please, select at least one language"]
     },
     languages: {
         type: [String],
@@ -48,7 +49,8 @@ const schema = new mongoose.Schema({
     },
     state: {
         type: 'String',
-        enum: ['Open', 'In progress', 'Completed']
+        enum: ['Open', 'In progress', 'Completed'],
+        default: 'Open'
     },
     github: {
         type: 'String'
