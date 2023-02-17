@@ -39,3 +39,27 @@ module.exports.doCreate = (req, res, next) => {
     }
   });
 };
+
+module.exports.detail = (req, res, next) => {
+  User.findById(req.params.id)
+  .then((user) => {
+    res.redirect(`/users/${user.id}`);
+    res.render('users/profile', { user });
+  }
+  )
+  .catch(next)
+}
+
+module.exports.update = (req,res, next) => {
+  User.findById(req.params.id)
+  .then(user => {
+    res.render('users/update', { user });
+  })
+  .catch(next);
+}
+
+module.exports.doUpdate = (req, res, next) => {
+  User.findByIdAndUpdate(req.params.id, req.body, { runValidators: true })
+  .then((user) => res.redirect(`/users/${user.id}`))
+  .catch(next);
+}
