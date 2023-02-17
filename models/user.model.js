@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const schema = new mongoose.Schema({
     alias: {
@@ -67,11 +68,11 @@ const schema = new mongoose.Schema({
 )
 
 schema.pre('save', function (next) {
-    if (user.isModified('password')) {
+    if (this.isModified('password')) {
         bcrypt
-        .hash(user.password, 10)
+        .hash(this.password, 10)
         .then(encryptedPassword => { 
-            user.password = encryptedPassword;
+            this.password = encryptedPassword;
             next();
         })
         .catch(next);

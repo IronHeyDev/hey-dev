@@ -5,7 +5,7 @@
   <form action="/users" method="POST">
     <div class="input-group mb-3">
       <span class="input-group-text" id="alias-symbol">@</span>
-      <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+      <input type="text" class="form-control {{#if errors.alias}} is-invalid{{/if}}" name="alias" value="{{user.alias}}" placeholder="Username" aria-label="Username"
         aria-describedby="basic-addon1">
     </div>
 
@@ -13,7 +13,7 @@
     <div class="form-floating mb-3">
       <input type="text" class="form-control {{#if errors.name}}is-invalid{{/if}}" id="name" name="name"
         value="{{user.name}}" placeholder="Your name">
-      <label for="floatingInput">user Name</label>
+      <label for="floatingInput">Name</label>
       {{#if errors.name}}
       <div class="invalid-feedback">
         {{errors.name.message}}
@@ -22,139 +22,46 @@
     </div>
 
     <div class="form-floating mb-3">
-      <input type="text" class="form-control {{#if errors.name}}is-invalid{{/if}}" id="surname" name="surname" value="{{user.surname}}" placeholder="Your surname">
-      <label for="floatingInput">user Name</label>
-      {{#if errors.name}}
+      <input type="text" class="form-control {{#if errors.surname}}is-invalid{{/if}}" id="surname" name="surname" value="{{user.surname}}" placeholder="Your surname">
+      <label for="floatingInput">Surname</label>
+      {{#if errors.surname}}
       <div class="invalid-feedback">
-        {{errors.name.message}}
+        {{errors.surname.message}}
       </div>
       {{/if}}
     </div>
 
-
-    <!--div class="form-floating mb-3">
-      <input type="text" class="form-control {{#if errors.description}}is-invalid{{/if}}" id="description"
-        name="description" value="{{user.description}}" placeholder="Describe your user">
-      <label for="description">Description</label>
-      {{#if errors.description}}
+   <select class="form-select mb-3 {{#if errors.role}}is-invalid{{/if}}" aria-label="Choose your role"
+      id="role" name="role" value="{{user.role}}">
+      <option selected>Choose your role</option>
+      <option value="junior">Junior Developer</option>
+      <option value="recruiter">Recruiter</option>
+      {{#if errors.role}}
       <div class="invalid-feedback">
-        {{errors.description.message}}
+        {{errors.role.message}}
       </div>
       {{/if}}
-    </div>
+    </select >
 
-    <div class="mb-3">
-      <label for="formFile" class="form-label">user image</label>
-      <input class="form-control {{#if errors.image}}is-invalid{{/if}}" type="file" id="image">
-      {{#if errors.image}}
-      <div class="invalid-feedback">
-        {{errors.image.message}}
-      </div>
+  <div class ="form-floating mb-3">
+    <input type="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email" name="email" value="{{user.email}}" placeholder="Email">
+    <label for="email">Email</label>
+      {{#if errors.email}}
+        <div class="invalid-feedback">
+          {{errors.email}}
+        </div>
       {{/if}}
-    </div>
+  </div>
 
-    <select class="form-select mb-3 {{#if errors.location}}is-invalid{{/if}}" aria-label="Default select example"
-      id="location">
-      <option selected>Choose</option>
-      <option value="Remote">Remote</option>
-      <option value="Local">Local</option>
-      {{#if errors.location}}
-      <div class="invalid-feedback">
-        {{errors.location.message}}
-      </div>
+  <div class ="form-floating mb-3">
+    <input type="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" id="password" name="password" value="{{user.password}}" placeholder="password">
+    <label for="password">Password</label>
+      {{#if errors.password}}
+        <div class="invalid-feedback">
+          {{errors.password.message}}
+        </div>
       {{/if}}
-    </select>
-
-    <div class="form-floating mb-3">
-      <input type="number" class="form-control {{#if errors.weeks}}is-invalid{{/if}}" id="weeks" name="weeks"
-        value="{{user.weeks}}" placeholder="Set the duration">
-      <label for="weeks">Weeks of development</label>
-      {{#if errors.weeks}}
-      <div class="invalid-feedback">
-        {{errors.weeks.message}}
-      </div>
-      {{/if}}
-    </div>
-
-    <div class="form-floating mb-3">
-      <input type="number" class="form-control {{#if errors.maxContributors}}is-invalid{{/if}}" id="maxContributors"
-        name="maxContributors" value="{{user.maxContributors}}" placeholder="Set the duration">
-      <label for="weeks">Max number of contributors</label>
-      {{#if errors.maxContributors}}
-      <div class="invalid-feedback">
-        {{errors.maxContributors.message}}
-      </div>
-      {{/if}}
-    </div>
-
-    <div>
-      <label for="devLanguages mb-3" class="form-label">Programming languages</label>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="devLanguages" value="JavaScript" id="JavaScript">
-        <label class="form-check-label" for="JavaScript">JavaScript</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="devLanguages" value="HTML" id="HTML">
-        <label class="form-check-label" for="HTML">HTML</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="devLanguages" value="CSS" id="CSS">
-        <label class="form-check-label" for="CSS">CSS</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="devLanguages" value="PHP" id="PHP">
-        <label class="form-check-label" for="PHP">PHP</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="devLanguages" value="Python" id="Python">
-        <label class="form-check-label" for="Python">Python</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="devLanguages" value="Java" id="Java">
-        <label class="form-check-label" for="Java">Java</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="devLanguages" value="C#" id="C#">
-        <label class="form-check-label" for="C#">C#</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="devLanguages" value="C++" id="C++">
-        <label class="form-check-label" for="C++">C++</label>
-      </div>
-    </div>
-
-    <div class="mb-5">
-      <label for="languages mb-3" class="form-label">Languages</label>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="languages" value="English" id="English">
-        <label class="form-check-label" for="English">English</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="languages" value="Spanish" id="Spanish">
-        <label class="form-check-label" for="Spanish">Spanish</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="languages" value="French" id="French">
-        <label class="form-check-label" for="French">French</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="languages" value="German" id="German">
-        <label class="form-check-label" for="German">German</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="languages" value="Chinese" id="Chinese">
-        <label class="form-check-label" for="Chinese">Chinese</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="languages" value="Portuguese" id="Portuguese">
-        <label class="form-check-label" for="Portuguese">Portuguese</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="languages" value="Other" id="Other">
-        <label class="form-check-label" for="Other">Other</label>
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Create</button>
-
-  </form>
+  </div>
+  <button type="submit" class="btn btn-primary">Sign up</button>
+</form>
 </div>
