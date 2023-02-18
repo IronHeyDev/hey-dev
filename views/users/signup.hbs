@@ -7,6 +7,10 @@
       <span class="input-group-text" id="alias-symbol">@</span>
       <input type="text" class="form-control {{#if errors.alias}} is-invalid{{/if}}" name="alias" value="{{user.alias}}" placeholder="Username" aria-label="Username"
         aria-describedby="basic-addon1">
+        {{#if errors.alias}}
+      <div class="invalid-feedback">
+        {{errors.alias}}
+      </div>
     </div>
 
 
@@ -16,7 +20,7 @@
       <label for="floatingInput">Name</label>
       {{#if errors.name}}
       <div class="invalid-feedback">
-        {{errors.name.message}}
+        {{errors.name}}
       </div>
       {{/if}}
     </div>
@@ -26,7 +30,7 @@
       <label for="floatingInput">Surname</label>
       {{#if errors.surname}}
       <div class="invalid-feedback">
-        {{errors.surname.message}}
+        {{errors.surname}}
       </div>
       {{/if}}
     </div>
@@ -38,7 +42,7 @@
       <option value="recruiter">Recruiter</option>
       {{#if errors.role}}
       <div class="invalid-feedback">
-        {{errors.role.message}}
+        {{errors.role}}
       </div>
       {{/if}}
     </select >
@@ -58,7 +62,7 @@
     <label for="password">Password</label>
       {{#if errors.password}}
         <div class="invalid-feedback">
-          {{errors.password.message}}
+          {{errors.password}}
         </div>
       {{/if}}
   </div>

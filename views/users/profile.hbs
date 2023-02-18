@@ -1,1 +1,26 @@
-<h1>{{user.name}}</h1>
+<p>{{user.alias}}</p>
+<p>{{user.name}}</p>
+<p>{{user.surname}}</p>
+<p>{{user.location}}</p>
+<img src="{{user.avatar}}">
+<p>{{user.dateOfBirth}}</p>
+<ul>
+  {{#each user.devLanguages as |devLanguage|}}
+    <li>{{devLanguage}}</li>
+  {{/each}}
+</ul>
+<ul>
+  {{#each user.languages as |language|}}
+    <li>{{language}}</li>
+  {{/each}}
+</ul>
+<p>{{user.about}}</p>
+<p>{{user.phone}}</p>
+<p>{{user.email}}</p>
+<p>{{user.linkedin}}</p>
+<p>{{user.github}}</p>
+<p>{{user.website}}</p>
+
+<a href="/users/{{user.id}}/update" class="btn btn-primary">Edit your profile</a>
+
+<!-- TO DO: add projects to user profile -->

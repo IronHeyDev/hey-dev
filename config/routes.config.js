@@ -16,10 +16,4 @@ router.post('/users/:id', users.doUpdate);
 
 
 
-
-
-
-
-
-
 module.exports = router;

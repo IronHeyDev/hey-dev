@@ -28,6 +28,9 @@ const schema = new mongoose.Schema({
     devLanguages: {
         type: [String]
     },
+    languages: {
+        type: [String]
+    },
     about: {
         type: 'String',
         maxLength: 400

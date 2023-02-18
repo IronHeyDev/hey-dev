@@ -32,8 +32,10 @@ module.exports.doCreate = (req, res, next) => {
           if (error instanceof mongoose.Error.ValidationError) {
             console.log(error);
             renderWithErrors(error.errors);
+          } else if (error.message.includes("E11000")) {
+            renderWithErrors({ alias: "Alias already registered" });
           } else {
-            next(error);
+            next();
           }
         });
     }
@@ -43,7 +45,6 @@ module.exports.doCreate = (req, res, next) => {
 module.exports.detail = (req, res, next) => {
   User.findById(req.params.id)
   .then((user) => {
-    res.redirect(`/users/${user.id}`);
     res.render('users/profile', { user });
   }
   )
@@ -59,6 +60,12 @@ module.exports.update = (req,res, next) => {
 }
 
 module.exports.doUpdate = (req, res, next) => {
+  Object.keys(req.body).forEach(key => {
+    if (req.body[key] === '') {
+      delete req.body[key]
+    }
+  })
+
   User.findByIdAndUpdate(req.params.id, req.body, { runValidators: true })
   .then((user) => res.redirect(`/users/${user.id}`))
   .catch(next);

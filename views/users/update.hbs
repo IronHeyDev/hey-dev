@@ -1,0 +1,210 @@
+<div class="container">
+
+  <h1>Edit profile</h1>
+
+  <form action="/users/{{user.id}}" method="POST">
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="alias-symbol">@</span>
+      <input type="text" class="form-control {{#if errors.alias}} is-invalid{{/if}}" name="alias" value="{{user.alias}}" placeholder="Username" aria-label="Username"
+        aria-describedby="basic-addon1">
+    </div>
+
+
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control {{#if errors.name}}is-invalid{{/if}}" id="name" name="name"
+        value="{{user.name}}" placeholder="Your name">
+      <label for="floatingInput">Name</label>
+      {{#if errors.name}}
+      <div class="invalid-feedback">
+        {{errors.name}}
+      </div>
+      {{/if}}
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control {{#if errors.surname}}is-invalid{{/if}}" id="surname" name="surname" value="{{user.surname}}" placeholder="Your surname">
+      <label for="floatingInput">Surname</label>
+      {{#if errors.surname}}
+      <div class="invalid-feedback">
+        {{errors.surname}}
+      </div>
+      {{/if}}
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control {{#if errors.location}}is-invalid{{/if}}" id="location" name="location" value="{{user.location}}" placeholder="Your location">
+      <label for="floatingInput">Location</label>
+      {{#if errors.location}}
+      <div class="invalid-feedback">
+        {{errors.location}}
+      </div>
+      {{/if}}
+    </div>
+
+    <div class="mb-3">
+      <label for="formFile" class="form-label">Avatar</label>
+      <input class="form-control {{#if errors.avatar}}is-invalid{{/if}}" type="file" id="avatar">
+      {{#if errors.avatar}}
+        <div class="invalid-feedback">
+          {{errors.avatar}}
+        </div>
+      {{/if}}
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="date" class="form-control {{#if errors.dateOfBirth}}is-invalid{{/if}}" id="dateOfBirth" name="dateOfBirth" value="{{user.dateOfBirth}}" placeholder="Your date of birth">
+      <label for="floatingInput">Date of birth</label>
+      {{#if errors.dateOfBirth}}
+      <div class="invalid-feedback">
+        {{errors.dateOfBirth}}
+      </div>
+      {{/if}}
+    </div>
+
+    <div>
+    <label for="devLanguages mb-3" class="form-label">Programming languages</label>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="devLanguages" value="JavaScript" id="JavaScript">
+      <label class="form-check-label" for="JavaScript">JavaScript</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="devLanguages" value="HTML" id="HTML">
+      <label class="form-check-label" for="HTML">HTML</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="devLanguages" value="CSS" id="CSS">
+      <label class="form-check-label" for="CSS">CSS</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="devLanguages" value="PHP" id="PHP">
+      <label class="form-check-label" for="PHP">PHP</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="devLanguages" value="Python" id="Python">
+      <label class="form-check-label" for="Python">Python</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="devLanguages" value="Java" id="Java">
+      <label class="form-check-label" for="Java">Java</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="devLanguages" value="C#" id="C#">
+      <label class="form-check-label" for="C#">C#</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="devLanguages" value="C++" id="C++">
+      <label class="form-check-label" for="C++">C++</label>
+    </div>
+  </div>
+
+<div class="mb-5">
+    <label for="languages mb-3" class="form-label">Languages</label>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="languages" value="English" id="English">
+      <label class="form-check-label" for="English">English</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="languages" value="Spanish" id="Spanish">
+      <label class="form-check-label" for="Spanish">Spanish</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="languages" value="French" id="French">
+      <label class="form-check-label" for="French">French</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="languages" value="German" id="German">
+      <label class="form-check-label" for="German">German</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="languages" value="Chinese" id="Chinese">
+      <label class="form-check-label" for="Chinese">Chinese</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="languages" value="Portuguese" id="Portuguese">
+      <label class="form-check-label" for="Portuguese">Portuguese</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="languages" value="Other" id="Other">
+      <label class="form-check-label" for="Other">Other</label>
+    </div>
+  </div>
+
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control {{#if errors.about}}is-invalid{{/if}}" id="about" name="about"
+        value="{{user.about}}" placeholder="About me">
+      <label for="floatingInput">About me</label>
+      {{#if errors.about}}
+      <div class="invalid-feedback">
+        {{errors.about}}
+      </div>
+      {{/if}}
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="tel" class="form-control {{#if errors.phone}}is-invalid{{/if}}" id="phone" name="phone"
+        value="{{user.phone}}" placeholder="phone me">
+      <label for="floatingInput">Phone number</label>
+      {{#if errors.phone}}
+      <div class="invalid-feedback">
+        {{errors.phone}}
+      </div>
+      {{/if}}
+    </div>
+
+  <div class ="form-floating mb-3">
+    <input type="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email" name="email" value="{{user.email}}" placeholder="Email">
+    <label for="email">Email</label>
+      {{#if errors.email}}
+        <div class="invalid-feedback">
+          {{errors.email}}
+        </div>
+      {{/if}}
+  </div>
+
+  <!-- <div class ="form-floating mb-3">
+    <input type="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" id="password" name="password" value="" placeholder="password">
+    <label for="password">Password</label>
+      {{#if errors.password}}
+        <div class="invalid-feedback">
+          {{errors.password}}
+        </div>
+      {{/if}}
+  </div> -->
+
+<div class="form-floating mb-3">
+      <input type="text" class="form-control {{#if errors.linkedin}}is-invalid{{/if}}" id="linkedin" name="linkedin"
+        value="{{user.linkedin}}" placeholder="linkedin">
+      <label for="floatingInput">LinkedIn</label>
+      {{#if errors.linkedin}}
+      <div class="invalid-feedback">
+        {{errors.linkedin}}
+      </div>
+      {{/if}}
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control {{#if errors.github}}is-invalid{{/if}}" id="github" name="github"
+        value="{{user.github}}" placeholder="github">
+      <label for="floatingInput">Github</label>
+      {{#if errors.github}}
+      <div class="invalid-feedback">
+        {{errors.github}}
+      </div>
+      {{/if}}
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control {{#if errors.website}}is-invalid{{/if}}" id="website" name="website"
+        value="{{user.website}}" placeholder="website">
+      <label for="floatingInput">Website</label>
+      {{#if errors.website}}
+      <div class="invalid-feedback">
+        {{errors.website}}
+      </div>
+      {{/if}}
+    </div>
+
+  <button type="submit" class="btn btn-primary">Edit profile</button>
+
+</form>
+</div>
