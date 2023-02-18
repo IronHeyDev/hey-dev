@@ -8,9 +8,10 @@
       <input type="text" class="form-control {{#if errors.alias}} is-invalid{{/if}}" name="alias" value="{{user.alias}}" placeholder="Username" aria-label="Username"
         aria-describedby="basic-addon1">
         {{#if errors.alias}}
-      <div class="invalid-feedback">
-        {{errors.alias}}
-      </div>
+          <div class="invalid-feedback">
+            {{errors.alias}}
+          </div>
+        {{/if}}
     </div>
 
 

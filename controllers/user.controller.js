@@ -70,3 +70,25 @@ module.exports.doUpdate = (req, res, next) => {
   .then((user) => res.redirect(`/users/${user.id}`))
   .catch(next);
 }
+
+module.exports.list = (req, res, next) => {
+  User.find()
+  .then(users => {
+    res.render('users/list', { users })
+  })
+  .catch(next)
+}
+
+module.exports.delete = (req, res, next) => {
+  User.findById(req.params.id)
+  .then(user => {
+    if (!user) {
+      res.redirect('/users');
+    } else {
+      user.delete()
+      .then(res.redirect('/'))
+      .catch(next)
+    }
+  })
+  .catch(next)
+}

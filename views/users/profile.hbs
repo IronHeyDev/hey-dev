@@ -21,6 +21,12 @@
 <p>{{user.github}}</p>
 <p>{{user.website}}</p>
 
+<!-- TO DO: show buttons only if its your profile -->
+
 <a href="/users/{{user.id}}/update" class="btn btn-primary">Edit your profile</a>
+
+<form method="POST" action="/users/{{user.id}}/delete">
+  <button class="btn btn-danger">Delete account</button>
+</form>
 
 <!-- TO DO: add projects to user profile -->
