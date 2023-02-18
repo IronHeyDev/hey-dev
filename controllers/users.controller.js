@@ -14,7 +14,6 @@ module.exports.doCreate = (req, res, next) => {
   User.findOne({ email: req.body.email }).then((user) => {
     if (user) {
       renderWithErrors({ email: "Email already registered" });
-     // renderWithErrors({ alias: "Alias already taken, please choose something else"});
     } else {
       return User.create({
         avatar: req.body.avatar,
@@ -91,4 +90,30 @@ module.exports.delete = (req, res, next) => {
     }
   })
   .catch(next)
+}
+
+module.exports.login = (req, res, next) => {
+  res.render('users/login');
+}
+
+module.exports.doLogin = (req, res, next) => {
+  User.findOne({ email: req.body.email })
+  .then(user => {
+    bcrypt
+    .compare(req.body.password, user.password)
+    .then(ok => {
+      if (ok) {
+        req.session.userId = user.id;
+        res.redirect('/');
+      }
+    })
+    .catch((error) => {
+      console.log(error)
+      next();
+    })
+  })
+  .catch((error) => {
+    console.log(error)
+    next();
+  })
 }

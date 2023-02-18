@@ -5,6 +5,10 @@ const express = require('express');
 const app = express();
 const createError = require("http-errors");
 
+const { session, loadSessionUser } = require('./config/session.config');
+app.use(session);
+app.use(loadSessionUser);
+
 app.use(express.urlencoded());
 
 const logger = require('morgan');

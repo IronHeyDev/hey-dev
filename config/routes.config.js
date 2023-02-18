@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const common = require('../controllers/common.controller');
 const projects = require('../controllers/projects.controller');
-const users = require('../controllers/user.controller');
+const users = require('../controllers/users.controller');
 
 router.get('/', common.home);
 
@@ -16,6 +16,8 @@ router.get('/users/:id', users.detail);
 router.get('/users/:id/update', users.update);
 router.post('/users/:id', users.doUpdate);
 router.post('/users/:id/delete', users.delete);
+router.get('/login', users.login);
+router.post('/login', users.doLogin);
 
 
 
