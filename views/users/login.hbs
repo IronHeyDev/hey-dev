@@ -2,10 +2,12 @@
 
   <h1>Log In</h1>
 
+  {{#if error}}  <div class="alert alert-danger"> Login failed, please make sure the email and passwords are correct </div>{{/if}}
+
   <form action="/login" method="POST">
     <div class="form-floating mb-3">
       <input type="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email" name="email"
-        value="{{user.email}}" placeholder="Email">
+        value="{{email}}" placeholder="Email">
       <label for="email">Email</label>
       {{#if errors.email}}
       <div class="invalid-feedback">
@@ -16,7 +18,7 @@
 
     <div class="form-floating mb-3">
       <input type="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" id="password" name="password"
-        value="{{user.password}}" placeholder="password">
+        value="{{req.body.password}}" placeholder="password">
       <label for="password">Password</label>
       {{#if errors.password}}
       <div class="invalid-feedback">

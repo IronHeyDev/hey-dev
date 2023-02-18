@@ -51,11 +51,7 @@ module.exports.detail = (req, res, next) => {
 }
 
 module.exports.update = (req,res, next) => {
-  User.findById(req.params.id)
-  .then(user => {
-    res.render('users/update', { user });
-  })
-  .catch(next);
+  res.render('users/update', { user: req.user });
 }
 
 module.exports.doUpdate = (req, res, next) => {
@@ -79,7 +75,7 @@ module.exports.list = (req, res, next) => {
 }
 
 module.exports.delete = (req, res, next) => {
-  User.findById(req.params.id)
+  User.findById(req.user.id)
   .then(user => {
     if (!user) {
       res.redirect('/users');
@@ -97,6 +93,7 @@ module.exports.login = (req, res, next) => {
 }
 
 module.exports.doLogin = (req, res, next) => {
+
   User.findOne({ email: req.body.email })
   .then(user => {
     bcrypt
@@ -105,15 +102,18 @@ module.exports.doLogin = (req, res, next) => {
       if (ok) {
         req.session.userId = user.id;
         res.redirect('/');
+      } else {
+        console.log(req.body)
+        res.render('users/login', { error: "Login failed, please make sure the email and passwords are correct", email: req.body.email });
       }
     })
     .catch((error) => {
       console.log(error)
-      next();
+      next(error);
     })
   })
   .catch((error) => {
     console.log(error)
-    next();
+    next(error);
   })
 }
