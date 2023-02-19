@@ -5,6 +5,10 @@ const schema = new mongoose.Schema({
     alias: {
         type: 'String',
         required: [true, "Alias is required"],
+        lowercase: true,
+        trim: true,
+        maxLength: 10,
+        match: /^[a-zA-Z0-9_.-]*$/,
         unique: true
     },
     name: {

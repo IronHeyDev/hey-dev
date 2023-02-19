@@ -15,9 +15,9 @@ router.get('/signup', users.create);
 router.post('/users', users.doCreate);
 router.get('/users', users.list);
 router.get('/users/update', secure.isAuthenticated, users.update);
+router.post('/users/delete', secure.isAuthenticated, users.delete);
 router.get('/users/:id', users.detail);
 router.post('/users/:id', secure.isAuthenticated, users.doUpdate);
-router.post('/users/delete', secure.isAuthenticated, users.delete);
 router.get('/login', users.login);
 router.post('/login', users.doLogin);
 

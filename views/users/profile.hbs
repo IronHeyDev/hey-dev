@@ -3,7 +3,7 @@
 <p>{{user.surname}}</p>
 <p>{{user.location}}</p>
 <img src="{{user.avatar}}">
-<p>{{user.dateOfBirth}}</p>
+<p>{{formattedDate user.dateOfBirth}}</p>
 <ul>
   {{#each user.devLanguages as |devLanguage|}}
     <li>{{devLanguage}}</li>

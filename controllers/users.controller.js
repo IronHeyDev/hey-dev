@@ -75,18 +75,15 @@ module.exports.list = (req, res, next) => {
 }
 
 module.exports.delete = (req, res, next) => {
-  User.findById(req.user.id)
-  .then(user => {
-    if (!user) {
-      res.redirect('/users');
-    } else {
-      user.delete()
-      .then(res.redirect('/'))
-      .catch(next)
-    }
+  User.findByIdAndDelete(req.user.id)
+  .then(() => {
+    res.redirect(`/`)
   })
-  .catch(next)
-}
+  .catch((error) => {
+    console.log(error);
+    next();
+  });
+} 
 
 module.exports.login = (req, res, next) => {
   res.render('users/login');
