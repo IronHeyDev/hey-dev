@@ -21,12 +21,11 @@
 <p>{{user.github}}</p>
 <p>{{user.website}}</p>
 
-<!-- TO DO: show buttons only if its your profile -->
+{{#isCurrentUser currentUser user.id}}
+  <a href="/users/me/update" class="btn btn-primary">Edit your profile</a>
 
-<a href="/users/update" class="btn btn-primary">Edit your profile</a>
-
-<form method="POST" action="/users/delete">
-  <button class="btn btn-danger">Delete account</button>
-</form>
-
+  <form method="POST" action="/users/me/delete">
+    <button class="btn btn-danger">Delete account</button>
+  </form>
+{{/isCurrentUser}}
 <!-- TO DO: add projects to user profile -->

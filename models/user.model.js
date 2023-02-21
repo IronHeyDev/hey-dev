@@ -77,12 +77,12 @@ const schema = new mongoose.Schema({
 schema.pre('save', function (next) {
     if (this.isModified('password')) {
         bcrypt
-        .hash(this.password, 10)
-        .then(encryptedPassword => { 
-            this.password = encryptedPassword;
-            next();
-        })
-        .catch(next);
+            .hash(this.password, 10)
+            .then(encryptedPassword => { 
+                this.password = encryptedPassword;
+                next();
+            })
+            .catch(next);
     } else {
         next();
     }

@@ -1,0 +1,28 @@
+<p>{{project.author.name}}</p>
+<p>{{project.name}}</p>
+<p>{{project.description}}</p>
+<img src="{{project.image}}">
+<p>{{project.weeks}}</p>
+<ul>
+  {{#each project.devLanguages as |devLanguage|}}
+    <li>{{devLanguage}}</li>
+  {{/each}}
+</ul>
+<ul>
+  {{#each project.languages as |language|}}
+    <li>{{language}}</li>
+  {{/each}}
+</ul>
+<p>{{project.location}}</p>
+<p>{{project.state}}</p>
+<p>{{project.github}}</p>
+
+
+<!-- TO DO: show contributors -->
+
+<!-- TO DO: show buttons only if its your profile -->
+  <a href="/projects/{{project.id}}/update" class="btn btn-primary">Edit project</a>
+
+  <form method="POST" action="/projects/{{project.id}}/delete">
+    <button class="btn btn-danger">Delete project</button>
+  </form>

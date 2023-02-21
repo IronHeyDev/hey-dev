@@ -1,0 +1,17 @@
+
+<div class="container">
+  <h1 class="m-4">Hey Dev! projects</h1>
+<a href="/projects/new" class="btn btn-primary m-3">Create a new project</a>
+
+  {{#each projects as |project|}}
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="{{project.image}}" alt="Profile picture">
+      <div class="card-body">
+        <h5 class="card-title">{{project.name}}</h5>
+        <!-- TO DO: dev languages icons -->
+        <a href="/projects/{{project.id}}" class="btn btn-primary">More info</a>
+      </div>
+    </div>
+  {{/each}}
+
+</div>

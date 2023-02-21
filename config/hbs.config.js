@@ -11,12 +11,7 @@ hbs.registerHelper('formattedDate', (date) => {
 })
 
 //TO DO: NOT WORKING - ERROR
-hbs.registerHelper('isOwnedBy', (project, userId, options) => {
-  const data = options.data;
-  const root = data.root;
-  const params = root.params;
-  userId = params[1];
-
+hbs.registerHelper('isCurrentUser', (currentUser, userId, options) => {
   if (userId == currentUser?.id) {
     return options.fn();
   } else {

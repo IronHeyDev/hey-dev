@@ -2,7 +2,7 @@
 
   <h1>Edit profile</h1>
 
-  <form action="/users/{{user.id}}" method="POST">
+  <form action="/users/me/update" method="POST">
     <div class="input-group mb-3">
       <span class="input-group-text" id="alias-symbol">@</span>
       <input type="text" class="form-control {{#if errors.alias}} is-invalid{{/if}}" name="alias" value="{{user.alias}}" placeholder="Username" aria-label="Username"
@@ -161,8 +161,8 @@
       {{/if}}
   </div>
 
-  <!-- <div class ="form-floating mb-3">
-    <input type="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" id="password" name="password" value="" placeholder="password">
+ <!-- <div class ="form-floating mb-3">
+    <input type="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" id="password" name="password" placeholder="password">
     <label for="password">Password</label>
       {{#if errors.password}}
         <div class="invalid-feedback">
@@ -204,7 +204,7 @@
       {{/if}}
     </div>
 
-  <button type="submit" class="btn btn-primary">Edit profile</button>
+  <button type="submit" class="btn btn-primary">Save changes</button>
 
 </form>
 </div>

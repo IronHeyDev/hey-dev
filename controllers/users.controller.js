@@ -29,7 +29,6 @@ module.exports.doCreate = (req, res, next) => {
         })
         .catch((error) => {
           if (error instanceof mongoose.Error.ValidationError) {
-            console.log(error);
             renderWithErrors(error.errors);
           } else if (error.message.includes("E11000")) {
             renderWithErrors({ alias: "Alias already registered" });
@@ -43,11 +42,11 @@ module.exports.doCreate = (req, res, next) => {
 
 module.exports.detail = (req, res, next) => {
   User.findById(req.params.id)
-  .then((user) => {
-    res.render('users/profile', { user });
-  }
+    .then((user) => {
+      res.render('users/profile', { user });
+    }
   )
-  .catch(next)
+    .catch(next)
 }
 
 module.exports.update = (req,res, next) => {
@@ -55,23 +54,20 @@ module.exports.update = (req,res, next) => {
 }
 
 module.exports.doUpdate = (req, res, next) => {
-  Object.keys(req.body).forEach(key => {
-    if (req.body[key] === '') {
-      delete req.body[key]
-    }
-  })
+  if (!req.body.password) {
+    delete req.body.password;
+  }
 
-  User.findByIdAndUpdate(req.params.id, req.body, { runValidators: true })
-  .then((user) => res.redirect(`/users/${user.id}`))
-  .catch(next);
+  const user = Object.assign(req.user, req.body);
+  user.save()
+    .then((user) => res.redirect(`/users/${user.id}`))
+    .catch(next)
 }
 
 module.exports.list = (req, res, next) => {
   User.find()
-  .then(users => {
-    res.render('users/list', { users })
-  })
-  .catch(next)
+    .then(users => res.render('users/list', { users }))
+    .catch(next)
 }
 
 module.exports.delete = (req, res, next) => {
@@ -79,10 +75,7 @@ module.exports.delete = (req, res, next) => {
   .then(() => {
     res.redirect(`/`)
   })
-  .catch((error) => {
-    console.log(error);
-    next();
-  });
+  .catch(next);
 } 
 
 module.exports.login = (req, res, next) => {
@@ -100,17 +93,10 @@ module.exports.doLogin = (req, res, next) => {
         req.session.userId = user.id;
         res.redirect('/');
       } else {
-        console.log(req.body)
         res.render('users/login', { error: "Login failed, please make sure the email and passwords are correct", email: req.body.email });
       }
     })
-    .catch((error) => {
-      console.log(error)
-      next(error);
-    })
+    .catch(next);
   })
-  .catch((error) => {
-    console.log(error)
-    next(error);
-  })
+  .catch(next);
 }
