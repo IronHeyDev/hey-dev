@@ -10,9 +10,24 @@ hbs.registerHelper('formattedDate', (date) => {
   }
 })
 
-//TO DO: NOT WORKING - ERROR
 hbs.registerHelper('isCurrentUser', (currentUser, userId, options) => {
   if (userId == currentUser?.id) {
+    return options.fn();
+  } else {
+    return options.inverse();
+  }
+})
+
+hbs.registerHelper('isOwnedBy', (currentUser, project, options) => {
+  if (project.author.id == currentUser?.id) {
+    return options.fn();
+  } else {
+    return options.inverse();
+  }
+})
+
+hbs.registerHelper('isLoggedIn', (currentUser, options) => {
+  if (!currentUser) {
     return options.fn();
   } else {
     return options.inverse();

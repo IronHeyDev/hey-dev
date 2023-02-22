@@ -40,9 +40,18 @@ module.exports.update = (req, res, next) => {
 }
 
 module.exports.doUpdate = (req, res, next) => {
-  Project.findByIdAndUpdate(req.params.id, req.body, {runValidators: true})
-    .then(project => res.redirect(`/projects/${project.id}`))
-    .catch(next)
+  Project.findById(req.params.id)
+    .populate('author')
+    .then(project => {
+      if (project.author.id === req.user.id) {
+        project = Object.assign(project, req.body);
+        return project.save();
+      } else {
+        res.redirect(`/projects/${project.id}`);
+      }
+    })
+    .then((project) => res.redirect(`/projects/${project.id}`))
+    .catch(next);
 }
 
 module.exports.list = (req, res, next) => {
@@ -53,7 +62,15 @@ module.exports.list = (req, res, next) => {
 }
 
 module.exports.delete = (req, res, next) => {
-  Project.findByIdAndDelete(req.params.id)
-    .then(() => res.redirect('/'))
-    .catch(next)
+  Project.findById(req.params.id)
+    .populate('author')
+    .then(project => {
+      if (project.author.id === req.user.id) {
+        project.deleteOne({ id: project.id })
+      } else {
+        res.redirect(`/projects/${project.id}`);
+      }
+    })
+    .then(() => res.redirect(`/`))
+    .catch(next);
 }

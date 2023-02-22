@@ -21,8 +21,10 @@
 <!-- TO DO: show contributors -->
 
 <!-- TO DO: show buttons only if its your profile -->
+{{#isOwnedBy currentUser project}}
   <a href="/projects/{{project.id}}/update" class="btn btn-primary">Edit project</a>
 
   <form method="POST" action="/projects/{{project.id}}/delete">
     <button class="btn btn-danger">Delete project</button>
   </form>
+{{/isOwnedBy}}
