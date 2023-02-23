@@ -57,9 +57,21 @@ module.exports.doUpdate = (req, res, next) => {
 module.exports.list = (req, res, next) => {
   const criteria = {}
 
-  if (req.query.name) {
-    criteria.name = req.query.name
+  if (req.query.description) {
+    criteria.description = new RegExp(req.query.description, "i"); //case insensitive
   }
+
+  if (req.query.devLanguages) {
+    criteria.devLanguages = { $in: req.query.devLanguages }; //$in the array includes one of the terms
+  }
+
+  if (req.query.languages) {
+    criteria.languages = { $in: req.query.languages };
+  }
+
+  console.log(criteria);
+  console.log(req.query);
+
   Project.find(criteria)
     .populate('author')
     .then(projects => res.render('projects/list', { projects }))

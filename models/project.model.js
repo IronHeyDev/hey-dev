@@ -24,7 +24,7 @@ const schema = new mongoose.Schema({
     },
     location: {
         type: String,
-        enum: ['Remote', 'Andalucía', 'Aragón', 'Asturias', 'Islas Baleares', 'Canarias', 'Cantabria', 'Castilla y León', 'Castilla-La Mancha', 'Cataluña', 'Comunidad Valenciana', 'Extremadura', 'Galicia', 'Comunidad de Madrid', 'Murcia', 'Navarra', 'País Vasco', 'La Rioja', 'Ceuta', 'Melilla'],
+        enum: ['Remote', 'Local'],
         default: 'Remote'    
     },
     maxContributors: {
