@@ -55,7 +55,12 @@ module.exports.doUpdate = (req, res, next) => {
 }
 
 module.exports.list = (req, res, next) => {
-  Project.find()
+  const criteria = {}
+
+  if (req.query.name) {
+    criteria.name = req.query.name
+  }
+  Project.find(criteria)
     .populate('author')
     .then(projects => res.render('projects/list', { projects }))
     .catch(next)

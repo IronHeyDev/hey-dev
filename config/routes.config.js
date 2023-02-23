@@ -25,6 +25,7 @@ router.get('/users/:id', users.detail);
 router.post('/users/:id', secure.isAuthenticated, users.doUpdate);
 router.get('/login', users.login);
 router.post('/login', users.doLogin);
+router.post('/logout', users.logout);
 
 
 

@@ -27,7 +27,7 @@ hbs.registerHelper('isOwnedBy', (currentUser, project, options) => {
 })
 
 hbs.registerHelper('isLoggedIn', (currentUser, options) => {
-  if (!currentUser) {
+  if (currentUser) {
     return options.fn();
   } else {
     return options.inverse();
