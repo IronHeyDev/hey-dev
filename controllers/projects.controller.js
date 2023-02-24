@@ -55,7 +55,7 @@ module.exports.doUpdate = (req, res, next) => {
 }
 
 module.exports.list = (req, res, next) => {
-  const criteria = {}
+  const criteria = {};
 
   if (req.query.author) {
     criteria.author = new RegExp(req.query.author, "i");
