@@ -1,16 +1,26 @@
 <div class="container">
-  <h1 class="m-4">Hey Dev! community</h1>
 
-  {{#each users as |user|}}
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="{{user.avatar}}" alt="Profile picture">
-      <div class="card-body">
-        <h5 class="card-title">{{user.name}} {{user.surname}}</h5>
-        <p>@{{user.alias}}</p>
-        <!-- TO DO: dev languages icons -->
-        <a href="/users/{{user.id}}" class="btn btn-primary">More info</a>
-      </div>
+
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <p>Column</p>
     </div>
-  {{/each}}
-
+    <div class="col">
+      <h1 class="m-4">Hey Dev! community</h1>
+      {{#each users as |user|}}
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{user.avatar}}" alt="Profile picture">
+        <div class="card-body">
+          <h5 class="card-title">{{user.name}} {{user.surname}}</h5>
+          <p>@{{user.alias}}</p>
+          <!-- TO DO: dev languages icons -->
+          <a href="/users/{{user.id}}" class="btn btn-primary">More info</a>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
 </div>

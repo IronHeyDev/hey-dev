@@ -57,8 +57,39 @@ module.exports.doUpdate = (req, res, next) => {
 module.exports.list = (req, res, next) => {
   const criteria = {}
 
+  if (req.query.author) {
+    criteria.author = new RegExp(req.query.author, "i");
+  }
+
+  if (req.query.name) {
+    criteria.name = new RegExp(req.query.name, "i");
+  }
+
   if (req.query.description) {
     criteria.description = new RegExp(req.query.description, "i"); //case insensitive
+  }
+
+  function setRange(query) {
+    if (query) {
+      maxElems = query;
+      let elems = [];
+      for (i = 1; i <= maxElems; i++) {
+        elems.push(i);
+      }
+      return elems;
+    }
+  }
+
+  if (req.query.weeks) {
+    criteria.weeks = { $in: setRange(req.query.weeks) }; 
+  }
+
+  if (req.query.location) {
+    criteria.location = { $in: req.query.location }; 
+  }
+
+  if (req.query.maxContributors) {
+    criteria.maxContributors = { $in: setRange(req.query.maxContributors) }; 
   }
 
   if (req.query.devLanguages) {
@@ -69,8 +100,9 @@ module.exports.list = (req, res, next) => {
     criteria.languages = { $in: req.query.languages };
   }
 
+  criteria.state = 'Open';
+
   console.log(criteria);
-  console.log(req.query);
 
   Project.find(criteria)
     .populate('author')

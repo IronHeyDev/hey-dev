@@ -1,17 +1,154 @@
-
 <div class="container">
   <h1 class="m-4">Hey Dev! projects</h1>
-<a href="/projects/new" class="btn btn-primary m-3">Create a new project</a>
+  <a href="/projects/new" class="btn btn-primary m-3">Create a new project</a>
+  <div class="row">
+    <div class="col-3">
+      <form action="/projects">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="author" name="author" placeholder="author">
+          <label for="author">Author</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="name" name="name" placeholder="name">
+          <label for="name">Project name</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="description" name="description" placeholder="description">
+          <label for="description">Idea</label>
+        </div>
+        <div class="mb-3">
+          <label for="weeks" class="form-label">Max. project duration in weeks: </label>
+          <input type="range" class="form-range" min="0" max="24" id="weeks" name="weeks"
+            oninput="this.nextElementSibling.value = this.value">
+          <output>12</output>
+        </div>
+        <select class="form-select mb-3" aria-label="Default select example" id="location">
+          <option selected>Choose location</option>
+          <option value="Remote">Remote</option>
+          <option value="Local">Local</option>
+        </select>
+        <div class="mb-3">
+          <label for="maxContributors" class="form-label">Max. Contributors</label>
+          <input type="range" class="form-range" min="0" max="6" id="maxContributors" name="maxContributors" oninput="this.nextElementSibling.value = this.value">
+          <output>3</output>
+        </div>
+        <li class="nav-item dropdown">
+          <button class="nav-link dropdown-toggle btn btn-primary" role="button" data-bs-toggle="dropdown" aria-expanded="false">Programming Languages</button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="devLanguages" value="JavaScript" />
+                  <label class="form-check-label" for="JavaScript">JavaScript</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="devLanguages" value="HTML" />
+                  <label class="form-check-label" for="HTML">HTML</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="devLanguages" value="CSS" />
+                  <label class="form-check-label" for="CSS">CSS</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="devLanguages" value="PHP" />
+                  <label class="form-check-label" for="PHP">PHP</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="devLanguages" value="Java" />
+                  <label class="form-check-label" for="Java">Java</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="devLanguages" value="Python" />
+                  <label class="form-check-label" for="Python">Python</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="devLanguages" value="C#" />
+                  <label class="form-check-label" for="C#">C#</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="devLanguages" value="C++" />
+                  <label class="form-check-label" for="C++">C++</label>
+                </div>
+              </a></li>
+          </ul>
+        </li>
 
-  {{#each projects as |project|}}
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="{{project.image}}" alt="Profile picture">
-      <div class="card-body">
-        <h5 class="card-title">{{project.name}}</h5>
-        <!-- TO DO: dev languages icons -->
-        <a href="/projects/{{project.id}}" class="btn btn-primary">More info</a>
-      </div>
+        <li class="nav-item dropdown">
+          <button class="nav-link dropdown-toggle btn btn-primary" role="button" data-bs-toggle="dropdown" aria-expanded="false">Languages</button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="languages" value="English" />
+                  <label class="form-check-label" for="English">English</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="languages" value="Spanish" />
+                  <label class="form-check-label" for="Spanish">Spanish</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="languages" value="French" />
+                  <label class="form-check-label" for="French">French</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="languages" value="German" />
+                  <label class="form-check-label" for="German">German</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="languages" value="Chinese" />
+                  <label class="form-check-label" for="Chinese">Chinese</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="languages" value="Portuguese" />
+                  <label class="form-check-label" for="Portuguese">Portuguese</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="languages" value="Other" />
+                  <label class="form-check-label" for="Other">Other</label>
+                </div>
+              </a></li>
+          </ul>
+        </li>
+
+        <button class="btn btn-secondary mt-3" type="submit">Search</button>
+      </form>
     </div>
-  {{/each}}
+    <div class="col-9">
+      {{#each projects as |project|}}
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{project.image}}" alt="Profile picture">
+        <div class="card-body">
+          <h5 class="card-title">{{project.name}}</h5>
+          <!-- TO DO: dev languages icons -->
+          <a href="/projects/{{project.id}}" class="btn btn-primary">More info</a>
+        </div>
+      </div>
+      {{/each}}
 
+    </div>
+  </div>
 </div>

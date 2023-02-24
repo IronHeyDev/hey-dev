@@ -30,7 +30,7 @@ const schema = new mongoose.Schema({
     maxContributors: {
         type: 'Number',
         required: [true, "Please, specify the maximum number of contributors"],
-
+        default: 6
     },
     contributors: {
         type: [mongoose.Schema.Types.ObjectId],
