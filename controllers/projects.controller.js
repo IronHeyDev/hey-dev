@@ -58,7 +58,7 @@ module.exports.list = (req, res, next) => {
   const criteria = {};
 
   if (req.query.author) {
-    criteria.author = new RegExp(req.query.author, "i");
+    criteria.author = new RegExp(req.query.author.alias, "i");
   }
 
   if (req.query.name) {
@@ -69,19 +69,8 @@ module.exports.list = (req, res, next) => {
     criteria.description = new RegExp(req.query.description, "i"); //case insensitive
   }
 
-  function setRange(query) {
-    if (query) {
-      maxElems = query;
-      let elems = [];
-      for (i = 1; i <= maxElems; i++) {
-        elems.push(i);
-      }
-      return elems;
-    }
-  }
-
   if (req.query.weeks) {
-    criteria.weeks = { $in: setRange(req.query.weeks) }; 
+    criteria.weeks = { $lte: req.query.weeks }; 
   }
 
   if (req.query.location) {
@@ -89,7 +78,7 @@ module.exports.list = (req, res, next) => {
   }
 
   if (req.query.maxContributors) {
-    criteria.maxContributors = { $in: setRange(req.query.maxContributors) }; 
+    criteria.maxContributors = { $lte: req.query.maxContributors }; 
   }
 
   if (req.query.devLanguages) {
@@ -102,7 +91,7 @@ module.exports.list = (req, res, next) => {
 
   criteria.state = 'Open';
 
-  console.log(criteria);
+  console.log(criteria, "ey");
 
   Project.find(criteria)
     .populate('author')

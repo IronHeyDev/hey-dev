@@ -5,6 +5,7 @@ const secure = require('../middlewares/secure.mid');
 const common = require('../controllers/common.controller');
 const projects = require('../controllers/projects.controller');
 const users = require('../controllers/users.controller');
+const contributors = require('../controllers/contributors.controller');
 
 router.get('/', common.home);
 
@@ -15,6 +16,8 @@ router.get('/projects/:id', projects.detail);
 router.get('/projects/:id/update', secure.isAuthenticated, projects.update);
 router.post('/projects/:id', secure.isAuthenticated, projects.doUpdate);
 router.post('/projects/:id/delete', secure.isAuthenticated, projects.delete);
+
+router.post('/projects/:id/join', secure.isAuthenticated, contributors.join);
 
 router.get('/signup', users.create);
 router.post('/users', users.doCreate);

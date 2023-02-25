@@ -87,16 +87,6 @@ module.exports.list = (req, res, next) => {
     criteria.location = { $in: req.query.location }; 
   }
   
-  function setRange(query) {
-    if (query) {
-      maxElems = query;
-      let elems = [];
-      for (i = 1; i <= maxElems; i++) {
-        elems.push(i);
-      }
-      return elems;
-    }
-  }
   if (req.query.devLanguages) {
     criteria.devLanguages = { $in: req.query.devLanguages }; //$in the array includes one of the terms
   }

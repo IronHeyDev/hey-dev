@@ -5,12 +5,12 @@
 <p>{{project.weeks}}</p>
 <ul>
   {{#each project.devLanguages as |devLanguage|}}
-    <li>{{devLanguage}}</li>
+  <li>{{devLanguage}}</li>
   {{/each}}
 </ul>
 <ul>
   {{#each project.languages as |language|}}
-    <li>{{language}}</li>
+  <li>{{language}}</li>
   {{/each}}
 </ul>
 <p>{{project.location}}</p>
@@ -20,11 +20,38 @@
 
 <!-- TO DO: show contributors -->
 
+<form method="POST" action="/projects/{{project.id}}/join">
+  {{#isLoggedIn currentUser}}
+  <button class="btn btn-primary" type="submit">Join project</button>
+</form>
+  {{!-- {{else}}
+  <button class="btn btn-primary" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">Join
+    project</button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Join Hey Dev!</h1>
+          <h4 class="modal-title fs-5" id="exampleModalLabel">Once you're logged in you'll be able to join the project ✨
+          </h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div>
+            <a href="/signup" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sign up</a>
+            <a href="/login" type="button" class="btn btn-primary">Log in</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> --}}
+  {{/isLoggedIn}}
+
 <!-- TO DO: show buttons only if its your profile -->
 {{#isOwnedBy currentUser project}}
-  <a href="/projects/{{project.id}}/update" class="btn btn-primary">Edit project</a>
+<a href="/projects/{{project.id}}/update" class="btn btn-primary">Edit project</a>
 
-  <form method="POST" action="/projects/{{project.id}}/delete">
-    <button class="btn btn-danger">Delete project</button>
-  </form>
+<form method="POST" action="/projects/{{project.id}}/delete">
+  <button class="btn btn-danger">Delete project</button>
+</form>
 {{/isOwnedBy}}
