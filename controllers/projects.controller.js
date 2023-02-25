@@ -1,6 +1,8 @@
 const Project = require("../models/project.model");
 const User = require('../models/user.model');
+const Contributor = require('../models/contributor.model');
 const mongoose = require("mongoose");
+
 
 module.exports.create = (req, res, next) => {
   res.render("projects/new");
@@ -21,6 +23,13 @@ module.exports.doCreate = (req, res, next) => {
     maxContributors: req.body.maxContributors,
     devLanguages: req.body.devLanguages,
     languages: req.body.languages,
+  // }).then((project) => {
+
+  //     Contributor.create({ user: req.user.id, project: project.id })
+  //      .then((project) => {
+  //      res.redirect(`/projects/${project.id}`)
+  //   }).catch(next)
+  // })
   }).then((project) => res.redirect(`/projects/${project.id}`))
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
@@ -80,15 +89,15 @@ module.exports.list = async (req, res, next) => {
   }
 
   if (req.query.weeks) {
-    criteria.weeks = { $lte: req.query.weeks }; 
+    criteria.weeks = { $lte: req.query.weeks };
   }
 
   if (req.query.location) {
-    criteria.location = { $in: req.query.location }; 
+    criteria.location = { $in: req.query.location };
   }
 
   if (req.query.maxContributors) {
-    criteria.maxContributors = { $lte: req.query.maxContributors }; 
+    criteria.maxContributors = { $lte: req.query.maxContributors };
   }
 
   if (req.query.devLanguages) {

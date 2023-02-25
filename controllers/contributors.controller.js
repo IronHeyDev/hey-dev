@@ -1,13 +1,23 @@
 const Contributor = require('../models/contributor.model');
+const Project = require('../models/project.model');
 const mongoose = require('mongoose');
 
 module.exports.join = (req, res, next) => {
-  Contributor.create({
-    user: req.user.id,
-    project: req.params.id
-  }).then((contributor) => {
-    console.log("this is join");
-    res.redirect(`/projects/${req.params.id}`)
-  })
-    .catch(next)
+  Project.findById(req.params.id)
+    .populate('author')
+    .then((project) => {
+      if (project.author.id === req.user.id) {
+        res.redirect(`/projects/${project.id}`)
+      } else {
+        Contributor.create({
+          user: req.user.id,
+          project: project.id
+        }).then(() => {
+          res.redirect(`/projects/${project.id}`)
+        })
+          .catch(next)
+      }
+    })
+
+  
 }
