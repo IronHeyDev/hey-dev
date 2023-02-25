@@ -2,7 +2,7 @@
 
   <h1>Edit your proyect</h1>
 
-  <form action="/projects/{{project.id}}" method="POST">
+  <form action="/projects/{{project.id}}" method="POST" enctype="multipart/form-data">
     <div class="form-floating mb-3">
       <input type="text" class="form-control {{#if errors.name}}is-invalid{{/if}}" id="name" name="name" value="{{project.name}}" placeholder="Your project name">
       <label for="floatingInput">Project Name</label>
@@ -26,7 +26,7 @@
 
     <div class="mb-3">
       <label for="formFile" class="form-label">Project image</label>
-      <input class="form-control {{#if errors.image}}is-invalid{{/if}}" type="file" id="image">
+      <input class="form-control {{#if errors.image}}is-invalid{{/if}}" type="file" id="image" name="image">
       {{#if errors.image}}
         <div class="invalid-feedback">
           {{errors.image}}

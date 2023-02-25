@@ -1,4 +1,5 @@
 const Project = require("../models/project.model");
+const User = require('../models/user.model');
 const mongoose = require("mongoose");
 
 module.exports.create = (req, res, next) => {
@@ -6,6 +7,10 @@ module.exports.create = (req, res, next) => {
 };
 
 module.exports.doCreate = (req, res, next) => {
+  if (req.file) {
+    req.body.image = req.file.path;
+  }
+
   Project.create({
     author: req.user.id,
     name: req.body.name,
@@ -40,6 +45,10 @@ module.exports.update = (req, res, next) => {
 }
 
 module.exports.doUpdate = (req, res, next) => {
+  if (req.file) {
+    req.body.image = req.file.path;
+  }
+
   Project.findById(req.params.id)
     .populate('author')
     .then(project => {
@@ -54,11 +63,12 @@ module.exports.doUpdate = (req, res, next) => {
     .catch(next);
 }
 
-module.exports.list = (req, res, next) => {
+module.exports.list = async (req, res, next) => {
   const criteria = {};
 
   if (req.query.author) {
-    criteria.author = new RegExp(req.query.author.alias, "i");
+    const user = await User.findOne({ alias: new RegExp(req.query.author, "i") })
+    criteria.author = user._id
   }
 
   if (req.query.name) {
@@ -91,7 +101,7 @@ module.exports.list = (req, res, next) => {
 
   criteria.state = 'Open';
 
-  console.log(criteria, "ey");
+  console.log(criteria);
 
   Project.find(criteria)
     .populate('author')

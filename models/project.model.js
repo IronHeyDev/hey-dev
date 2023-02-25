@@ -32,11 +32,6 @@ const schema = new mongoose.Schema({
         required: [true, "Please, specify the maximum number of contributors"],
         default: 6
     },
-    contributors: {
-        type: [mongoose.Schema.Types.ObjectId],
-        ref: 'User',
-        required: true
-    },
     devLanguages: {
         type: [String],
         enum: ['JavaScript', 'HTML', 'CSS', 'PHP', 'Java', 'Python', 'C#', 'C++'],

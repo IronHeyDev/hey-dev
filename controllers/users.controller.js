@@ -57,7 +57,11 @@ module.exports.doUpdate = (req, res, next) => {
   if (!req.body.password) {
     delete req.body.password;
   }
-
+  
+  if (req.file) {
+    req.body.avatar = req.file.path;
+  }
+  
   const user = Object.assign(req.user, req.body);
   user.save()
     .then((user) => res.redirect(`/users/${user.id}`))
