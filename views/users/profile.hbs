@@ -6,12 +6,12 @@
 <p>{{formattedDate user.dateOfBirth}}</p>
 <ul>
   {{#each user.devLanguages as |devLanguage|}}
-    <li>{{devLanguage}}</li>
+  <li>{{devLanguage}}</li>
   {{/each}}
 </ul>
 <ul>
   {{#each user.languages as |language|}}
-    <li>{{language}}</li>
+  <li>{{language}}</li>
   {{/each}}
 </ul>
 <p>{{user.about}}</p>
@@ -21,12 +21,29 @@
 <p>{{user.github}}</p>
 <p>{{user.website}}</p>
 
-{{#isCurrentUser currentUser user.id}}
-  <a href="/users/me/update" class="btn btn-primary">Edit your profile</a>
 
-  <form method="POST" action="/users/me/delete">
-    <button class="btn btn-danger">Delete account</button>
-  </form>
+<h3>My projects</h3>
+<div class="d-flex flex-row justify-content-start">
+  {{#each projects as |project|}}
+  <div class="card m-2" style="width: 18rem;">
+    <img class="card-img-top" src="{{project.image}}" alt="Profile picture">
+    <div class="card-body">
+      <h5 class="card-title">{{project.name}}</h5>
+      <!-- TO DO: dev languages icons -->
+      <a href="/projects/{{project.id}}" class="btn btn-primary">More info</a>
+    </div>
+  </div>
+  {{/each}}
+</div>
+</div>
+
+
+{{#isCurrentUser currentUser user.id}}
+<a href="/users/me/update" class="btn btn-primary">Edit your profile</a>
+
+<form method="POST" action="/users/me/delete">
+  <button class="btn btn-danger">Delete account</button>
+</form>
 {{/isCurrentUser}}
 
 <!-- TO DO: add projects to user profile -->

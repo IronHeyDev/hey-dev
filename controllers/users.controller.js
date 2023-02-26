@@ -1,4 +1,5 @@
 const User = require("../models/user.model");
+const Project = require("../models/project.model");
 const mongoose = require("mongoose");
 const bcrypt = require('bcrypt');
 
@@ -43,7 +44,11 @@ module.exports.doCreate = (req, res, next) => {
 module.exports.detail = (req, res, next) => {
   User.findById(req.params.id)
     .then((user) => {
-      res.render('users/profile', { user });
+      Project.find({ author: user.id })
+        .then((projects) => {
+          res.render('users/profile', { user, projects });
+        })
+        .catch(next)
     }
   )
     .catch(next)

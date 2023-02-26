@@ -9,6 +9,7 @@ const users = require('../controllers/users.controller');
 const contributors = require('../controllers/contributors.controller');
 
 router.get('/', common.home);
+router.get('/about', common.about);
 
 router.get('/projects/new', secure.isAuthenticated, projects.create);
 router.post('/projects', secure.isAuthenticated, multer.single('image'), projects.doCreate);

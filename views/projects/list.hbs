@@ -2,7 +2,7 @@
   <h1 class="m-4">Hey Dev! projects</h1>
   <a href="/projects/new" class="btn btn-primary m-3">Create a new project</a>
   <div class="row">
-    <div class="col-3">
+    <div class="col-sm-12 col-md-3 col-lg-3 sticky-top"> <!--TO DO: Sticky is not working-->
       <form action="/projects">
         <div class="form-floating mb-3">
           <input type="text" class="form-control" id="author" name="author" placeholder="author">
@@ -29,11 +29,13 @@
         </select>
         <div class="mb-3">
           <label for="maxContributors" class="form-label">Max. Contributors</label>
-          <input type="range" class="form-range" min="0" max="6" id="maxContributors" name="maxContributors" oninput="this.nextElementSibling.value = this.value">
+          <input type="range" class="form-range" min="0" max="6" id="maxContributors" name="maxContributors"
+            oninput="this.nextElementSibling.value = this.value">
           <output>3</output>
         </div>
         <li class="nav-item dropdown">
-          <button class="nav-link dropdown-toggle btn btn-primary" role="button" data-bs-toggle="dropdown" aria-expanded="false">Programming Languages</button>
+          <button class="nav-link dropdown-toggle btn btn-primary" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">Programming Languages</button>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item">
                 <div class="form-check">
@@ -87,7 +89,8 @@
         </li>
 
         <li class="nav-item dropdown">
-          <button class="nav-link dropdown-toggle btn btn-primary" role="button" data-bs-toggle="dropdown" aria-expanded="false">Languages</button>
+          <button class="nav-link dropdown-toggle btn btn-primary" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">Languages</button>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item">
                 <div class="form-check">
@@ -137,18 +140,19 @@
         <button class="btn btn-secondary mt-3" type="submit">Search</button>
       </form>
     </div>
-    <div class="col-9">
-      {{#each projects as |project|}}
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="{{project.image}}" alt="Profile picture">
-        <div class="card-body">
-          <h5 class="card-title">{{project.name}}</h5>
-          <!-- TO DO: dev languages icons -->
-          <a href="/projects/{{project.id}}" class="btn btn-primary">More info</a>
+    <div class="col-sm-12 col-md-9 col-lg-9">
+      <div class="d-flex flex-wrap flex-row justify-content-start">
+        {{#each projects as |project|}}
+        <div class="card m-3" style="width: 18rem;">
+          <img class="card-img-top" src="{{project.image}}" alt="Profile picture">
+          <div class="card-body">
+            <h5 class="card-title">{{project.name}}</h5>
+            <!-- TO DO: dev languages icons -->
+            <a href="/projects/{{project.id}}" class="btn btn-primary">More info</a>
+          </div>
         </div>
+        {{/each}}
       </div>
-      {{/each}}
-
     </div>
   </div>
 </div>
