@@ -114,6 +114,7 @@ module.exports.list = async (req, res, next) => {
 
   Project.find(criteria)
     .populate('author')
+    .sort({ createdAt: 'desc' })
     .then(projects => res.render('projects/list', { projects }))
     .catch(next)
 }

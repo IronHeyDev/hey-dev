@@ -116,3 +116,33 @@
 
   <button class="btn btn-secondary mt-3" type="submit">Search</button>
 </form>
+
+
+<!-- TO DO: multiple projects per slide instead of just one-->
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <ol class="carousel-indicators">
+    {{#each projects as |project|}}
+      <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{@index}}" {{#if @first}}class="active"{{/if}}></li>
+    {{/each}}
+  </ol>
+  <div class="carousel-inner ">
+    {{#each projects as |project|}}
+      <div class="carousel-item {{#if @first}}active{{/if}}">
+        <img src="{{project.image}}" class="d-block w-30" alt="{{project.name}}">
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="black-color">{{project.name}}</h5>
+          <p class="black-color">{{project.description}}</p>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </a>
+</div>
