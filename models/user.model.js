@@ -24,7 +24,7 @@ const schema = new mongoose.Schema({
     },
     avatar: {
         type: 'String',
-        //TO DO: Default image
+        default: 'https://res.cloudinary.com/donpoeiov/image/upload/v1677522181/heydev/heydev-avatar-image_br6qyd.png'
     },
     dateOfBirth: {
         type: 'Date'

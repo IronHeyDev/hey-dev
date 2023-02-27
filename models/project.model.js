@@ -16,7 +16,7 @@ const schema = new mongoose.Schema({
     },
     image: {
         type: 'String',
-        //TO DO: Default image
+        default: 'https://res.cloudinary.com/donpoeiov/image/upload/v1677522181/heydev/heydev-project-image_jrxn3t.png'
     },
     weeks: {
         type: 'Number',
