@@ -16,14 +16,20 @@
           <input type="text" class="form-control" id="description" name="description" placeholder="description">
           <label for="description">Idea</label>
         </div>
+        <select class="form-select mb-3" aria-label="Project State" id="location" name="state">
+          <option selected value="">Choose project's state</option>
+          <option value="Open">Open</option>
+          <option value="In progress">In progress</option>
+          <option value="Completed">Completed</option>
+        </select>
         <div class="mb-3">
           <label for="weeks" class="form-label">Max. project duration in weeks: </label>
           <input type="range" class="form-range" min="0" max="24" id="weeks" name="weeks"
             oninput="this.nextElementSibling.value = this.value">
           <output>12</output>
         </div>
-        <select class="form-select mb-3" aria-label="Default select example" id="location">
-          <option selected>Choose location</option>
+        <select class="form-select mb-3" aria-label="Project Location" id="location" name="location">
+          <option selected value="">Choose location</option>
           <option value="Remote">Remote</option>
           <option value="Local">Local</option>
         </select>

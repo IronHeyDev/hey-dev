@@ -117,7 +117,9 @@ module.exports.list = async (req, res, next) => {
     criteria.languages = { $in: req.query.languages };
   }
 
-  criteria.state = 'Open';
+  if (req.query.state) {
+    criteria.state = { $in: req.query.state };
+  }
 
   console.log(criteria);
 
