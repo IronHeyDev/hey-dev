@@ -54,4 +54,11 @@ const schema = new mongoose.Schema({
 { timestamps: true }
 )
 
+schema.virtual("contributors", {
+    ref: "Contributor",
+    localField: "_id",
+    foreignField: "project",
+    justOne: false
+})
+
 module.exports = mongoose.model('Project', schema);

@@ -74,6 +74,13 @@ const schema = new mongoose.Schema({
 { timestamps: true }
 )
 
+schema.virtual("contributors", {
+    ref: "Contributor",
+    localField: "_id",
+    foreignField: "user",
+    justOne: false
+})
+
 schema.pre('save', function (next) {
     if (this.isModified('password')) {
         bcrypt

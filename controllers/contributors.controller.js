@@ -5,9 +5,21 @@ const mongoose = require('mongoose');
 module.exports.join = (req, res, next) => {
   Project.findById(req.params.id)
     .populate('author')
+    .populate({
+      path: "contributors",
+      populate: {
+        path: "user"
+      }
+    })
     .then((project) => {
       if (project.author.id === req.user.id) {
-        res.redirect(`/projects/${project.id}`)
+        res.redirect(`/projects/${project.id}`);
+      }
+      else if (project.contributors.length >= project.maxContributors) {
+        project.state = 'In progress';
+        project.save()
+        .then((project) => res.redirect(`/projects/${project.id}`))
+        .catch(next)
       } else {
         Contributor.create({
           user: req.user.id,
@@ -19,5 +31,5 @@ module.exports.join = (req, res, next) => {
       }
     })
 
-  
+
 }

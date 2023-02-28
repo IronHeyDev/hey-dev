@@ -23,14 +23,12 @@ module.exports.doCreate = (req, res, next) => {
     maxContributors: req.body.maxContributors,
     devLanguages: req.body.devLanguages,
     languages: req.body.languages,
-  // }).then((project) => {
-
-  //     Contributor.create({ user: req.user.id, project: project.id })
-  //      .then((project) => {
-  //      res.redirect(`/projects/${project.id}`)
-  //   }).catch(next)
-  // })
-  }).then((project) => res.redirect(`/projects/${project.id}`))
+  }).then((project) => {
+    Contributor.create({ user: req.user.id, project: project.id })
+      .then((contributor) => {
+        res.redirect(`/projects/${project.id}`)
+      }).catch(next)
+  })
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
         res.render("projects/new", { errors: err.errors, project: req.body });
@@ -43,7 +41,18 @@ module.exports.doCreate = (req, res, next) => {
 module.exports.detail = (req, res, next) => {
   Project.findById(req.params.id)
     .populate('author')
-    .then(project => res.render('projects/detail', { project }))
+    .populate({
+      path: "contributors",
+      populate: {
+        path: "user"
+      }
+    })
+    .then((project) => {
+      console.log(project.contributors);
+      res.locals.projectState = project.state;
+      project.users = project.contributors.map(x => x.user);
+      res.render('projects/detail', { project });
+    })
     .catch(next)
 }
 

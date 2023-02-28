@@ -43,18 +43,26 @@ module.exports.doCreate = (req, res, next) => {
 
 module.exports.detail = (req, res, next) => {
   User.findById(req.params.id)
+    .populate({
+      path: "contributors",
+      populate: {
+        path: 'project'
+      }
+    })
     .then((user) => {
+      user.projects = user.contributors.map(x => x.project)
+
       Project.find({ author: user.id })
         .then((projects) => {
           res.render('users/profile', { user, projects });
         })
         .catch(next)
     }
-  )
+    )
     .catch(next)
 }
 
-module.exports.update = (req,res, next) => {
+module.exports.update = (req, res, next) => {
   res.render('users/update', { user: req.user });
 }
 
@@ -62,11 +70,11 @@ module.exports.doUpdate = (req, res, next) => {
   if (!req.body.password) {
     delete req.body.password;
   }
-  
+
   if (req.file) {
     req.body.avatar = req.file.path;
   }
-  
+
   const user = Object.assign(req.user, req.body);
   user.save()
     .then((user) => res.redirect(`/users/${user.id}`))
@@ -76,14 +84,14 @@ module.exports.doUpdate = (req, res, next) => {
 module.exports.list = (req, res, next) => {
   const criteria = {};
 
-  if(req.query.alias) {
+  if (req.query.alias) {
     criteria.alias = new RegExp(req.query.alias, "i");
   }
-  
+
   if (req.query.name) {
     criteria.name = new RegExp(req.query.name, "i");
   }
-  
+
   if (req.query.surname) {
     criteria.surname = new RegExp(req.query.surname, "i");
   }
@@ -93,9 +101,9 @@ module.exports.list = (req, res, next) => {
   }
 
   if (req.query.location) {
-    criteria.location = { $in: req.query.location }; 
+    criteria.location = { $in: req.query.location };
   }
-  
+
   if (req.query.devLanguages) {
     criteria.devLanguages = { $in: req.query.devLanguages }; //$in the array includes one of the terms
   }
@@ -117,11 +125,11 @@ module.exports.list = (req, res, next) => {
 
 module.exports.delete = (req, res, next) => {
   User.findByIdAndDelete(req.user.id)
-  .then(() => {
-    res.redirect(`/`)
-  })
-  .catch(next);
-} 
+    .then(() => {
+      res.redirect(`/`)
+    })
+    .catch(next);
+}
 
 module.exports.login = (req, res, next) => {
   res.render('users/login');
@@ -129,21 +137,31 @@ module.exports.login = (req, res, next) => {
 
 module.exports.doLogin = (req, res, next) => {
 
+  function renderWithErrors(errors) {
+    res.render("users/login", { errors, user: req.body });
+  }
+
   User.findOne({ email: req.body.email })
-  .then(user => {
-    bcrypt
-    .compare(req.body.password, user.password)
-    .then(ok => {
-      if (ok) {
-        req.session.userId = user.id;
-        res.redirect('/');
-      } else {
-        res.render('users/login', { error: "Login failed, please make sure the email and passwords are correct", email: req.body.email });
-      }
+    .then(user => {
+      bcrypt
+        .compare(req.body.password, user.password)
+        .then(ok => {
+          if (ok) {
+            req.session.userId = user.id;
+            res.redirect('/');
+          } else {
+            res.render('users/login', { error: "Login failed, please make sure the email and passwords are correct", email: req.body.email });
+          }
+        })
+        .catch((error) => {
+          if (error instanceof mongoose.Error.ValidationError) {
+            renderWithErrors(error.errors);
+          } else {
+            next();
+          }
+          });
     })
     .catch(next);
-  })
-  .catch(next);
 }
 
 module.exports.logout = (req, res, next) => {

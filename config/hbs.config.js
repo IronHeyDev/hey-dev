@@ -33,3 +33,12 @@ hbs.registerHelper('isLoggedIn', (currentUser, options) => {
     return options.inverse();
   }
 })
+
+hbs.registerHelper('isOpen', (projectState, options) => {
+  if (projectState === "Open") {
+    return options.fn();
+  } else {
+    return options.inverse();
+  }
+})
+
