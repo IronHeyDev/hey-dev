@@ -42,3 +42,11 @@ hbs.registerHelper('isOpen', (projectState, options) => {
   }
 })
 
+hbs.registerHelper('isContributor', (currentUser, projectUsers, options) => {
+  if (projectUsers.includes(currentUser)) {
+    return options.fn();
+  } else {
+    return options.inverse();
+  }
+})
+

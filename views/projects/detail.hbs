@@ -27,7 +27,8 @@
 </div>
 </div>
 
-{{#isOpen projectState}}
+
+{{!-- {{#isOpen projectState}} --}}
 {{#isLoggedIn currentUser}}
 <form method="POST" action="/projects/{{../project.id}}/join">
   <button class="btn btn-primary" type="submit">Join project</button>
@@ -53,7 +54,7 @@
   </div>
 </div>
 {{/isLoggedIn}}
-{{/isOpen}}
+{{!-- {{/isOpen}} --}}
 
 {{#isOwnedBy currentUser project}}
 <a href="/projects/{{../project.id}}/update" class="btn btn-primary">Edit project</a>

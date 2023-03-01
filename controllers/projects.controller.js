@@ -48,9 +48,9 @@ module.exports.detail = (req, res, next) => {
       }
     })
     .then((project) => {
-      console.log(project.contributors);
       res.locals.projectState = project.state;
       project.users = project.contributors.map(x => x.user);
+      res.locals.projectUsers = project.users;
       res.render('projects/detail', { project });
     })
     .catch(next)

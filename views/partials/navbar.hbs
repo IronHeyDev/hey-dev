@@ -12,23 +12,23 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/">Home</a>
+          <a class="nav-link navbar-effect" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/projects">Projects</a>
+          <a class="nav-link navbar-effect" href="/projects">Projects</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/users">Community  </a>
+          <a class="nav-link navbar-effect" href="/users">Community</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/about">About</a>
+          <a class="nav-link navbar-effect" href="/about">About</a>
         </li>
       </ul>
     </div>
-    <div class="d-flex justify-content-end">
+    <div class="d-flex justify-content-end order-1">
     {{#isLoggedIn currentUser}}
       <li class="nav-item dropdown">
-        <p class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Hola {{../currentUser.alias}}</p>
+        <img class="nav-link dropdown-toggle rounded-circle" width="50" src="{{../currentUser.avatar}}" role="button" data-bs-toggle="dropdown" aria-expanded="false" alt="{{../currentUser.alias}}">
         <ul class="dropdown-menu dropdown-menu-end">
           <li><a class="dropdown-item" href="/users/{{../currentUser.id}}">My profile</a></li>
           <li><a class="dropdown-item" href="/projects/new">New project</a></li>
