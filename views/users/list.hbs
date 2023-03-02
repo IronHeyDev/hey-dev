@@ -1,152 +1,154 @@
-<div class="container">
+<div class="container signup-form">
   <h1 class="m-4">Hey Dev! community</h1>
-    <div class="row">
-      <div class="col-3">
-        <form action="/users">
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="alias" name="alias" placeholder="alias">
-            <label for="alias">Alias</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="name" name="name" placeholder="name">
-            <label for="name">Name</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="surname" name="surname" placeholder="surname">
-            <label for="surname">Surname</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="email" name="email" placeholder="email">
-            <label for="email">Email</label>
-          </div>
-          <select class="form-select mb-3" aria-label="Default select example" id="location">
-            <option selected>Choose location</option>
-            <option value="Remote">Remote</option>
-            <option value="Local">Local</option>
-          </select>
-          <li class="nav-item dropdown">
-            <button class="nav-link dropdown-toggle btn btn-primary" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">Programming Languages</button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="devLanguages" value="JavaScript" />
-                    <label class="form-check-label" for="JavaScript">JavaScript</label>
-                  </div>
-                </a></li>
-              <li><a class="dropdown-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="devLanguages" value="HTML" />
-                    <label class="form-check-label" for="HTML">HTML</label>
-                  </div>
-                </a></li>
-              <li><a class="dropdown-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="devLanguages" value="CSS" />
-                    <label class="form-check-label" for="CSS">CSS</label>
-                  </div>
-                </a></li>
-              <li><a class="dropdown-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="devLanguages" value="PHP" />
-                    <label class="form-check-label" for="PHP">PHP</label>
-                  </div>
-                </a></li>
-              <li><a class="dropdown-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="devLanguages" value="Java" />
-                    <label class="form-check-label" for="Java">Java</label>
-                  </div>
-                </a></li>
-              <li><a class="dropdown-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="devLanguages" value="Python" />
-                    <label class="form-check-label" for="Python">Python</label>
-                  </div>
-                </a></li>
-              <li><a class="dropdown-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="devLanguages" value="C#" />
-                    <label class="form-check-label" for="C#">C#</label>
-                  </div>
-                </a></li>
-              <li><a class="dropdown-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="devLanguages" value="C++" />
-                    <label class="form-check-label" for="C++">C++</label>
-                  </div>
-                </a></li>
-            </ul>
-          </li>
+  <div class="row">
+    <div class="col-sm-12 col-md-4 col-lg-4">
+      <form action="/users">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="alias" name="alias" placeholder="alias">
+          <label for="alias">Alias</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="name" name="name" placeholder="name">
+          <label for="name">Name</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="surname" name="surname" placeholder="surname">
+          <label for="surname">Surname</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" id="email" name="email" placeholder="email">
+          <label for="email">Email</label>
+        </div>
+        <select class="form-select mb-3" aria-label="Default select example" id="location">
+          <option selected>Choose location</option>
+          <option value="Remote">Remote</option>
+          <option value="Local">Local</option>
+        </select>
+        <li class="nav-item dropdown">
+          <button class="nav-link dropdown-toggle btn second-button" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">Programming Languages</button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="devLanguages" value="JavaScript" />
+                  <label class="form-check-label" for="JavaScript">JavaScript</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="devLanguages" value="HTML" />
+                  <label class="form-check-label" for="HTML">HTML</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="devLanguages" value="CSS" />
+                  <label class="form-check-label" for="CSS">CSS</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="devLanguages" value="PHP" />
+                  <label class="form-check-label" for="PHP">PHP</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="devLanguages" value="Java" />
+                  <label class="form-check-label" for="Java">Java</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="devLanguages" value="Python" />
+                  <label class="form-check-label" for="Python">Python</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="devLanguages" value="C#" />
+                  <label class="form-check-label" for="C#">C#</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="devLanguages" value="C++" />
+                  <label class="form-check-label" for="C++">C++</label>
+                </div>
+              </a></li>
+          </ul>
+        </li>
 
-          <li class="nav-item dropdown">
-            <button class="nav-link dropdown-toggle btn btn-primary" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">Languages</button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="languages" value="English" />
-                    <label class="form-check-label" for="English">English</label>
-                  </div>
-                </a></li>
-              <li><a class="dropdown-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="languages" value="Spanish" />
-                    <label class="form-check-label" for="Spanish">Spanish</label>
-                  </div>
-                </a></li>
-              <li><a class="dropdown-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="languages" value="French" />
-                    <label class="form-check-label" for="French">French</label>
-                  </div>
-                </a></li>
-              <li><a class="dropdown-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="languages" value="German" />
-                    <label class="form-check-label" for="German">German</label>
-                  </div>
-                </a></li>
-              <li><a class="dropdown-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="languages" value="Chinese" />
-                    <label class="form-check-label" for="Chinese">Chinese</label>
-                  </div>
-                </a></li>
-              <li><a class="dropdown-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="languages" value="Portuguese" />
-                    <label class="form-check-label" for="Portuguese">Portuguese</label>
-                  </div>
-                </a></li>
-              <li><a class="dropdown-item">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="languages" value="Other" />
-                    <label class="form-check-label" for="Other">Other</label>
-                  </div>
-                </a></li>
-            </ul>
-          </li>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="about" name="about" placeholder="about">
-            <label for="about">About</label>
-          </div>
+        <li class="nav-item dropdown">
+          <button class="nav-link dropdown-toggle btn second-button" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">Languages</button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="languages" value="English" />
+                  <label class="form-check-label" for="English">English</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="languages" value="Spanish" />
+                  <label class="form-check-label" for="Spanish">Spanish</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="languages" value="French" />
+                  <label class="form-check-label" for="French">French</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="languages" value="German" />
+                  <label class="form-check-label" for="German">German</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="languages" value="Chinese" />
+                  <label class="form-check-label" for="Chinese">Chinese</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="languages" value="Portuguese" />
+                  <label class="form-check-label" for="Portuguese">Portuguese</label>
+                </div>
+              </a></li>
+            <li><a class="dropdown-item">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="languages" value="Other" />
+                  <label class="form-check-label" for="Other">Other</label>
+                </div>
+              </a></li>
+          </ul>
+        </li>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="about" name="about" placeholder="about">
+          <label for="about">About</label>
+        </div>
 
-          <button class="btn btn-secondary mt-3" type="submit">Search</button>
-        </form>
-      </div>
-      <div class="col-9">
+        <button class="btn main-button mt-3" type="submit">Search</button>
+      </form>
+    </div>
+    <div class="col-sm-12 col-md-8 col-lg-8">
+      <div class="d-flex flex-wrap flex-row justify-content-start">
         {{#each users as |user|}}
-        <div class="card" style="width: 18rem;">
+        <div class="card m-3" style="width: 15rem;">
           <img class="card-img-top" src="{{user.avatar}}" alt="Profile picture">
           <div class="card-body">
             <h5 class="card-title">{{user.name}} {{user.surname}}</h5>
             <p>@{{user.alias}}</p>
             <!-- TO DO: dev languages icons -->
-            <a href="/users/{{user.id}}" class="btn btn-primary">More info</a>
+            <a href="/users/{{user.id}}" class="btn second-button">More info</a>
           </div>
         </div>
         {{/each}}
       </div>
     </div>
+  </div>
 </div>

@@ -1,72 +1,79 @@
-<div class="container">
+<div class="container signup-form div-flex-row justify-content-around form-page">
 
-  <h1>Register</h1>
-
-  <form action="/users" method="POST">
-    <div class="input-group mb-3">
-      <span class="input-group-text" id="alias-symbol">@</span>
-      <input type="text" class="form-control {{#if errors.alias}} is-invalid{{/if}}" name="alias" value="{{user.alias}}" placeholder="Username" aria-label="Username"
-        aria-describedby="basic-addon1">
+  <div class="signup-form">
+    <form action="/users" method="POST">
+      <h1>Sign up</h1>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="alias-symbol">@</span>
+        <input type="text" class="form-control {{#if errors.alias}} is-invalid{{/if}}" name="alias"
+          value="{{user.alias}}" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
         {{#if errors.alias}}
-          <div class="invalid-feedback">
-            {{errors.alias}}
-          </div>
+        <div class="invalid-feedback">
+          {{errors.alias}}
+        </div>
         {{/if}}
-    </div>
-
-
-    <div class="form-floating mb-3">
-      <input type="text" class="form-control {{#if errors.name}}is-invalid{{/if}}" id="name" name="name"
-        value="{{user.name}}" placeholder="Your name">
-      <label for="floatingInput">Name</label>
-      {{#if errors.name}}
-      <div class="invalid-feedback">
-        {{errors.name}}
       </div>
-      {{/if}}
-    </div>
 
-    <div class="form-floating mb-3">
-      <input type="text" class="form-control {{#if errors.surname}}is-invalid{{/if}}" id="surname" name="surname" value="{{user.surname}}" placeholder="Your surname">
-      <label for="floatingInput">Surname</label>
-      {{#if errors.surname}}
-      <div class="invalid-feedback">
-        {{errors.surname}}
+
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control {{#if errors.name}}is-invalid{{/if}}" id="name" name="name"
+          value="{{user.name}}" placeholder="Your name">
+        <label for="floatingInput">Name</label>
+        {{#if errors.name}}
+        <div class="invalid-feedback">
+          {{errors.name}}
+        </div>
+        {{/if}}
       </div>
-      {{/if}}
-    </div>
 
-   <select class="form-select mb-3 {{#if errors.role}}is-invalid{{/if}}" aria-label="Choose your role"
-      id="role" name="role" value="{{user.role}}">
-      <option selected>Choose your role</option>
-      <option value="junior">Junior Developer</option>
-      <option value="recruiter">Recruiter</option>
-      {{#if errors.role}}
-      <div class="invalid-feedback">
-        {{errors.role}}
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control {{#if errors.surname}}is-invalid{{/if}}" id="surname" name="surname"
+          value="{{user.surname}}" placeholder="Your surname">
+        <label for="floatingInput">Surname</label>
+        {{#if errors.surname}}
+        <div class="invalid-feedback">
+          {{errors.surname}}
+        </div>
+        {{/if}}
       </div>
-      {{/if}}
-    </select >
 
-  <div class ="form-floating mb-3">
-    <input type="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email" name="email" value="{{user.email}}" placeholder="Email">
-    <label for="email">Email</label>
-      {{#if errors.email}}
+      <select class="form-select mb-3 {{#if errors.role}}is-invalid{{/if}}" aria-label="Choose your role" id="role"
+        name="role" value="{{user.role}}">
+        <option selected>Choose your role</option>
+        <option value="junior">Junior Developer</option>
+        <option value="recruiter">Recruiter</option>
+        {{#if errors.role}}
+        <div class="invalid-feedback">
+          {{errors.role}}
+        </div>
+        {{/if}}
+      </select>
+
+      <div class="form-floating mb-3">
+        <input type="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email" name="email"
+          value="{{user.email}}" placeholder="Email">
+        <label for="email">Email</label>
+        {{#if errors.email}}
         <div class="invalid-feedback">
           {{errors.email}}
         </div>
-      {{/if}}
-  </div>
+        {{/if}}
+      </div>
 
-  <div class ="form-floating mb-3">
-    <input type="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" id="password" name="password" value="{{user.password}}" placeholder="password">
-    <label for="password">Password</label>
-      {{#if errors.password}}
+      <div class="form-floating mb-3">
+        <input type="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" id="password"
+          name="password" value="{{user.password}}" placeholder="password">
+        <label for="password">Password</label>
+        {{#if errors.password}}
         <div class="invalid-feedback">
           {{errors.password}}
         </div>
-      {{/if}}
+        {{/if}}
+      </div>
+      <button type="submit" class="btn second-button">Sign up</button>
+      <div class="mt-4">
+        <p>You already have an account? <a href="/signup">Take me to Log in</a></p>
+      </div>
+    </form>
   </div>
-  <button type="submit" class="btn btn-primary">Sign up</button>
-</form>
 </div>

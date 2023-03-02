@@ -1,10 +1,12 @@
-<div class="container">
+<div class="container div-flex-row justify-content-around form-page">
 
-  <h1>Log In</h1>
 
-  {{#if error}}  <div class="alert alert-danger"> Login failed, please make sure the email and passwords are correct </div>{{/if}}
+  {{#if error}} <div class="alert alert-danger"> Login failed, please make sure the email and passwords are correct
+  </div>{{/if}}
 
+ <div class="signup-form">
   <form action="/login" method="POST">
+  <h1>Log In</h1>
     <div class="form-floating mb-3">
       <input type="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email" name="email"
         value="{{email}}" placeholder="Email">
@@ -26,6 +28,10 @@
       </div>
       {{/if}}
     </div>
-    <button type="submit" class="btn btn-primary">Log In</button>
+    <button type="submit" class="btn second-button">Log In</button>
+    <div class="mt-4">
+      <p>You don't have an account yet? <a href="/signup">Take me to Sign up</a></p>
+    </div>
   </form>
+  </div>
 </div>
