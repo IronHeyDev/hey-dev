@@ -28,11 +28,16 @@
 </div>
 
 
+
 {{!-- {{#isOpen projectState}} --}}
 {{#isLoggedIn currentUser}}
-<form method="POST" action="/projects/{{../project.id}}/join">
-  <button class="btn second-button" type="submit">Join project</button>
-</form>
+  {{#isOpen ../projectState}}
+    {{#isNotContributor ../currentUser._id ../projectUsers }}
+      <form method="POST" action="/projects/{{../project.id}}/join">
+        <button class="btn second-button" type="submit">Join project</button>
+      </form>
+    {{/isNotContributor}}
+  {{/isOpen}}
 {{else}}
 <button class="btn second-button" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">Join
   project</button>

@@ -1,8 +1,12 @@
 const Contributor = require('../models/contributor.model');
 const Project = require('../models/project.model');
-const mongoose = require('mongoose');
 
 module.exports.join = (req, res, next) => {
+  function isContributor(contributors, userId) {
+    let users = contributors.map(contributor => contributor.user.id);
+    return users.includes(userId);
+  }
+
   Project.findById(req.params.id)
     .populate('author')
     .populate({
@@ -14,22 +18,24 @@ module.exports.join = (req, res, next) => {
     .then((project) => {
       if (project.author.id === req.user.id) {
         res.redirect(`/projects/${project.id}`);
-      }
-      else if (project.contributors.length >= project.maxContributors) {
+      } else if (isContributor(project?.contributors, req.user.id)) {
+        res.redirect(`/projects/${project.id}`);
+      } else if (project?.contributors.length >= project.maxContributors) {
         project.state = 'In progress';
-        project.save()
-        .then((project) => res.redirect(`/projects/${project.id}`))
-        .catch(next)
+        return project
+          .save()
+          .then((project) => res.redirect(`/projects/${project.id}`))
       } else {
-        Contributor.create({
-          user: req.user.id,
-          project: project.id
-        }).then(() => {
-          res.redirect(`/projects/${project.id}`)
-        })
-          .catch(next)
+        return Contributor
+          .create({
+            user: req.user.id,
+            project: project.id
+          })
+          .then(() => {
+            res.redirect(`/projects/${project.id}`)
+          })
+          
       }
     })
-
-
+    .catch(next)
 }

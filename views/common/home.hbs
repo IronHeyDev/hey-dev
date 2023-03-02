@@ -1,20 +1,11 @@
 <h1>Welcome to Hey Dev!</h1>
 
-<form action="/projects" class="g-3 align-items-center d-flex flex-wrap justify-content-center align-items-baseline pe-5 ps-5">
-
-  <div class="flex-grow-1 me-3">
-    <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="description" name="description" placeholder="description">
-      <label for="description">What do you have in mind?</label>
-    </div>
-  </div>
-
-  <div class="">
+<form action="/projects" class="g-3">
+  <div class="input-group">
+    <span class="input-group-text"><i class="fa-solid fa-lightbulb"></i></span>
+    <input type="text" class="form-control" id="description" name="description" placeholder="What do you have in mind?">
     <li class="nav-item dropdown">
-      <button class="nav-link dropdown-toggle btn home-button" role="button" data-bs-toggle="dropdown"
-        aria-expanded="false">
-        Programming Languages
-      </button>
+      <button class="nav-link dropdown-toggle btn home-button" role="button" data-bs-toggle="dropdown" aria-expanded="false">Programming Languages</button>
       <ul class="dropdown-menu">
         <li><a class="dropdown-item">
             <div class="form-check">
@@ -66,18 +57,13 @@
           </a></li>
       </ul>
     </li>
-  </div>
-
-  <div class="">
     <li class="nav-item dropdown">
-      <button class="nav-link dropdown-toggle btn home-button" role="button" data-bs-toggle="dropdown"
-        aria-expanded="false">
-        Languages
-      </button>
+      <button class="nav-link dropdown-toggle btn home-button" role="button" data-bs-toggle="dropdown" aria-expanded="false">Languages</button>
       <ul class="dropdown-menu">
         <li><a class="dropdown-item">
             <div class="form-check">
-              <input class="form-check-input form-check-input-checked-bg-color" type="checkbox" name="languages" value="English" />
+              <input class="form-check-input form-check-input-checked-bg-color" type="checkbox" name="languages"
+                value="English" />
               <label class="form-check-label" for="English">English</label>
             </div>
           </a></li>
@@ -119,12 +105,11 @@
           </a></li>
       </ul>
     </li>
-  </div>
-  <div class="">
-    <button class="btn home-button search-button mb-1" type="submit">Search</button>
+    <li class="nav-item dropdown">
+      <button class="nav-link dropdown-toggle btn home-button search-button" type="submit">Search<i class="fa-sharp fa-solid fa-magnifying-glass ms-2"></i></button>
+    </li>
   </div>
 </form>
-
 
 <!-- TO DO: multiple projects per slide instead of just one-->
 

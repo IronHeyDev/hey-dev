@@ -50,7 +50,7 @@ module.exports.detail = (req, res, next) => {
     .then((project) => {
       res.locals.projectState = project.state;
       project.users = project.contributors.map(x => x.user);
-      res.locals.projectUsers = project.users;
+      res.locals.projectUsers = project.users.map(user => user._id);
       res.render('projects/detail', { project });
     })
     .catch(next)
