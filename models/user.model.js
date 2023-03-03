@@ -30,10 +30,12 @@ const schema = new mongoose.Schema({
         type: 'Date'
     },
     devLanguages: {
-        type: [String]
+        type: [String],
+        enum: ['JavaScript', 'HTML', 'CSS', 'PHP', 'Java', 'Python'],
     },
     languages: {
-        type: [String]
+        type: [String],
+        enum: ['English', 'Spanish', 'French', 'German', 'Chinese', 'Portuguese', 'Other'],
     },
     about: {
         type: 'String',

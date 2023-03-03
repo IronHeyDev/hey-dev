@@ -94,11 +94,10 @@ li {
 /* FOOTER */
 
 footer {
-	/* position: fixed;
-  left: 0px;
-  bottom: 0px; */
+  position: absolute;
+  bottom: 0;
   width: 100%;
-	height: 2.5rem;
+  height: 2.5rem;
 }
 
 .footer-links {
@@ -143,3 +142,33 @@ footer {
 	padding: 30px;
 }
 
+/* HOME */
+
+.home-search {
+  margin: auto 20%
+}
+
+.description-input {
+  margin-right: 10px;
+  border-top-right-radius: 7px !important;
+  border-bottom-right-radius: 7px !important;
+}
+
+.fa-lightbulb {
+  color:#51c0c4;
+  font-size: 1.3em;
+}
+
+.home-header {
+  background-image: url('../images/hey-dev-home-image2.jpg');
+  background-position: bottom left;
+  background-repeat: no-repeat;
+  background-size: auto;
+  height: 400px;
+} 
+
+@media only screen and (max-width: 800px) {
+  .home-header {
+    background-position: bottom right;
+  }
+}

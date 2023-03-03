@@ -67,7 +67,8 @@ module.exports.update = (req, res, next) => {
 }
 
 module.exports.doUpdate = (req, res, next) => {
-  if (!req.body.password) {
+  const { password } = req.body;
+  if (!password) {
     delete req.body.password;
   }
 

@@ -34,7 +34,7 @@ const schema = new mongoose.Schema({
     },
     devLanguages: {
         type: [String],
-        enum: ['JavaScript', 'HTML', 'CSS', 'PHP', 'Java', 'Python', 'C#', 'C++'],
+        enum: ['JavaScript', 'HTML', 'CSS', 'PHP', 'Java', 'Python'],
        required: [true, "Please, select at least one language"]
     },
     languages: {
