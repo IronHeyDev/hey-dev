@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 
 module.exports.home = (req, res, next) => {
   Project.find()
+    .sort({ createdAt: -1 })
     .then((projects) => {
       res.render('common/home', { projects });
     })

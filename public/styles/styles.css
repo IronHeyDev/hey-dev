@@ -145,7 +145,9 @@ footer {
 /* HOME */
 
 .home-search {
-  margin: auto 20%
+  margin: auto 20%;
+  text-align: center;
+  padding: 6em 0;
 }
 
 .description-input {
@@ -160,15 +162,80 @@ footer {
 }
 
 .home-header {
-  background-image: url('../images/hey-dev-home-image2.jpg');
-  background-position: bottom left;
+  background-image: url('../images/hev-dev-home-image4.jpg');
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: cover;
   height: 400px;
 } 
 
-@media only screen and (max-width: 800px) {
-  .home-header {
-    background-position: bottom right;
+.header-group {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.header-group h1 {
+  color: black;
+}
+
+.header-group img {
+  width: 10%;
+}
+
+.home-button-line {
+  border: 2px solid #a970ff;
+  color: #a970ff;
+  padding: 15px 10px;
+  margin-right: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.home-button-line:hover {
+  background-color: #a970ff;
+  color:white;
+}
+
+.home-button-main {
+  background-color: #a970ff;
+  color:white;
+  border: 2px solid #a970ff;
+  padding: 15px 10px;
+  margin-right: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.home-button-main:hover {
+  color: white;
+  background-color: #51c0c4;
+  border: 2px solid #51c0c4;
+}
+
+@media only screen and (max-width: 990px) {
+  .filters {
+    display: block;
+  }
+
+  .filters input {
+    width: 100% !important;
+    margin-bottom: 10px !important;
+    display: block;
+  }
+
+  .filters span {
+    display: none;
+  }
+
+  .filters > li {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .filters button {
+    width: 100%;
   }
 }

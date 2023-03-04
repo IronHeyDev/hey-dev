@@ -76,6 +76,8 @@ module.exports.doUpdate = (req, res, next) => {
     req.body.avatar = req.file.path;
   }
 
+  console.log(req.body)
+
   const user = Object.assign(req.user, req.body);
   user.save()
     .then((user) => res.redirect(`/users/${user.id}`))

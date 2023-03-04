@@ -64,7 +64,7 @@ const schema = new mongoose.Schema({
     password: {
         type: 'String',
         required: true,
-        match: /(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,15})$/,
+        //match: /(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,15})$/,
     },
     role: {
         type: 'String',
