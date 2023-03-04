@@ -4,7 +4,7 @@
 
   <form action="/projects" method="POST" enctype="multipart/form-data">
     <div class="form-floating mb-3">
-      <input type="text" class="form-control {{#if errors.name}}is-invalid{{/if}}" id="name" name="name" value="{{project.name}}" placeholder="Your project name">
+      <input type="text" class="form-control {{#if errors.name}}is-invalid{{/if}}" id="name" name="name" value="{{project.name}}" placeholder="Project name">
       <label for="floatingInput">Project Name</label>
       {{#if errors.name}}
         <div class="invalid-feedback">
@@ -15,7 +15,7 @@
 
 
     <div class="form-floating mb-3">
-      <input type="text" class="form-control {{#if errors.description}}is-invalid{{/if}}" id="description" name="description" value="{{project.description}}" placeholder="Describe your project">
+      <input type="text" class="form-control {{#if errors.description}}is-invalid{{/if}}" id="description" name="description" value="{{project.description}}" placeholder="Describe the project idea">
       <label for="description">Description</label>
       {{#if errors.description}}
         <div class="invalid-feedback">
