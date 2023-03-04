@@ -50,3 +50,10 @@ hbs.registerHelper('isNotContributor', (currentUser, projectUsers, options) => {
   }
 })
 
+// nota mental: utilizar este helper con tres bigotitos en vez de 2
+hbs.registerHelper('languageIcon', (lang) => {
+  if (lang === 'HTML') {
+    return "<i lalaa></i>"
+  }
+})
+

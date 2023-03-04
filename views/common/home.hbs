@@ -14,9 +14,9 @@
   <h2 class="pb-2">Find your next project and start collaborating!</h2>
   <form action="/projects">
     <div class="input-group filters">
-        <span class="input-group-text"><i class="fa-solid fa-lightbulb"></i></span>
-        <input type="text" class="form-control description-input" id="description" name="description"
-          placeholder="What do you have in mind?">
+      <span class="input-group-text"><i class="fa-solid fa-lightbulb"></i></span>
+      <input type="text" class="form-control description-input" id="description" name="description"
+        placeholder="What do you have in mind?">
       <li class="nav-item dropdown">
         <button class="nav-link dropdown-toggle btn home-button" role="button" data-bs-toggle="dropdown"
           aria-expanded="false">Programming Languages</button>
@@ -116,28 +116,23 @@
   </form>
 </section>
 
-<section class="container">
-  <h2 class="pb-5">Latest projects</h2>
-  <div class="row">
-    <div class="col-sm-12 col-lg-3">
-      <img src="{{projects.0.image}}" alt="{{projects.0.name}}" class="w-50">
-      <h5 class="black-color">{{projects.0.name}}</h5>
-      <p class="black-color">{{projects.0.description}}</p>
-    </div>
-
-    <div class="col-sm-12 col-lg-3">
-      <img src="{{projects.1.image}}" alt="{{projects.1.name}}" class="w-50">
-      <h5 class="black-color">{{projects.1.name}}</h5>
-      <p class="black-color">{{projects.1.description}}</p>
-    </div>
-
-    <div class="col-sm-12 col-lg-3">
-      <img src="{{projects.2.image}}" alt="{{projects.2.name}}" class="w-50">
-      <h5 class="black-color">{{projects.2.name}}</h5>
-      <p class="black-color">{{projects.2.description}}</p>
+<section class="latest-projects pb-5">
+  <div class="container">
+    <h2 class="pb-3 pt-5 text-center">Latest projects</h2>
+    <div class="row align-items-stretch">
+      {{#each projects as |project|}}
+      <div class="col-sm-12 col-lg-4 text-center p-1">
+        <div class="home-project p-3 h-100">
+          <img src="{{project.image}}" alt="{{project.name}}" class="w-100">
+          <h4 class="black-color">{{project.name}}</h4>
+          <p class="black-color">{{project.description}}</p>
+          <p class="black-color">{{project.devLanguages}}</p>
+          <a href="#" class="btn second-button w-100">More info</a>
+        </div>
+      </div>
+      {{/each}}
     </div>
   </div>
-
 </section>
 
 
