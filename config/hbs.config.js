@@ -51,9 +51,22 @@ hbs.registerHelper('isNotContributor', (currentUser, projectUsers, options) => {
 })
 
 // nota mental: utilizar este helper con tres bigotitos en vez de 2
-hbs.registerHelper('languageIcon', (lang) => {
-  if (lang === 'HTML') {
-    return "<i lalaa></i>"
-  }
+hbs.registerHelper('languageIcon', (language) => {
+  if (language === 'JavaScript') {
+    return '<i class="fa-brands fa-square-js fa-2xl"></i>'
+  } else if (language === 'HTML') {
+      return '<i class="fa-brands fa-html5 fa-2xl"></i>'
+  } else if (language === 'CSS') {
+      return '<i class="fa-brands fa-css3-alt fa-2xl"></i>'
+  } else if (language === 'PHP') {
+      return '<i class="fa-brands fa-php fa-2xl"></i>'
+  } else if (language === 'Java') {
+      return '<i class="fa-brands fa-java fa-2xl"></i>'
+  } else if (language === 'Python') {
+    return '<i class="fa-brands fa-python fa-2xl"></i>'
+}
+
+
+
 })
 

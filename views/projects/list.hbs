@@ -24,64 +24,64 @@
         </div>
         <div class="form-floating mb-3">
           <input type="text" class="form-control" id="description" name="description" placeholder="description">
-          <label for="description">Idea</label>
+          <label for="description">Project idea</label>
         </div>
-        <select class="form-select mb-3" aria-label="Project State" id="location" name="state">
-          <option selected value="">Choose project's state</option>
+        <select class="form-select mb-3 py-3" aria-label="Project State" id="location" name="state">
+          <option selected value="">Project state</option>
           <option value="Open">Open</option>
           <option value="In progress">In progress</option>
           <option value="Completed">Completed</option>
         </select>
         <div class="mb-3">
-          <label for="weeks" class="form-label">Max. project duration in weeks: </label>
+          <label for="weeks" class="form-label">Max. project duration in weeks </label>
           <input type="range" class="form-range" min="0" max="24" id="weeks" name="weeks"
             oninput="this.nextElementSibling.value = this.value">
           <output>12</output>
         </div>
-        <select class="form-select mb-3" aria-label="Project Location" id="location" name="location">
-          <option selected value="">Choose location</option>
+        <select class="form-select mb-3 py-3" aria-label="Project Location" id="location" name="location">
+          <option selected value="">Location</option>
           <option value="Remote">Remote</option>
           <option value="Local">Local</option>
         </select>
         <div class="mb-3">
-          <label for="maxContributors" class="form-label">Max. Contributors</label>
+          <label for="maxContributors" class="form-label">Max. contributors</label>
           <input type="range" class="form-range" min="0" max="6" id="maxContributors" name="maxContributors"
             oninput="this.nextElementSibling.value = this.value">
           <output>3</output>
         </div>
         <div class="mb-3">
-          <label for="devLanguages" class="form-label mb-3">Programming Languages</label>
-          <div class="d-flex flex-row">
-            <div class="form-check">
+          <label for="devLanguages" class="form-label mb-3">Programming languages</label>
+          <div class="d-flex flex-row flex-wrap">
+            <div class="form-check pb-3">
               <input id="JavaScript" class="form-check-input d-none" type="checkbox" name="devLanguages"
                 value="JavaScript" />
               <label class="form-check-label" for="JavaScript"><i class="fa-brands fa-square-js fa-2xl"></i></label>
             </div>
-            <div class="form-check">
+            <div class="form-check pb-3">
               <input id="HTML" class="form-check-input d-none" type="checkbox" name="devLanguages" value="HTML" />
               <label class="form-check-label" for="HTML"><i class="fa-brands fa-html5 fa-2xl"></i></label>
             </div>
-            <div class="form-check">
+            <div class="form-check pb-3">
               <input id="CSS" class="form-check-input d-none" type="checkbox" name="devLanguages" value="CSS" />
               <label class="form-check-label" for="CSS"><i class="fa-brands fa-css3-alt fa-2xl"></i></label>
             </div>
-            <div class="form-check">
+            <div class="form-check pb-3">
               <input id="PHP" class="form-check-input d-none" type="checkbox" name="devLanguages" value="PHP" />
               <label class="form-check-label" for="PHP"><i class="fa-brands fa-php fa-2xl"></i></label>
             </div>
-            <div class="form-check">
+            <div class="form-check pb-3">
               <input id="Java" class="form-check-input d-none" type="checkbox" name="devLanguages" value="Java" />
               <label class="form-check-label" for="Java"><i class="fa-brands fa-java fa-2xl"></i></label>
             </div>
-            <div class="form-check">
-              <input id="Python" class="form-check-input d-none" type="checkbox" name="devLanguages" value="Java" />
+            <div class="form-check pb-3">
+              <input id="Python" class="form-check-input d-none" type="checkbox" name="devLanguages" value="Python" />
               <label class="form-check-label" for="Python"><i class="fa-brands fa-python fa-2xl"></i></label>
             </div>
           </div>
         </div>
 
         <li class="nav-item dropdown">
-          <button class="nav-link dropdown-toggle btn second-button" role="button" data-bs-toggle="dropdown"
+          <button class="nav-link form-select py-3 text-start ps-3" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">Languages</button>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item">
