@@ -263,7 +263,7 @@ input[type="checkbox"]:checked + label {
   font-weight: bold;
 }
 
-/* ERRORS */
+/* ERRORS*/
 
 .error-text {
   color:#51c0c4;
