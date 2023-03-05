@@ -1,3 +1,59 @@
+<div class="container-fluid">
+  <div class="d-flex d-column flex-wrap align-items-center justify-content-start gap-5 p-5">
+    <div class="text-center">
+      <img src="{{user.avatar}}" class="rounded-circle w-75" alt="{{user.alias}} avatar">
+      {{#isCurrentUser currentUser user.id}}
+      <div class="d-flex flex-column flex-wrap justify-content-center align-items-center gap-1 pt-2">
+        <a href="/users/me/update" class="btn second-button"><i class="fa-solid fa-pen-to-square pe-2"></i>Edit my
+          profile</a>
+        <form method="POST" action="/users/me/delete">
+          <button class="btn main-button"><i class="fa-solid fa-trash pe-2"></i>Delete account</button>
+        </form>
+      </div>
+      {{/isCurrentUser}}
+    </div>
+    <div>
+      <div class="d-flex flex-row flex-wrap align-items-baseline">
+        <h1 class="pe-2">{{user.name}}</h1>
+        <h1 class="pe-3">{{user.surname}}</h1>
+        <h5>(@{{user.alias}})</h5>
+      </div>
+      <div class="d-flex flex-row flex-wrap align-items-baseline gap-3">
+        <p><i class="fa-solid fa-location-dot"></i> {{user.location}}</p>
+        <p><i class="fa-solid fa-phone"></i> {{user.phone}}</p>
+        <p><i class="fa-solid fa-envelope"></i> {{user.mail}}</p>
+      </div>
+      <div class="d-flex flex-row flex-wrap align-items-baseline gap-3">
+        <a href="{{user.github}}" class="btn github-btn" target="_blank"><i
+            class="fa-brands fa-github pe-2"></i>GitHub</a>
+        <a href="{{user.linkedin}}" class="btn linkedin-btn" target="_blank"><i
+            class="fa-brands fa-linkedin-in pe-2"></i>LinkedIn</a>
+        <a href="{{user.website}}" class="btn web-btn" target="_blank"><i class="fa-solid fa-laptop pe-2"></i>Web</a>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <p>{{user.about}}</p>
+  <div class="d-flex flex-row flex-wrap justify-content-start">
+    {{#each user.devLanguages as |devLanguage|}}
+    <span class="user-icon">{{{languageIcon devLanguage}}}</span>
+    {{/each}}
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+
 <p>{{user.alias}}</p>
 <p>{{user.name}}</p>
 <p>{{user.surname}}</p>
@@ -33,7 +89,7 @@
     </div>
   </div>
   {{/each}}
-</div>  
+</div>
 </div>
 
 
