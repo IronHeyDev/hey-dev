@@ -262,3 +262,23 @@ input[type="checkbox"]:checked + label {
   color: #51c0c4;
   font-weight: bold;
 }
+
+/* ERRORS */
+
+.error-text {
+  color:#51c0c4;
+}
+
+.error-page {
+  background-image: url('../images/hey-dev-error6.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 200px;
+} 
+
+.error-group {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 2rem;
+  border-radius: 10px;
+}

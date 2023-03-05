@@ -20,15 +20,24 @@ app.set('views', `${__dirname}/views`);
 
 app.use(express.static('public'));
 
+app.use((req, res, next) => {
+  res.locals.currentPath = req.path;
+  next();
+});
+
 const router = require('./config/routes.config');
 app.use('/', router);
 
-// app.use((error, req, res, next) => {
-//     error = !error.status ? createError(500, error) : error;
-//     console.error(error);
-//     res.status(error.status)
-//     .render(`errors/${error.status}`, { error });
-// });
+app.use((req, res, next) => {
+  next(createError(404, 'Page not found'));
+});
+
+app.use((error, req, res, next) => {
+    error = !error.status ? createError(500, error) : error;
+    console.error(error);
+    res.status(error.status)
+    .render(`errors/${error.status}`, { error });
+});
 
 
 const port = process.env.PORT || 3000;
