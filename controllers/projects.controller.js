@@ -81,12 +81,19 @@ module.exports.doUpdate = (req, res, next) => {
     .catch(next);
 }
 
-module.exports.list = async (req, res, next) => {
+module.exports.list = (req, res, next) => {
   const criteria = {};
 
   if (req.query.author) {
-    const user = await User.findOne({ alias: new RegExp(req.query.author, "i") })
-    criteria.author = user._id
+    User.findOne({ alias: new RegExp(req.query.author, "i") })
+    .then(user => {
+      if(user) {
+        criteria.author = user._id
+      } else {
+        delete req.query;
+      }
+    })
+    .catch(next)
   }
 
   if (req.query.name) {
