@@ -10,10 +10,6 @@ font-family: 'Roboto', sans-serif;
   font-family: 'Roboto', sans-serif;
 }
 
-/* body {
-  margin: auto 20px;
-} */
-
 /* TITLES */
 h1 {
   font-family: 'Anek Tamil', sans-serif;
@@ -261,6 +257,12 @@ input[type="checkbox"] + label {
 input[type="checkbox"]:checked + label {
   color: #51c0c4;
   font-weight: bold;
+}
+
+.signup-login-link {
+  text-decoration: none;
+  color:#2e8c8f;
+  font-weight: bolder;
 }
 
 /* ERRORS*/
