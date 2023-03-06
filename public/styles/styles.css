@@ -237,6 +237,10 @@ footer {
   margin: 10px auto;
 }
 
+.project-card {
+  background-color:rgb(243, 243, 243);
+}
+
 /* SEARCH, SIGNUP AND LOGIN FORMS*/
 
 .signup-form form {
