@@ -10,10 +10,6 @@ font-family: 'Roboto', sans-serif;
   font-family: 'Roboto', sans-serif;
 }
 
-/* body {
-  margin: auto 20px;
-} */
-
 /* TITLES */
 h1 {
   font-family: 'Anek Tamil', sans-serif;
@@ -241,6 +237,10 @@ footer {
   margin: 10px auto;
 }
 
+.project-card {
+  background-color:rgb(243, 243, 243);
+}
+
 /* SEARCH, SIGNUP AND LOGIN FORMS*/
 
 .signup-form form {
@@ -263,6 +263,31 @@ input[type="checkbox"]:checked + label {
   font-weight: bold;
 }
 
+.signup-login-link {
+  text-decoration: none;
+  color:#2e8c8f;
+  font-weight: bolder;
+}
+
+/* ERRORS*/
+
+.error-text {
+  color:#51c0c4;
+}
+
+.error-page {
+  background-image: url('../images/hey-dev-error6.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 200px;
+} 
+
+.error-group {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 2rem;
+  border-radius: 10px;
+}
 
 
 

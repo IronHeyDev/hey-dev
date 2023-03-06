@@ -12,7 +12,7 @@
 
 <div class="container signup-form">
   <div class="row">
-    <div class="col-sm-12 col-md-4 col-lg-4"> <!--TO DO: Sticky is not working-->
+    <div class="col-sm-12 col-md-4 col-lg-4">
       <form action="/projects">
         <div class="form-floating mb-3">
           <input type="text" class="form-control" id="author" name="author" placeholder="author">
@@ -132,17 +132,23 @@
         <button class="btn second-button search-button mt-3 w-100" type="submit">Search</button>
       </form>
     </div>
+
     <div class="col-sm-12 col-md-8 col-lg-8">
       <div class="d-flex flex-wrap flex-row justify-content-start">
         {{#each projects as |project|}}
-        <div class="card m-3" style="width: 15rem;">
-          <img class="card-img-top" style="width: 14rem" src="{{project.image}}" alt="Profile picture">
-          <div class="card-body">
-            <h5 class="card-title">{{project.name}}</h5>
-            <!-- TO DO: dev languages icons -->
-            <a href="/projects/{{project.id}}" class="btn second-button">More info</a>
+        <div class="col-sm-12 col-lg-4 text-center p-1">
+        <div class="home-project d-flex flex-column justify-content-between p-3 h-100 project-card">
+          <img src="{{project.image}}" alt="{{project.name}}" class="w-100">
+          <h4 class="black-color">{{project.name}}</h4>
+          <p class="black-color">{{project.description}}</p>
+          <div class="d-flex flex-row flex-wrap py-4 px-5 justify-content-around">
+            {{#each project.devLanguages as |devLanguage|}}
+            {{{languageIcon devLanguage}}}
+            {{/each}}
           </div>
+          <a href="/projects/{{project.id}}" class="btn second-button w-100">More info</a>
         </div>
+      </div>
         {{/each}}
       </div>
     </div>

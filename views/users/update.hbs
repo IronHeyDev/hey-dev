@@ -1,18 +1,16 @@
-<div class="container">
-
-  <h1>Edit profile</h1>
+<div class="container signup-form">
 
   <form action="/users/me/update" method="POST" enctype="multipart/form-data">
+    <h1>Edit profile</h1>
     <div class="input-group mb-3">
       <span class="input-group-text" id="alias-symbol">@</span>
-      <input type="text" class="form-control {{#if errors.alias}} is-invalid{{/if}}" name="alias" value="{{user.alias}}" placeholder="Username" aria-label="Username"
-        aria-describedby="basic-addon1">
+      <input type="text" class="form-control py-3 {{#if errors.alias}} is-invalid{{/if}}" name="alias" value="{{user.alias}}"
+        placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
     </div>
-
 
     <div class="form-floating mb-3">
       <input type="text" class="form-control {{#if errors.name}}is-invalid{{/if}}" id="name" name="name"
-        value="{{user.name}}" placeholder="Your name">
+        value="{{user.name}}" placeholder="Name">
       <label for="floatingInput">Name</label>
       {{#if errors.name}}
       <div class="invalid-feedback">
@@ -22,7 +20,8 @@
     </div>
 
     <div class="form-floating mb-3">
-      <input type="text" class="form-control {{#if errors.surname}}is-invalid{{/if}}" id="surname" name="surname" value="{{user.surname}}" placeholder="Your surname">
+      <input type="text" class="form-control {{#if errors.surname}}is-invalid{{/if}}" id="surname" name="surname"
+        value="{{user.surname}}" placeholder="Surname">
       <label for="floatingInput">Surname</label>
       {{#if errors.surname}}
       <div class="invalid-feedback">
@@ -32,7 +31,8 @@
     </div>
 
     <div class="form-floating mb-3">
-      <input type="text" class="form-control {{#if errors.location}}is-invalid{{/if}}" id="location" name="location" value="{{user.location}}" placeholder="Your location">
+      <input type="text" class="form-control {{#if errors.location}}is-invalid{{/if}}" id="location" name="location"
+        value="{{user.location}}" placeholder="Location">
       <label for="floatingInput">Location</label>
       {{#if errors.location}}
       <div class="invalid-feedback">
@@ -42,17 +42,18 @@
     </div>
 
     <div class="mb-3">
-      <label for="formFile" class="form-label">Avatar</label>
+      <label for="formFile" class="form-label mb-0">Avatar</label>
       <input class="form-control {{#if errors.avatar}}is-invalid{{/if}}" type="file" id="avatar" name="avatar">
       {{#if errors.avatar}}
-        <div class="invalid-feedback">
-          {{errors.avatar}}
-        </div>
+      <div class="invalid-feedback">
+        {{errors.avatar}}
+      </div>
       {{/if}}
     </div>
 
     <div class="form-floating mb-3">
-      <input type="date" class="form-control {{#if errors.dateOfBirth}}is-invalid{{/if}}" id="dateOfBirth" name="dateOfBirth" value="{{user.dateOfBirth}}" placeholder="Your date of birth">
+      <input type="date" class="form-control {{#if errors.dateOfBirth}}is-invalid{{/if}}" id="dateOfBirth"
+        name="dateOfBirth" value="{{user.dateOfBirth}}" placeholder="Date of birth">
       <label for="floatingInput">Date of birth</label>
       {{#if errors.dateOfBirth}}
       <div class="invalid-feedback">
@@ -61,68 +62,89 @@
       {{/if}}
     </div>
 
-    <div>
-    <label for="devLanguages mb-3" class="form-label">Programming languages</label>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" name="devLanguages" value="JavaScript" id="JavaScript">
-      <label class="form-check-label" for="JavaScript">JavaScript</label>
+    <div class="mb-2">
+      <label for="devLanguages" class="form-label mb-2">Programming languages</label>
+      <div class="d-flex flex-row flex-wrap">
+        <div class="form-check pb-3 pe-3">
+          <input id="JavaScript" class="form-check-input d-none" type="checkbox" name="devLanguages"
+            value="JavaScript" />
+          <label class="form-check-label" for="JavaScript"><i class="fa-brands fa-square-js fa-3x"></i></label>
+        </div>
+        <div class="form-check pb-3 pe-3">
+          <input id="HTML" class="form-check-input d-none" type="checkbox" name="devLanguages" value="HTML" />
+          <label class="form-check-label" for="HTML"><i class="fa-brands fa-html5 fa-3x"></i></label>
+        </div>
+        <div class="form-check pb-3 pe-3">
+          <input id="CSS" class="form-check-input d-none" type="checkbox" name="devLanguages" value="CSS" />
+          <label class="form-check-label" for="CSS"><i class="fa-brands fa-css3-alt fa-3x"></i></label>
+        </div>
+        <div class="form-check pb-3 pe-3">
+          <input id="PHP" class="form-check-input d-none" type="checkbox" name="devLanguages" value="PHP" />
+          <label class="form-check-label" for="PHP"><i class="fa-brands fa-php fa-3x"></i></label>
+        </div>
+        <div class="form-check pb-3 pe-3">
+          <input id="Java" class="form-check-input d-none" type="checkbox" name="devLanguages" value="Java" />
+          <label class="form-check-label" for="Java"><i class="fa-brands fa-java fa-3x"></i></label>
+        </div>
+        <div class="form-check pb-3 pe-3">
+          <input id="Python" class="form-check-input d-none" type="checkbox" name="devLanguages" value="Python" />
+          <label class="form-check-label" for="Python"><i class="fa-brands fa-python fa-3x"></i></label>
+        </div>
+      </div>
     </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" name="devLanguages" value="HTML" id="HTML">
-      <label class="form-check-label" for="HTML">HTML</label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" name="devLanguages" value="CSS" id="CSS">
-      <label class="form-check-label" for="CSS">CSS</label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" name="devLanguages" value="PHP" id="PHP">
-      <label class="form-check-label" for="PHP">PHP</label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" name="devLanguages" value="Python" id="Python">
-      <label class="form-check-label" for="Python">Python</label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" name="devLanguages" value="Java" id="Java">
-      <label class="form-check-label" for="Java">Java</label>
-    </div>
-  </div>
 
-<div class="mb-5">
-    <label for="languages mb-3" class="form-label">Languages</label>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" name="languages" value="English" id="English">
-      <label class="form-check-label" for="English">English</label>
+    <div class="mb-3">
+      <button class="nav-link form-select py-3 text-start ps-3" role="button" data-bs-toggle="dropdown"
+        aria-expanded="false">Languages</button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item">
+            <div class="form-check">
+              <input id="English" class="form-check-input" type="checkbox" name="languages" value="English" />
+              <label class="form-check-label" for="English">English</label>
+            </div>
+          </a></li>
+        <li><a class="dropdown-item">
+            <div class="form-check">
+              <input id="Spanish" class="form-check-input" type="checkbox" name="languages" value="Spanish" />
+              <label class="form-check-label" for="Spanish">Spanish</label>
+            </div>
+          </a></li>
+        <li><a class="dropdown-item">
+            <div class="form-check">
+              <input id="French" class="form-check-input" type="checkbox" name="languages" value="French" />
+              <label class="form-check-label" for="French">French</label>
+            </div>
+          </a></li>
+        <li><a class="dropdown-item">
+            <div class="form-check">
+              <input id="German" class="form-check-input" type="checkbox" name="languages" value="German" />
+              <label class="form-check-label" for="German">German</label>
+            </div>
+          </a></li>
+        <li><a class="dropdown-item">
+            <div class="form-check">
+              <input id="Chinese" class="form-check-input" type="checkbox" name="languages" value="Chinese" />
+              <label class="form-check-label" for="Chinese">Chinese</label>
+            </div>
+          </a></li>
+        <li><a class="dropdown-item">
+            <div class="form-check">
+              <input id="Portuguese" class="form-check-input" type="checkbox" name="languages" value="Portuguese" />
+              <label class="form-check-label" for="Portuguese">Portuguese</label>
+            </div>
+          </a></li>
+        <li><a class="dropdown-item">
+            <div class="form-check">
+              <input id="Other" class="form-check-input" type="checkbox" name="languages" value="Other" />
+              <label class="form-check-label" for="Other">Other</label>
+            </div>
+          </a></li>
+      </ul>
     </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" name="languages" value="Spanish" id="Spanish">
-      <label class="form-check-label" for="Spanish">Spanish</label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" name="languages" value="French" id="French">
-      <label class="form-check-label" for="French">French</label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" name="languages" value="German" id="German">
-      <label class="form-check-label" for="German">German</label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" name="languages" value="Chinese" id="Chinese">
-      <label class="form-check-label" for="Chinese">Chinese</label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" name="languages" value="Portuguese" id="Portuguese">
-      <label class="form-check-label" for="Portuguese">Portuguese</label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" name="languages" value="Other" id="Other">
-      <label class="form-check-label" for="Other">Other</label>
-    </div>
-  </div>
+
 
     <div class="form-floating mb-3">
-      <input type="text" class="form-control {{#if errors.about}}is-invalid{{/if}}" id="about" name="about"
+      <input type="text" class="form-control py-5 text-start text-wrap {{#if errors.about}}is-invalid{{/if}}" id="about" name="about"
         value="{{user.about}}" placeholder="About me">
       <label for="floatingInput">About me</label>
       {{#if errors.about}}
@@ -143,27 +165,29 @@
       {{/if}}
     </div>
 
-  <div class ="form-floating mb-3">
-    <input type="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email" name="email" value="{{user.email}}" placeholder="Email">
-    <label for="email">Email</label>
+    <div class="form-floating mb-3">
+      <input type="email" class="form-control {{#if errors.email}}is-invalid{{/if}}" id="email" name="email"
+        value="{{user.email}}" placeholder="Email">
+      <label for="email">Email</label>
       {{#if errors.email}}
-        <div class="invalid-feedback">
-          {{errors.email}}
-        </div>
+      <div class="invalid-feedback">
+        {{errors.email}}
+      </div>
       {{/if}}
-  </div>
+    </div>
 
- <div class ="form-floating mb-3">
-    <input type="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" id="password" name="password" placeholder="password">
-    <label for="password">Password</label>
+    <div class="form-floating mb-3">
+      <input type="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" id="password" name="password"
+        placeholder="password">
+      <label for="password">Password</label>
       {{#if errors.password}}
-        <div class="invalid-feedback">
-          {{errors.password}}
-        </div>
+      <div class="invalid-feedback">
+        {{errors.password}}
+      </div>
       {{/if}}
-  </div>
+    </div>
 
-<div class="form-floating mb-3">
+    <div class="form-floating mb-3">
       <input type="text" class="form-control {{#if errors.linkedin}}is-invalid{{/if}}" id="linkedin" name="linkedin"
         value="{{user.linkedin}}" placeholder="linkedin">
       <label for="floatingInput">LinkedIn</label>
@@ -196,7 +220,7 @@
       {{/if}}
     </div>
 
-  <button type="submit" class="btn second-button">Save changes</button>
+    <button type="submit" class="btn second-button py-3">Save changes</button>
 
-</form>
+  </form>
 </div>

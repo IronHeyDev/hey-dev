@@ -30,97 +30,85 @@
           <input type="email" class="form-control" id="email" name="email" placeholder="email">
           <label for="email">Email</label>
         </div>
-        <select class="form-select mb-3" aria-label="Default select example" id="location">
-          <option selected>Choose location</option>
+        <select class="form-select mb-3 py-3" aria-label="Default select example" id="location">
+          <option selected>Location</option>
           <option value="Remote">Remote</option>
           <option value="Local">Local</option>
         </select>
-        <li class="nav-item dropdown">
-          <button class="nav-link dropdown-toggle btn second-button" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">Programming Languages</button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="devLanguages" value="JavaScript" />
-                  <label class="form-check-label" for="JavaScript">JavaScript</label>
-                </div>
-              </a></li>
-            <li><a class="dropdown-item">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="devLanguages" value="HTML" />
-                  <label class="form-check-label" for="HTML">HTML</label>
-                </div>
-              </a></li>
-            <li><a class="dropdown-item">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="devLanguages" value="CSS" />
-                  <label class="form-check-label" for="CSS">CSS</label>
-                </div>
-              </a></li>
-            <li><a class="dropdown-item">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="devLanguages" value="PHP" />
-                  <label class="form-check-label" for="PHP">PHP</label>
-                </div>
-              </a></li>
-            <li><a class="dropdown-item">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="devLanguages" value="Java" />
-                  <label class="form-check-label" for="Java">Java</label>
-                </div>
-              </a></li>
-            <li><a class="dropdown-item">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="devLanguages" value="Python" />
-                  <label class="form-check-label" for="Python">Python</label>
-                </div>
-              </a></li>
-          </ul>
-        </li>
+        <div class="mb-2">
+          <label for="devLanguages" class="form-label mb-3">Programming languages</label>
+          <div class="d-flex flex-row flex-wrap">
+            <div class="form-check pb-3">
+              <input id="JavaScript" class="form-check-input d-none" type="checkbox" name="devLanguages"
+                value="JavaScript" />
+              <label class="form-check-label" for="JavaScript"><i class="fa-brands fa-square-js fa-2xl"></i></label>
+            </div>
+            <div class="form-check pb-3">
+              <input id="HTML" class="form-check-input d-none" type="checkbox" name="devLanguages" value="HTML" />
+              <label class="form-check-label" for="HTML"><i class="fa-brands fa-html5 fa-2xl"></i></label>
+            </div>
+            <div class="form-check pb-3">
+              <input id="CSS" class="form-check-input d-none" type="checkbox" name="devLanguages" value="CSS" />
+              <label class="form-check-label" for="CSS"><i class="fa-brands fa-css3-alt fa-2xl"></i></label>
+            </div>
+            <div class="form-check pb-3">
+              <input id="PHP" class="form-check-input d-none" type="checkbox" name="devLanguages" value="PHP" />
+              <label class="form-check-label" for="PHP"><i class="fa-brands fa-php fa-2xl"></i></label>
+            </div>
+            <div class="form-check pb-3">
+              <input id="Java" class="form-check-input d-none" type="checkbox" name="devLanguages" value="Java" />
+              <label class="form-check-label" for="Java"><i class="fa-brands fa-java fa-2xl"></i></label>
+            </div>
+            <div class="form-check pb-3">
+              <input id="Python" class="form-check-input d-none" type="checkbox" name="devLanguages" value="Python" />
+              <label class="form-check-label" for="Python"><i class="fa-brands fa-python fa-2xl"></i></label>
+            </div>
+          </div>
+        </div>
 
-        <li class="nav-item dropdown">
-          <button class="nav-link dropdown-toggle btn second-button" role="button" data-bs-toggle="dropdown"
+        <li class="nav-item dropdown mb-3">
+          <button class="nav-link form-select py-3 text-start ps-3" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">Languages</button>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="languages" value="English" />
+                  <input id="English" class="form-check-input" type="checkbox" name="languages" value="English" />
                   <label class="form-check-label" for="English">English</label>
                 </div>
               </a></li>
             <li><a class="dropdown-item">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="languages" value="Spanish" />
+                  <input id="Spanish" class="form-check-input" type="checkbox" name="languages" value="Spanish" />
                   <label class="form-check-label" for="Spanish">Spanish</label>
                 </div>
               </a></li>
             <li><a class="dropdown-item">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="languages" value="French" />
+                  <input id="French" class="form-check-input" type="checkbox" name="languages" value="French" />
                   <label class="form-check-label" for="French">French</label>
                 </div>
               </a></li>
             <li><a class="dropdown-item">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="languages" value="German" />
+                  <input id="German" class="form-check-input" type="checkbox" name="languages" value="German" />
                   <label class="form-check-label" for="German">German</label>
                 </div>
               </a></li>
             <li><a class="dropdown-item">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="languages" value="Chinese" />
+                  <input id="Chinese" class="form-check-input" type="checkbox" name="languages" value="Chinese" />
                   <label class="form-check-label" for="Chinese">Chinese</label>
                 </div>
               </a></li>
             <li><a class="dropdown-item">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="languages" value="Portuguese" />
+                  <input id="Portuguese" class="form-check-input" type="checkbox" name="languages" value="Portuguese" />
                   <label class="form-check-label" for="Portuguese">Portuguese</label>
                 </div>
               </a></li>
             <li><a class="dropdown-item">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="languages" value="Other" />
+                  <input id="Other" class="form-check-input" type="checkbox" name="languages" value="Other" />
                   <label class="form-check-label" for="Other">Other</label>
                 </div>
               </a></li>
@@ -131,7 +119,7 @@
           <label for="about">About</label>
         </div>
 
-        <button class="btn main-button mt-3" type="submit">Search</button>
+        <button class="btn second-button search-button mt-3 w-100" type="submit">Search</button>
       </form>
     </section>
 
@@ -143,7 +131,6 @@
           <div class="card-body">
             <h5 class="card-title">{{user.name}} {{user.surname}}</h5>
             <p>@{{user.alias}}</p>
-            <!-- TO DO: dev languages icons -->
             <a href="/users/{{user.id}}" class="btn second-button">More info</a>
           </div>
         </div>

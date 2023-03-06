@@ -17,7 +17,7 @@
 
       <div class="form-floating mb-3">
         <input type="text" class="form-control {{#if errors.name}}is-invalid{{/if}}" id="name" name="name"
-          value="{{user.name}}" placeholder="Your name">
+          value="{{user.name}}" placeholder="Name">
         <label for="floatingInput">Name</label>
         {{#if errors.name}}
         <div class="invalid-feedback">
@@ -28,7 +28,7 @@
 
       <div class="form-floating mb-3">
         <input type="text" class="form-control {{#if errors.surname}}is-invalid{{/if}}" id="surname" name="surname"
-          value="{{user.surname}}" placeholder="Your surname">
+          value="{{user.surname}}" placeholder="Surname">
         <label for="floatingInput">Surname</label>
         {{#if errors.surname}}
         <div class="invalid-feedback">
@@ -37,9 +37,9 @@
         {{/if}}
       </div>
 
-      <select class="form-select mb-3 {{#if errors.role}}is-invalid{{/if}}" aria-label="Choose your role" id="role"
+      <select class="form-select mb-3 {{#if errors.role}}is-invalid{{/if}}" aria-label="Choose a role" id="role"
         name="role" value="{{user.role}}">
-        <option selected>Choose your role</option>
+        <option selected>Choose a role</option>
         <option value="junior">Junior Developer</option>
         <option value="recruiter">Recruiter</option>
         {{#if errors.role}}
@@ -72,7 +72,7 @@
       </div>
       <button type="submit" class="btn second-button">Sign up</button>
       <div class="mt-4">
-        <p>You already have an account? <a href="/signup">Take me to Log in</a></p>
+        <p>You already have an account? <a class="signup-login-link" href="/login">Log in</a></p>
       </div>
     </form>
   </div>
