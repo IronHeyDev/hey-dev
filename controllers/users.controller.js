@@ -122,8 +122,14 @@ module.exports.list = (req, res, next) => {
   console.log(criteria);
 
   User.find(criteria)
-    .then(users => res.render('users/list', { users }))
-    .catch(next)
+    .then(users => {
+      if (users.length === 0) {
+        res.render('users/list', { warning: 'No results found for your search.' });
+      } else {
+        res.render('users/list', { users });
+      }
+    })
+    .catch(next);
 }
 
 module.exports.delete = (req, res, next) => {
@@ -162,7 +168,7 @@ module.exports.doLogin = (req, res, next) => {
           } else {
             next();
           }
-          });
+        });
     })
     .catch(next);
 }

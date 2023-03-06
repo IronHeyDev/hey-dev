@@ -65,8 +65,5 @@ hbs.registerHelper('languageIcon', (language) => {
   } else if (language === 'Python') {
     return '<i class="fa-brands fa-python fa-2xl"></i>'
 }
-
-
-
 })
 

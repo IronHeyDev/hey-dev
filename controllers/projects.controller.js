@@ -86,14 +86,14 @@ module.exports.list = (req, res, next) => {
 
   if (req.query.author) {
     User.findOne({ alias: new RegExp(req.query.author, "i") })
-    .then(user => {
-      if(user) {
-        criteria.author = user._id
-      } else {
-        delete req.query;
-      }
-    })
-    .catch(next)
+      .then(user => {
+        if (user) {
+          criteria.author = user._id
+        } else {
+          delete req.query;
+        }
+      })
+      .catch(next)
   }
 
   if (req.query.name) {
@@ -133,7 +133,12 @@ module.exports.list = (req, res, next) => {
   Project.find(criteria)
     .populate('author')
     .sort({ createdAt: 'desc' })
-    .then(projects => res.render('projects/list', { projects }))
+    .then(projects => {
+      if (projects.length === 0) {
+        res.render('projects/list', { warning: 'No results found for your search.' })
+      }
+      res.render('projects/list', { projects })
+    })
     .catch(next)
 }
 
