@@ -277,33 +277,18 @@ input[type="checkbox"]:checked + label {
 
 
 /* USER PROFILE */
-.github-btn {
-  background-color: #333;
-  color: white;
+.contact-icon {
+  color: #51c0c4;
 }
 
-.github-btn:hover {
-  background-color: #4078c0;
-  color: white;
+.user-DevIcon {
+  color: #a970ff;
 }
 
-.linkedin-btn {
-  background-color: #0a66c2;
+.user-language {
   color: white;
-}
-
-.linkedin-btn:hover {
-  background-color: #000;
-  color: white;
-}
-
-.web-btn {
+  font-weight: bold;
   background-color: #a970ff;
-  color: white;
+  padding:10px;
+  border-radius: 15px
 }
-
-.web-btn:hover {
-  background-color: #000;
-  color: white;
-}
-

@@ -18,85 +18,53 @@
         <h1 class="pe-3">{{user.surname}}</h1>
         <h5>(@{{user.alias}})</h5>
       </div>
+      <p><strong>Participating in {{projects.length}} projects on HeyDev!</strong></p>
       <div class="d-flex flex-row flex-wrap align-items-baseline gap-3">
-        <p><i class="fa-solid fa-location-dot"></i> {{user.location}}</p>
-        <p><i class="fa-solid fa-phone"></i> {{user.phone}}</p>
-        <p><i class="fa-solid fa-envelope"></i> {{user.mail}}</p>
+        {{#if user.location}}<p><i class="fa-solid fa-location-dot contact-icon pe-2"></i>{{user.location}}</p>{{/if}}
+        {{#if user.phone}}<p><i class="fa-solid fa-phone contact-icon pe-2"></i>{{user.phone}}</p>{{/if}}
+        {{#if user.mail}}<p><i class="fa-solid fa-envelope contact-icon pe-2"></i>{{user.mail}}</p>{{/if}}
       </div>
       <div class="d-flex flex-row flex-wrap align-items-baseline gap-3">
-        <a href="{{user.github}}" class="btn github-btn" target="_blank"><i
+        <a href="{{user.github}}" class="btn main-button" target="_blank"><i
             class="fa-brands fa-github pe-2"></i>GitHub</a>
-        <a href="{{user.linkedin}}" class="btn linkedin-btn" target="_blank"><i
+        <a href="{{user.linkedin}}" class="btn main-button" target="_blank"><i
             class="fa-brands fa-linkedin-in pe-2"></i>LinkedIn</a>
-        <a href="{{user.website}}" class="btn web-btn" target="_blank"><i class="fa-solid fa-laptop pe-2"></i>Web</a>
+        <a href="{{user.website}}" class="btn main-button" target="_blank"><i
+            class="fa-solid fa-laptop pe-2"></i>Web</a>
       </div>
     </div>
   </div>
-
-
-
-
-
-  <p>{{user.about}}</p>
-  <div class="d-flex flex-row flex-wrap justify-content-start">
-    {{#each user.devLanguages as |devLanguage|}}
-    <span class="user-icon">{{{languageIcon devLanguage}}}</span>
-    {{/each}}
-  </div>
-
-
-</div>
-
-
-
-
-
-
-
-
-<p>{{user.alias}}</p>
-<p>{{user.name}}</p>
-<p>{{user.surname}}</p>
-<p>{{user.location}}</p>
-<img src="{{user.avatar}}">
-<p>{{formattedDate user.dateOfBirth}}</p>
-<ul>
-  {{#each user.devLanguages as |devLanguage|}}
-  <li>{{devLanguage}}</li>
-  {{/each}}
-</ul>
-<ul>
-  {{#each user.languages as |language|}}
-  <li>{{language}}</li>
-  {{/each}}
-</ul>
-<p>{{user.about}}</p>
-<p>{{user.phone}}</p>
-<p>{{user.email}}</p>
-<p>{{user.linkedin}}</p>
-<p>{{user.github}}</p>
-<p>{{user.website}}</p>
-
-<h3>Projects</h3>
-<div class="d-flex flex-wrap flex-row justify-content-start">
-  {{#each user.projects as |project|}}
-  <div class="card m-2" style="width: 18rem;">
-    <img class="card-img-top" src="{{project.image}}" alt="Profile picture">
-    <div class="card-body">
-      <h5 class="card-title">{{project.name}}</h5>
-      <!-- TO DO: dev languages icons -->
-      <a href="/projects/{{project.id}}" class="btn second-button">More info</a>
+  <div class="latest-projects p-5">
+    {{#if user.about}}
+    <h3>About</h3>
+    <p>{{user.about}}</p>
+    {{/if}}
+    <h3 class="pb-2 pt-2">Programming Languages</h3>
+    <div class="d-flex flex-row flex-wrap justify-content-start gap-4 pb-3">
+      {{#each user.devLanguages as |devLanguage|}}
+      <span class="user-DevIcon">{{{languageIcon devLanguage}}}</span>
+      {{/each}}
+    </div>
+    <h3 class="pb-2 pt-3">Languages</h3>
+    <div class="d-flex flex-row flex-wrap justify-content-start gap-2">
+      {{#each user.languages as |language|}}
+      <p class="user-language">{{language}}</p>
+      {{/each}}
     </div>
   </div>
-  {{/each}}
+  <div class="d-flex flex-wrap flex-column align-items-center p-5">
+    <h3 class="pb-3">Projects</h3>
+    <div class="d-flex flex-wrap flex-row justify-content-center gap-3">
+      {{#each user.projects as |project|}}
+      <div class="card m-2" style="width: 18rem;">
+        <img class="card-img-top" src="{{project.image}}" alt="Profile picture">
+        <div class="card-body">
+          <h5 class="card-title">{{project.name}}</h5>
+          <!-- TO DO: dev languages icons -->
+          <a href="/projects/{{project.id}}" class="btn second-button">More info</a>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
 </div>
-</div>
-
-
-{{#isCurrentUser currentUser user.id}}
-<a href="/users/me/update" class="btn second-button">Edit your profile</a>
-
-<form method="POST" action="/users/me/delete">
-  <button class="btn main-button">Delete account</button>
-</form>
-{{/isCurrentUser}}
