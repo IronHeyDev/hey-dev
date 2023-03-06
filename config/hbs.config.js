@@ -50,7 +50,6 @@ hbs.registerHelper('isNotContributor', (currentUser, projectUsers, options) => {
   }
 })
 
-// nota mental: utilizar este helper con tres bigotitos en vez de 2
 hbs.registerHelper('languageIcon', (language) => {
   if (language === 'JavaScript') {
     return '<i class="fa-brands fa-square-js fa-2xl"></i>'
@@ -67,3 +66,10 @@ hbs.registerHelper('languageIcon', (language) => {
 }
 })
 
+// hbs.registerHelper('isChecked', (array, value, options) => {
+//   if (array.includes(value)) {
+//     return options.fn();
+//   } else {
+//     return options.inverse();
+//   }
+// }) 
