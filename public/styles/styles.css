@@ -269,6 +269,14 @@ input[type="checkbox"]:checked + label {
   font-weight: bolder;
 }
 
+.form-container {
+  margin-top: 30px;
+}
+
+.button-text {
+  white-space: nowrap;
+}
+
 /* ERRORS*/
 
 .error-text {

@@ -1,4 +1,4 @@
-<div class="container div-flex-row justify-content-around form-page">
+<div class="container form-container div-flex-row justify-content-around form-page w-50">
 
 
   {{#if error}} <div class="alert alert-danger"> Login failed, please make sure the email and passwords are correct
@@ -18,7 +18,7 @@
       {{/if}}
     </div>
 
-    <div class="form-floating mb-3">
+    <div class="form-floating mb-4">
       <input type="password" class="form-control {{#if errors.password}}is-invalid{{/if}}" id="password" name="password"
         value="{{req.body.password}}" placeholder="password">
       <label for="password">Password</label>
@@ -30,7 +30,7 @@
     </div>
     <button type="submit" class="btn second-button">Log In</button>
     <div class="mt-4">
-      <p>You don't have an account yet? <a class="signup-login-link" href="/signup">Sign up</a></p>
+      <p>You don't have an account yet? <a class="signup-login-link" href="/signup"><span class="button-text">Sign up</span></a></p>
     </div>
   </form>
   </div>
