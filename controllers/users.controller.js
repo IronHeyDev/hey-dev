@@ -54,7 +54,7 @@ module.exports.detail = (req, res, next) => {
 
       Project.find({ author: user.id })
         .then((projects) => {
-          res.render('users/profile', { user, projects });
+          res.render('users/profile', { user, projects, userId: req.params.id });
         })
         .catch(next)
     }

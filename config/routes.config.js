@@ -7,6 +7,7 @@ const common = require('../controllers/common.controller');
 const projects = require('../controllers/projects.controller');
 const users = require('../controllers/users.controller');
 const contributors = require('../controllers/contributors.controller');
+const messages = require('../controllers/messages.controller');
 
 router.get('/', common.home);
 router.get('/about', common.about);
@@ -18,7 +19,6 @@ router.get('/projects/:id', projects.detail);
 router.get('/projects/:id/update', secure.isAuthenticated, projects.update);
 router.post('/projects/:id', secure.isAuthenticated, multer.single('image'), projects.doUpdate);
 router.post('/projects/:id/delete', secure.isAuthenticated, projects.delete);
-
 router.post('/projects/:id/join', secure.isAuthenticated, contributors.join);
 
 router.get('/signup', users.create);
@@ -32,6 +32,8 @@ router.get('/login', users.login);
 router.post('/login', users.doLogin);
 router.post('/logout', users.logout);
 
-
+router.get('/users/:id/chat', secure.isAuthenticated, messages.list);
+router.post('/users/:id/chat', secure.isAuthenticated, messages.create);
+router.get('/inbox', secure.isAuthenticated, messages.inbox);
 
 module.exports = router;

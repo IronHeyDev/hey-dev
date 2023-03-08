@@ -1,6 +1,5 @@
 <div class="container signup-form">
 
-
   <form action="/projects" method="POST" enctype="multipart/form-data">
   <h1 class="mb-3">Create new proyect</h1>
     <div class="form-floating mb-3">
@@ -12,7 +11,6 @@
         </div>
       {{/if}}
     </div>
-
 
     <div class="form-floating mb-3">
       <input type="text" class="form-control {{#if errors.description}}is-invalid{{/if}}" id="description" name="description" value="{{project.description}}" placeholder="Describe the project idea">

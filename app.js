@@ -33,12 +33,11 @@ app.use((req, res, next) => {
 });
 
 app.use((error, req, res, next) => {
-    error = !error.status ? createError(500, error) : error;
-    console.error(error);
-    res.status(error.status)
+  error = !error.status ? createError(500, error) : error;
+  console.error(error);
+  res.status(error.status)
     .render(`errors/${error.status}`, { error });
 });
-
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Application running at port ${port}`));

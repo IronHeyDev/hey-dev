@@ -10,6 +10,8 @@
           <button class="btn main-button"><i class="fa-solid fa-trash pe-2"></i>Delete account</button>
         </form>
       </div>
+      {{else}}
+      <a class="btn second-button" href="/users/{{../userId}}/chat">Open chat</a>
       {{/isCurrentUser}}
     </div>
     <div>

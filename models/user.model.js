@@ -71,7 +71,8 @@ const schema = new mongoose.Schema({
         enum: ['admin', 'junior', 'recruiter'],
         required: true,
         default: 'junior'
-    }
+    },
+    adquiredChats: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User'}] // Could also be implemented using schema.virtual
 },
 { timestamps: true }
 )

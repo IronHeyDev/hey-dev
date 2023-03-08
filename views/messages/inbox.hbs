@@ -1,0 +1,3 @@
+{{#each currentUser.adquiredChats as |chat|}}
+<a  class="btn second-button" href="users/{{chat.id}}/chat">Conversation with {{chat.name}} {{chat.surname}} (@{{chat.alias}})</a>
+{{/each}}

@@ -1,11 +1,10 @@
 <section class="home-header d-flex flex-column flex-wrap justify-content-center align-items-end pe-5 mb-5">
   <div class="header-group">
-    {{!-- <img src="/images/hey-dev-logo-subt.png" alt="HeyDev!"> --}}
     <h1>Community</h1>
     <p>Connect with other junior developers and grow professionally with them!</p>
     <div class="d-flex flex-row flex-wrap">
       <a href="/projects" class="home-button-line">See all projects</a>
-      <a href="/signup" class="home-button-main">Sign up!</a>
+      <a href="/signup" class="home-button-main {{#if currentUser}}d-none{{/if}}">Sign up!</a>
     </div>
   </div>
 </section>

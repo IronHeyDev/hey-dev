@@ -7,6 +7,7 @@
           data-bs-toggle="dropdown" aria-expanded="false" alt="{{../currentUser.alias}}">
         <ul class="dropdown-menu dropdown-menu-lg-end dropdown-menu-md-start">
           <li><a class="dropdown-item" href="/users/{{../currentUser.id}}">My profile</a></li>
+          <li><a class="dropdown-item" href="/inbox">My messages</a></li>
           <li><a class="dropdown-item" href="/projects/new">New project</a></li>
           <li>
             <form action="/logout" method="POST"><button class="dropdown-item" type="submit">Log out</button></form>

@@ -1,0 +1,15 @@
+{{#each messages as |message|}}
+<h3>From {{message.from.name}} to {{message.to.name}}:</h1>
+<p>{{message.message}}</p>
+{{/each}}
+
+<form action="/users/{{userId}}/chat" method="POST">
+  <div class="mb-5">
+    <div class="input-group fixed-bottom">
+      <span class="input-group-text"><i class="fa fa-commenting fa-fw" aria-hidden="true"></i></span>
+      <textarea type="text" name="message" rows="1" class="form-control bg-body-secondary" value="{{query.search}}"
+        placeholder="Your message"></textarea>
+      <button type="submit" class="btn btn-outline-secondary"><i class="fa fa-paper-plane fa-fw"
+          aria-hidden="true"></i></button>
+    </div>
+</form>
