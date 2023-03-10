@@ -1,70 +1,100 @@
-<p>{{project.author.name}}</p>
-<p>{{project.name}}</p>
-<p>{{project.description}}</p>
-<img src="{{project.image}}">
-<p>{{project.weeks}}</p>
-<ul>
-  {{#each project.devLanguages as |devLanguage|}}
-  <li>{{devLanguage}}</li>
-  {{/each}}
-</ul>
-<ul>
-  {{#each project.languages as |language|}}
-  <li>{{language}}</li>
-  {{/each}}
-</ul>
-<p>{{project.location}}</p>
-<p>{{project.state}}</p>
-<p>{{project.github}}</p>
+<div class="project-detail home-project col-12 text-center">
+  <section class="container project-intro row align-items-center mb-5">
+    <div class="container col-sm-12 col-md-6 col-lg-6 text-center p-1">
+      <img src="{{project.image}}" class="w-75">
+      <div class="project-buttons d-flex flex-row justify-content-center">
+        {{#isLoggedIn currentUser}}
+        {{#isOpen ../projectState}}
+        {{#isNotContributor ../currentUser._id ../projectUsers }}
+        <form method="POST" action="/projects/{{../project.id}}/join">
+          <button class="btn second-button" type="submit">Join project</button>
+        </form>
+        {{/isNotContributor}}
+        {{/isOpen}}
+        {{else}}
+        <button class="btn second-button" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">Join
+          project</button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Join Hey Dev!</h1>
+                <button type="button" class="btn-close second-button" data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p class="modal-title fs-5" id="exampleModalLabel">Once you're logged in you'll be able to join the
+                  project
+                  ✨
+                </p>
+              </div>
+              <div class="modal-footer">
+                <a href="/signup" type="button" class="btn second-button">Sign up</a>
+                <a href="/login" type="button" class="btn main-button">Log in</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{/isLoggedIn}}
 
-<h3>Contributors</h3>
-<div class="d-flex flex-wrap flex-row justify-content-start">
-  {{#each project.users as |user|}}
-      <a href="/users/{{user.id}}"><img class="rounded-circle" src="{{user.avatar}}" alt="{{user.alias}}"></a>
-    </div>
-  </div>
-  {{/each}}
-</div>
-</div>
+        {{#isOwnedBy currentUser project}}
+        <a href="/projects/{{../project.id}}/update" class="btn second-button">Edit project</a>
 
-
-
-{{!-- {{#isOpen projectState}} --}}
-{{#isLoggedIn currentUser}}
-  {{#isOpen ../projectState}}
-    {{#isNotContributor ../currentUser._id ../projectUsers }}
-      <form method="POST" action="/projects/{{../project.id}}/join">
-        <button class="btn second-button" type="submit">Join project</button>
-      </form>
-    {{/isNotContributor}}
-  {{/isOpen}}
-{{else}}
-<button class="btn second-button" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">Join
-  project</button>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Join Hey Dev!</h1>
-        <button type="button" class="btn-close second-button" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p class="modal-title fs-5" id="exampleModalLabel">Once you're logged in you'll be able to join the project ✨</p>
-      </div>
-      <div class="modal-footer">
-        <a href="/signup" type="button" class="btn second-button">Sign up</a>
-        <a href="/login" type="button" class="btn main-button">Log in</a>
+        <form method="POST" action="/projects/{{../project.id}}/delete">
+          <button class="btn second-button">Delete project</button>
+        </form>
+        {{/isOwnedBy}}
       </div>
     </div>
-  </div>
+    <div class="col-sm-12 col-md-6 col-lg-6 align-items-stretch mt-4">
+      <h2>Project: {{project.name}}</h2>
+      <h4>By {{project.author.name}}</h4>
+      <h5><strong>Current state: {{project.state}}</strong></h5>
+      <h3 class="pb-2 pt-2">Project description:</h3>
+      <p>{{project.description}}</p>
+
+    </div>
+  </section>
+
+  <section class="container project-info latest-projects py-3">
+    <h3 class="pb-2 pt-2">Programming Languages:</h3>
+    <ul>
+      {{#each project.devLanguages as |devLanguage|}}
+      <li>{{devLanguage}}</li>
+      {{/each}}
+    </ul>
+    <h3 class="pb-2 pt-2">Languages:</h3>
+    <ul class="d-flex flex-row flex-wrap justify-content-center gap-2">
+      {{#each project.languages as |language|}}
+      <li>{{language}} </li>
+      {{/each}}
+    </ul>
+    {{#if project.weeks}}
+    <h3 class="pb-2 pt-2">Estimated duration:</h3>
+    <p>{{project.weeks}} weeks</p>
+    {{/if}}
+    {{#if project.location}}
+    <h3 class="pb-2 pt-2">Location:</h3>
+    <p>{{project.location}}</p>
+    {{/if}}
+    {{#if project.github}}
+    <h3 class="pb-2 pt-2">Github link:</h3>
+    <p>{{project.github}}</p>
+    {{/if}}
+  </section>
+
+  <section class="container project-contributors">
+    <h3 class="pt-4">Contributors:</h3>
+    <div class="d-flex flex-wrap flex-row justify-content-center gap-3">
+        {{#each project.users as |user|}}
+      <div class="d-flex flex-wrap flex-column justify-content-center">
+        <a href="/users/{{user.id}}"><img class="rounded-circle w-50" src="{{user.avatar}}" alt="{{user.alias}}"></a>
+        <p>@{{user.alias}}</p>
+        <p>{{user.name}} {{user.surname}}</p>
+      </div>
+      {{/each}}
+    </div>
+  </section>
+
+
 </div>
-{{/isLoggedIn}}
-{{!-- {{/isOpen}} --}}
-
-{{#isOwnedBy currentUser project}}
-<a href="/projects/{{../project.id}}/update" class="btn second-button">Edit project</a>
-
-<form method="POST" action="/projects/{{../project.id}}/delete">
-  <button class="btn second-button">Delete project</button>
-</form>
-{{/isOwnedBy}}
