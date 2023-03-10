@@ -12,7 +12,6 @@ module.exports.doCreate = (req, res, next) => {
   if (req.file) {
     req.body.image = req.file.path;
   }
-
   Project.create({
     author: req.user.id,
     name: req.body.name,
@@ -26,6 +25,7 @@ module.exports.doCreate = (req, res, next) => {
   }).then((project) => {
     Contributor.create({ user: req.user.id, project: project.id })
       .then((contributor) => {
+        req.flash('flashMessage', 'Project successfully created. ✨');
         res.redirect(`/projects/${project.id}`)
       }).catch(next)
   })
@@ -77,7 +77,10 @@ module.exports.doUpdate = (req, res, next) => {
         res.redirect(`/projects/${project.id}`);
       }
     })
-    .then((project) => res.redirect(`/projects/${project.id}`))
+    .then((project) => {
+      req.flash('flashMessage', 'Project successfully edited. ✨');
+      res.redirect(`/projects/${project.id}`)
+    })
     .catch(next);
 }
 
@@ -152,6 +155,9 @@ module.exports.delete = (req, res, next) => {
         res.redirect(`/projects/${project.id}`);
       }
     })
-    .then(() => res.redirect(`/`))
+    .then(() => {
+      req.flash('flashMessage', 'Your project has been deleted.');
+      res.redirect(`/`)
+    })
     .catch(next);
 }

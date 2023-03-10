@@ -32,6 +32,7 @@ module.exports.join = (req, res, next) => {
             project: project.id
           })
           .then(() => {
+            req.flash('flashMessage', 'You have joined the project! ✨');
             res.redirect(`/projects/${project.id}`)
           })
           

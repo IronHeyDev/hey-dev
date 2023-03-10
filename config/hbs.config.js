@@ -73,3 +73,11 @@ hbs.registerHelper('languageIcon', (language) => {
 //     return options.inverse();
 //   }
 // }) 
+
+hbs.registerHelper('isFrom', (from, user, options) => {
+  if (from?.id == user?.id) {
+    return options.fn();
+  } else {
+    return options.inverse();
+  }
+});

@@ -1,15 +1,47 @@
-{{#each messages as |message|}}
-<h3>From {{message.from.name}} to {{message.to.name}}:</h1>
-<p>{{message.message}}</p>
-{{/each}}
+<div class="row mx-auto justify-content-center pt-25" style="width: 100%;">
+  <div class="col-12 col-md-4 row justify-content-center">
+    <h1 class="fs-25 mt-25">Chat</h1>
+    <div class="card border-0">
+      <div class="card-body">
 
-<form action="/users/{{userId}}/chat" method="POST">
-  <div class="mb-5">
-    <div class="input-group fixed-bottom">
-      <span class="input-group-text"><i class="fa fa-commenting fa-fw" aria-hidden="true"></i></span>
-      <textarea type="text" name="message" rows="1" class="form-control bg-body-secondary" value="{{query.search}}"
-        placeholder="Your message"></textarea>
-      <button type="submit" class="btn btn-outline-secondary"><i class="fa fa-paper-plane fa-fw"
-          aria-hidden="true"></i></button>
+        {{#each messages as |message|}}
+        <div class="d-flex {{#isFrom message.from ../currentUser}} align-items-end {{else}} align-items-start {{/isFrom}}  mx-auto flex-column">
+          <div class="d-flex flex-row mr-2 {{#isFrom message.from ../currentUser}} justify-content-end {{else}} justify-content-start {{/isFrom}}"  style="width: 100%;">
+            <div>
+              {{#isFrom message.from ../currentUser}}
+              <img class="rounded-circle mt-2 me-3" src="{{message.from.avatar}}" alt="profile" width="60px" height="60px">
+              {{else}}
+              <img class="rounded-circle mt-2 me-3" src="{{message.from.avatar}}" alt="profile" width="60px" height="60px">
+              {{/isFrom}}
+            </div>
+            {{!-- <div class="mt-4 d-flex">
+              {{#isFrom message.from ../currentUser}} 
+              <h1 class="fs-3 align-items-end">{{message.to.name}}</h1> 
+              {{else}} 
+              <h1 class="fs-3 align-items-start">{{message.from.name}}</h1> 
+              {{/isFrom}} 
+            </div> --}}
+          </div>
+          <p class="{{#isFrom message.from ../currentUser}} 
+          badge main-button fs-5 text-wrap w-75 
+          {{else}} 
+          badge second-button fs-5 text-wrap w-75 
+          {{/isFrom}}">
+          {{message.message}}</p>
+        </div>
+          {{/each}}
+
+          <form action="/users/{{userId}}/chat" method="POST">
+            <div class="mb-5">
+              <div class="input-group fixed-bottom">
+                <span class="input-group-text"><i class="fa fa-commenting fa-fw" aria-hidden="true"></i></span>
+                <textarea type="text" name="message" rows="1" class="form-control bg-body-secondary"
+                  value="{{query.search}}" placeholder="Your message"></textarea>
+                <button type="submit" class="btn btn-outline-secondary"><i class="fa fa-paper-plane fa-fw"
+                    aria-hidden="true"></i></button>
+              </div>
+          </form>
+      </div>
     </div>
-</form>
+  </div>
+</div>

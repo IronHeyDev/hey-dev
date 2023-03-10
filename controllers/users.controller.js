@@ -26,6 +26,7 @@ module.exports.doCreate = (req, res, next) => {
         password: req.body.password,
       })
         .then(() => {
+          req.flash('flashMessage', 'Your account has been created! Now you are ready to log in ✨');
           res.redirect("/login");
         })
         .catch((error) => {
@@ -80,7 +81,10 @@ module.exports.doUpdate = (req, res, next) => {
 
   const user = Object.assign(req.user, req.body);
   user.save()
-    .then((user) => res.redirect(`/users/${user.id}`))
+    .then((user) => {
+      req.flash('flashMessage', 'Your profile has been successfully updated. ✨');
+      res.redirect(`/users/${user.id}`)
+    })
     .catch(next)
 }
 
@@ -118,8 +122,6 @@ module.exports.list = (req, res, next) => {
   if (req.query.about) {
     criteria.about = new RegExp(req.query.about, "i");
   }
-
-  console.log(criteria);
 
   User.find(criteria)
     .then(users => {

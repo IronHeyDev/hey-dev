@@ -1,3 +1,23 @@
-{{#each currentUser.adquiredChats as |chat|}}
-<a  class="btn second-button" href="users/{{chat.id}}/chat">Conversation with {{chat.name}} {{chat.surname}} (@{{chat.alias}})</a>
+<div class="container row mx-auto justify-content-center pt-25 mb-4" style="width: 100%;">
+  <div class="col-12 col-md-12 row justify-content-center">
+     <h1 class="fs-25 mt-4">My messages</h1>
+  </div>
+</div>
+
+ {{#each currentUser.adquiredChats as | chat | }}
+ <a class="text-secondary text-decoration-none" href="users/{{chat.id}}/chat">
+<div class="mb-3 d-flex align-items-center flex-column mb-4 border-top border-bottom">
+  <div class="d-flex justify-content-between mb-2"  style="width: 80%;">
+    <div>
+      <h3 class="pl-20 fw-bold mt-4">{{chat.name}}</h3>
+    </div>
+    <div>
+      <img class="rounded-circle mt-2" src="{{chat.avatar}}" alt="profile" width="60px" height="60px">
+    </div>
+    <div class="mt-4">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="kirk-icon sc-ksBlkl Jvfzv" width="24" height="24" aria-hidden="true"><polyline fill="none" stroke="#708C91" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="9 18 15 12 9 6"></polyline></svg>
+    </div>
+  </div>
+</div>
+</a>
 {{/each}}

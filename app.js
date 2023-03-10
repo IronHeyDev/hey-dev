@@ -5,6 +5,7 @@ require('./config/hbs.config');
 const express = require('express');
 const app = express();
 const createError = require("http-errors");
+const flash = require('connect-flash');
 
 const { session, loadSessionUser } = require('./config/session.config');
 app.use(session);
@@ -19,11 +20,18 @@ app.set('view engine', 'hbs');
 app.set('views', `${__dirname}/views`);
 
 app.use(express.static('public'));
+app.use(flash());
 
 app.use((req, res, next) => {
   res.locals.currentPath = req.path;
   next();
 });
+
+app.use((req, res, next) => {
+  res.locals.flashMessage = req.flash('flashMessage');
+  next();
+})
+
 
 const router = require('./config/routes.config');
 app.use('/', router);

@@ -313,3 +313,14 @@ input[type="checkbox"]:checked + label {
   padding:10px;
   border-radius: 15px
 }
+
+/* TOAST DIV */
+#toast-div {
+	background-color:#51c0c4;
+	font-size: 20px;
+	width: 400px;
+}
+
+.toast-body {
+	color: #efede1;
+}

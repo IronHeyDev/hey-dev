@@ -1,6 +1,8 @@
 <div class="project-detail home-project col-12 text-center">
+  
   <section class="container project-intro row align-items-center mb-5">
-    <div class="container col-sm-12 col-md-6 col-lg-6 text-center p-1">
+    <div class="col-2"></div>
+    <div class="container col-sm-10 col-md-5 col-lg-5 text-center p-1">
       <img src="{{project.image}}" class="w-75">
       <div class="project-buttons d-flex flex-row justify-content-center">
         {{#isLoggedIn currentUser}}
@@ -46,29 +48,30 @@
         {{/isOwnedBy}}
       </div>
     </div>
-    <div class="col-sm-12 col-md-6 col-lg-6 align-items-stretch mt-4">
-      <h2>Project: {{project.name}}</h2>
-      <h4>By {{project.author.name}}</h4>
+
+    <div class="col-sm-11 col-md-5 col-lg-5 align-items-stretch mt-4">
+      <h1>Project: {{project.name}}</h1>
+      <h3>By {{project.author.name}} {{project.author.surname}} (@{{project.author.alias}})</h3>
       <h5><strong>Current state: {{project.state}}</strong></h5>
       <h3 class="pb-2 pt-2">Project description:</h3>
       <p>{{project.description}}</p>
-
     </div>
+    
   </section>
 
   <section class="container project-info latest-projects py-3">
     <h3 class="pb-2 pt-2">Programming Languages:</h3>
-    <ul>
+    <div class="d-flex flex-row flex-wrap justify-content-center gap-4 pb-3">
       {{#each project.devLanguages as |devLanguage|}}
-      <li>{{devLanguage}}</li>
+      <span class="user-DevIcon fa-xl py-3">{{{languageIcon devLanguage}}}</span>
       {{/each}}
-    </ul>
+    </div>
     <h3 class="pb-2 pt-2">Languages:</h3>
-    <ul class="d-flex flex-row flex-wrap justify-content-center gap-2">
+    <div class="d-flex flex-row flex-wrap justify-content-center gap-2">
       {{#each project.languages as |language|}}
-      <li>{{language}} </li>
+      <p class="user-language">{{language}}</p>
       {{/each}}
-    </ul>
+    </div>
     {{#if project.weeks}}
     <h3 class="pb-2 pt-2">Estimated duration:</h3>
     <p>{{project.weeks}} weeks</p>
@@ -88,13 +91,12 @@
     <div class="d-flex flex-wrap flex-row justify-content-center gap-3">
         {{#each project.users as |user|}}
       <div class="d-flex flex-wrap flex-column justify-content-center">
-        <a href="/users/{{user.id}}"><img class="rounded-circle w-50" src="{{user.avatar}}" alt="{{user.alias}}"></a>
+        <a href="/users/{{user.id}}"><img class="rounded-circle" src="{{user.avatar}}"  width="100" alt="{{user.alias}}"></a>
         <p>@{{user.alias}}</p>
         <p>{{user.name}} {{user.surname}}</p>
       </div>
       {{/each}}
     </div>
   </section>
-
 
 </div>
