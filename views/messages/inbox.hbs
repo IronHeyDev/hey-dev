@@ -7,17 +7,12 @@
  {{#each currentUser.adquiredChats as | chat | }}
  <a class="text-secondary text-decoration-none" href="users/{{chat.id}}/chat">
 <div class="mb-3 d-flex align-items-center flex-column mb-4 border-top border-bottom">
-  <div class="d-flex justify-content-between mb-2"  style="width: 80%;">
-    <div>
-      <h3 class="pl-20 fw-bold mt-4">{{chat.name}}</h3>
-    </div>
-    <div>
+  <div class="d-flex mb-2 align-items-center justify-content-center"  style="width: 80%;">
       <img class="rounded-circle mt-2" src="{{chat.avatar}}" alt="profile" width="60px" height="60px">
-    </div>
-    <div class="mt-4">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="kirk-icon sc-ksBlkl Jvfzv" width="24" height="24" aria-hidden="true"><polyline fill="none" stroke="#708C91" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="9 18 15 12 9 6"></polyline></svg>
-    </div>
+      <h3 class="pl-20 fw-bold mt-4 ps-5">{{chat.name}} {{chat.surname}} (@{{chat.alias}})</h3>
   </div>
 </div>
 </a>
 {{/each}}
+<div class="mb-5">
+</div>

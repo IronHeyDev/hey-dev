@@ -1,6 +1,6 @@
 <div class="row mx-auto justify-content-center pt-25" style="width: 100%;">
-  <div class="col-12 col-md-4 row justify-content-center">
-    <h1 class="fs-25 mt-25">Chat</h1>
+  <div class="col-12 col-md-8 row justify-content-center">
+    <h1 class="fs-25 mt-3">Chat</h1>
     <div class="card border-0">
       <div class="card-body">
 
@@ -9,33 +9,26 @@
           <div class="d-flex flex-row mr-2 {{#isFrom message.from ../currentUser}} justify-content-end {{else}} justify-content-start {{/isFrom}}"  style="width: 100%;">
             <div>
               {{#isFrom message.from ../currentUser}}
-              <img class="rounded-circle mt-2 me-3" src="{{message.from.avatar}}" alt="profile" width="60px" height="60px">
+              <img class="rounded-circle mt-2 me-3" src="{{message.from.avatar}}" alt="profile" width="50px" height="50px">
               {{else}}
-              <img class="rounded-circle mt-2 me-3" src="{{message.from.avatar}}" alt="profile" width="60px" height="60px">
+              <img class="rounded-circle mt-2 me-3" src="{{message.from.avatar}}" alt="profile" width="50px" height="50px">
               {{/isFrom}}
             </div>
-            {{!-- <div class="mt-4 d-flex">
-              {{#isFrom message.from ../currentUser}} 
-              <h1 class="fs-3 align-items-end">{{message.to.name}}</h1> 
-              {{else}} 
-              <h1 class="fs-3 align-items-start">{{message.from.name}}</h1> 
-              {{/isFrom}} 
-            </div> --}}
           </div>
           <p class="{{#isFrom message.from ../currentUser}} 
-          badge main-button fs-5 text-wrap w-75 
+          badge message-div-from fs-5 text-wrap w-75 me-5
           {{else}} 
-          badge second-button fs-5 text-wrap w-75 
+          badge message-div-to fs-5 text-wrap w-75  ms-5
           {{/isFrom}}">
           {{message.message}}</p>
         </div>
           {{/each}}
 
           <form action="/users/{{userId}}/chat" method="POST">
-            <div class="mb-5">
-              <div class="input-group fixed-bottom">
+            <div class="my-5">
+              <div class="input-group">
                 <span class="input-group-text"><i class="fa fa-commenting fa-fw" aria-hidden="true"></i></span>
-                <textarea type="text" name="message" rows="1" class="form-control bg-body-secondary"
+                <textarea type="text" name="message" rows="1" class="form-control bg-body-secondary py-3"
                   value="{{query.search}}" placeholder="Your message"></textarea>
                 <button type="submit" class="btn btn-outline-secondary"><i class="fa fa-paper-plane fa-fw"
                     aria-hidden="true"></i></button>

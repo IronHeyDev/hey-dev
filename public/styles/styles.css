@@ -324,3 +324,20 @@ input[type="checkbox"]:checked + label {
 .toast-body {
 	color: #efede1;
 }
+
+/* CHAT */
+
+.message-div-from {
+  background-color: #c9aaf7;
+  color: white;
+  margin: 2px;
+  padding: 10px;
+}
+
+.message-div-to {
+  background-color: #8de3e6;
+  color: white;
+  margin: 2px;
+  padding: 10px;
+  
+}
