@@ -43,7 +43,7 @@ hbs.registerHelper('isOpen', (projectState, options) => {
 })
 
 hbs.registerHelper('isNotContributor', (currentUser, projectUsers, options) => {
-  if (projectUsers.indexOf(currentUser) === -1) {
+  if (!projectUsers.some((userId) => userId == currentUser)) {
     return options.fn();
   } else {
     return options.inverse();
@@ -65,14 +65,6 @@ hbs.registerHelper('languageIcon', (language) => {
     return '<i class="fa-brands fa-python fa-2xl"></i>'
 }
 })
-
-// hbs.registerHelper('isChecked', (array, value, options) => {
-//   if (array.includes(value)) {
-//     return options.fn();
-//   } else {
-//     return options.inverse();
-//   }
-// }) 
 
 hbs.registerHelper('isFrom', (from, user, options) => {
   if (from?.id == user?.id) {

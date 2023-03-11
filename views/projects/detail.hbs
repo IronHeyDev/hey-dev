@@ -6,13 +6,13 @@
       <img src="{{project.image}}" class="w-75">
       <div class="project-buttons d-flex flex-row justify-content-center">
         {{#isLoggedIn currentUser}}
-        {{#isOpen ../projectState}}
-        {{#isNotContributor ../currentUser._id ../projectUsers }}
-        <form method="POST" action="/projects/{{../project.id}}/join">
-          <button class="btn second-button" type="submit">Join project</button>
-        </form>
-        {{/isNotContributor}}
-        {{/isOpen}}
+          {{#isOpen ../projectState}}
+            {{#isNotContributor ../currentUser.id ../projectUsers }}
+              <form method="POST" action="/projects/{{../project.id}}/join">
+                <button class="btn second-button" type="submit">Join project</button>
+              </form>
+            {{/isNotContributor}}
+          {{/isOpen}}
         {{else}}
         <button class="btn second-button" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal">Join
           project</button>
@@ -40,11 +40,11 @@
         {{/isLoggedIn}}
 
         {{#isOwnedBy currentUser project}}
-        <a href="/projects/{{../project.id}}/update" class="btn second-button">Edit project</a>
+          <a href="/projects/{{../project.id}}/update" class="btn second-button">Edit project</a>
 
-        <form method="POST" action="/projects/{{../project.id}}/delete">
-          <button class="btn second-button">Delete project</button>
-        </form>
+          <form method="POST" action="/projects/{{../project.id}}/delete">
+            <button class="btn second-button">Delete project</button>
+          </form>
         {{/isOwnedBy}}
       </div>
     </div>
@@ -63,38 +63,38 @@
     <h3 class="pb-2 pt-2">Programming Languages:</h3>
     <div class="d-flex flex-row flex-wrap justify-content-center gap-4 pb-3">
       {{#each project.devLanguages as |devLanguage|}}
-      <span class="user-DevIcon fa-xl py-3">{{{languageIcon devLanguage}}}</span>
+        <span class="user-DevIcon fa-xl py-3">{{{languageIcon devLanguage}}}</span>
       {{/each}}
     </div>
     <h3 class="pb-2 pt-2">Languages:</h3>
     <div class="d-flex flex-row flex-wrap justify-content-center gap-2">
       {{#each project.languages as |language|}}
-      <p class="user-language">{{language}}</p>
+        <p class="user-language">{{language}}</p>
       {{/each}}
     </div>
     {{#if project.weeks}}
-    <h3 class="pb-2 pt-2">Estimated duration:</h3>
-    <p>{{project.weeks}} weeks</p>
+      <h3 class="pb-2 pt-2">Estimated duration:</h3>
+      <p>{{project.weeks}} weeks</p>
     {{/if}}
     {{#if project.location}}
-    <h3 class="pb-2 pt-2">Location:</h3>
-    <p>{{project.location}}</p>
+      <h3 class="pb-2 pt-2">Location:</h3>
+      <p>{{project.location}}</p>
     {{/if}}
     {{#if project.github}}
-    <h3 class="pb-2 pt-2">Github link:</h3>
-    <p>{{project.github}}</p>
+      <h3 class="pb-2 pt-2">Github link:</h3>
+      <p>{{project.github}}</p>
     {{/if}}
   </section>
 
   <section class="container project-contributors">
     <h3 class="pt-4">Contributors:</h3>
     <div class="d-flex flex-wrap flex-row justify-content-center gap-3">
-        {{#each project.users as |user|}}
-      <div class="d-flex flex-wrap flex-column justify-content-center">
-        <a href="/users/{{user.id}}"><img class="rounded-circle" src="{{user.avatar}}"  width="100" alt="{{user.alias}}"></a>
-        <p>@{{user.alias}}</p>
-        <p>{{user.name}} {{user.surname}}</p>
-      </div>
+      {{#each project.users as |user|}}
+        <div class="d-flex flex-wrap flex-column justify-content-center">
+          <a href="/users/{{user.id}}"><img class="rounded-circle" src="{{user.avatar}}"  width="100" alt="{{user.alias}}"></a>
+          <p>@{{user.alias}}</p>
+          <p>{{user.name}} {{user.surname}}</p>
+        </div>
       {{/each}}
     </div>
   </section>
