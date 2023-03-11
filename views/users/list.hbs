@@ -1,11 +1,8 @@
 <section class="home-header d-flex flex-column flex-wrap justify-content-center align-items-end pe-5 mb-5">
   <div class="header-group">
     <h1>Community</h1>
-    <p>Connect with other junior developers and grow professionally with them!</p>
-    <div class="d-flex flex-row flex-wrap">
-      <a href="/projects" class="home-button-line">See all projects</a>
-      <a href="/signup" class="home-button-main {{#if currentUser}}d-none{{/if}}">Sign up!</a>
-    </div>
+    <h6>Connect with other junior developers and grow professionally with them! 🚀</h6>
+    <h6>Collaborate on projects, exchange knowledge and ideas, and build your professional network.</h6>
   </div>
 </section>
 
@@ -66,8 +63,7 @@
         </div>
 
         <li class="nav-item dropdown mb-3">
-          <button class="nav-link form-select py-3 text-start ps-3" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">Languages</button>
+          <button class="nav-link form-select py-3 text-start ps-3" role="button" data-bs-toggle="dropdown" aria-expanded="false">Languages</button>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item">
                 <div class="form-check">
@@ -123,17 +119,16 @@
     </section>
 
     <section class="col-sm-12 col-md-8 col-lg-8">
-      <div class="d-flex flex-wrap flex-row justify-content-start">
+      <div class="d-flex flex-wrap flex-row justify-content-center">
         <h3>{{warning}}</h3>
         {{#each users as |user|}}
-        <div class="card m-3" style="width: 15rem;">
-          <img class="card-img-top" src="{{user.avatar}}" alt="Profile picture">
-          <div class="card-body">
-            <h5 class="card-title">{{user.name}} {{user.surname}}</h5>
-            <p>@{{user.alias}}</p>
-            <a href="/users/{{user.id}}" class="btn second-button">More info</a>
+          <div class="text-center m-3 user-card"><a href="/users/{{user.id}}">
+            <img class="rounded-circle w-75" src="{{user.avatar}}" alt="{{user.alias}}">
+            <div class="d-flex flex-column align-items-center mt-2">
+              <h3>@{{user.alias}}</h3>
+              <p>{{user.name}} {{user.surname}}</p>
+            </div></a>
           </div>
-        </div>
         {{/each}}
       </div>
     </section>

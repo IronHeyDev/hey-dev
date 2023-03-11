@@ -339,5 +339,18 @@ input[type="checkbox"]:checked + label {
   color: white;
   margin: 2px;
   padding: 10px;
-  
+}
+
+/*USER LIST*/
+
+.user-card a {
+  text-decoration: none;
+}
+
+.user-card:hover {
+  box-shadow: 5px 5px #51c0c479;
+}
+
+.user-card p {
+  color: black;
 }
