@@ -1,11 +1,15 @@
+
 <section class="home-header d-flex flex-column flex-wrap justify-content-center align-items-end pe-5">
   <div class="header-group">
-    {{!-- <img src="/images/hey-dev-logo-subt.png" alt="HeyDev!"> --}}
     <h1>Hello, developer!</h1>
     <p>Join a project, get your portfolio off the ground and find your dream job as a junior developer</p>
     <div class="d-flex flex-row flex-wrap">
-      <a href="/projects" class="home-button-line">See all projects</a>
-      <a href="/signup" class="home-button-main {{#if currentUser}}d-none{{/if}}">Sign up!</a>
+      <a href="/projects" class="home-button-line mt-2">See all projects</a>
+      {{#if currentUser}}
+        <a href="/projects/new" class="home-button-main mt-2">Start a new project! ✨</a>
+      {{else}}
+        <a href="/signup" class="home-button-main mt-2">Sign up! 🚀✨</a>
+      {{/if}}
     </div>
   </div>
 </section>
@@ -15,11 +19,9 @@
   <form action="/projects">
     <div class="input-group filters">
       <span class="input-group-text"><i class="fa-solid fa-lightbulb"></i></span>
-      <input type="text" class="form-control description-input" id="description" name="description"
-        placeholder="What do you have in mind?">
+      <input type="text" class="form-control description-input" id="description" name="description" placeholder="What do you have in mind?">
       <li class="nav-item dropdown">
-        <button class="nav-link dropdown-toggle btn home-button" role="button" data-bs-toggle="dropdown"
-          aria-expanded="false">Programming Languages</button>
+        <button class="nav-link dropdown-toggle btn home-button" role="button" data-bs-toggle="dropdown" aria-expanded="false">Programming Languages</button>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item">
               <div class="form-check">
@@ -33,7 +35,7 @@
                 <label class="form-check-label" for="HTML">HTML</label>
               </div>
             </a></li>
-          <li><a class="dropdown-item">
+            <li><a class="dropdown-item">
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="devLanguages" value="CSS" />
                 <label class="form-check-label" for="CSS">CSS</label>
@@ -60,13 +62,11 @@
         </ul>
       </li>
       <li class="nav-item dropdown">
-        <button class="nav-link dropdown-toggle btn home-button" role="button" data-bs-toggle="dropdown"
-          aria-expanded="false">Languages</button>
+        <button class="nav-link dropdown-toggle btn home-button" role="button" data-bs-toggle="dropdown" aria-expanded="false">Languages</button>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item">
               <div class="form-check">
-                <input class="form-check-input form-check-input-checked-bg-color" type="checkbox" name="languages"
-                  value="English" />
+                <input class="form-check-input form-check-input-checked-bg-color" type="checkbox" name="languages" value="English" />
                 <label class="form-check-label" for="English">English</label>
               </div>
             </a></li>
@@ -84,7 +84,7 @@
             </a></li>
           <li><a class="dropdown-item">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="languages" value="German" />
+                 <input class="form-check-input" type="checkbox" name="languages" value="German" />
                 <label class="form-check-label" for="German">German</label>
               </div>
             </a></li>
@@ -109,79 +109,43 @@
         </ul>
       </li>
       <li class="nav-item">
-        <button class="nav-link btn home-button search-button" type="submit">Search<i
-            class="fa-sharp fa-solid fa-magnifying-glass ps-2 pe-1"></i></button>
+        <button class="nav-link btn home-button search-button" type="submit">Search<i class="fa-sharp fa-solid fa-magnifying-glass ps-2 pe-1"></i></button>
       </li>
     </div>
   </form>
 </section>
 
-<section class="latest-projects pb-5">
+<section class="latest-projects p-5">
   <div class="container">
-    <h2 class="pb-3 pt-5 text-center">Latest projects</h2>
+    <h2 class="pb-3 text-center">Latest projects</h2>
     <div class="row align-items-stretch">
       {{#each projects as |project|}}
-      <div class="col-sm-12 col-lg-4 text-center p-1">
-        <div class="home-project d-flex flex-column justify-content-between p-3 h-100 text-body-secondary">
-          <img src="{{project.image}}" alt="{{project.name}}" class="w-100">
-          <h4 class="text-body-secondary">{{project.name}}</h4>
-          <div class="d-flex flex-row flex-wrap py-4 px-5 justify-content-around">
-            {{#each project.devLanguages as |devLanguage|}}
-            {{{languageIcon devLanguage}}}
-            {{/each}}
+        <div class="col-sm-12 col-lg-4 text-center p-3">
+          <div class="home-project d-flex flex-column justify-content-between p-3 h-100 text-body-secondary">
+            <img src="{{project.image}}" alt="{{project.name}}" class="w-100">
+            <h4 class="text-body-secondary">{{project.name}}</h4>
+            <div class="d-flex flex-row flex-wrap py-4 px-5 justify-content-around">
+              {{#each project.devLanguages as |devLanguage|}}
+                {{{languageIcon devLanguage}}}
+              {{/each}}
+            </div>
+            <a href="/projects/{{project.id}}" class="btn second-button w-100">More info</a>
           </div>
-          <a href="/projects/{{project.id}}" class="btn second-button w-100">More info</a>
         </div>
-      </div>
       {{/each}}
     </div>
   </div>
 </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- TO DO: multiple projects per slide instead of just one-->
-
-{{!-- <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-  <ol class="carousel-indicators">
-    {{#each projects as |project|}}
-    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{@index}}" {{#if @first}}class="active" {{/if}}>
-    </li>
-    {{/each}}
-  </ol>
-  <div class="carousel-inner ">
-    {{#each projects as |project|}}
-    <div class="carousel-item {{#if @first}}active{{/if}}">
-      <img src="{{project.image}}" class="d-block w-150" alt="{{project.name}}">
-      <div class="carousel-caption d-none d-md-block">
-        <h5 class="black-color">{{project.name}}</h5>
-        <p class="black-color">{{project.description}}</p>
-      </div>
+<div class="container-fluid">
+  <section class="row align-items-center pt-5 ps-5 pe-5">
+    <div class="col-sm-12 col-md-4">
+      <img class="w-100" src="/images/hey-dev-teamwork.png" alt="Teamwork is key">
     </div>
-    {{/each}}
-  </div>
-  <a class="carousel-control-prev second-button" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </a>
-  <a class="carousel-control-next second-button" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </a>
-</div> --}}
+    <div class="col-sm-12 col-md-8">
+      <h3>What is HeyDev!?</h3>
+      <p>On this platform, you will find projects created by other junior developers with the aim of <strong>expanding their portfolio</strong> and showcasing their skills and knowledge to tech companies.</p>
+      <p>Connect with other juniors, expand your network and <strong>improve your skills while collaborating</strong> and adding value propositions to your curriculum ✨. Collaborate on an open project or create your own! </p>
+    </div>
+  </section>
+</div>
