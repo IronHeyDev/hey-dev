@@ -1,17 +1,19 @@
 <div class="container-fluid">
-  <div class="d-flex d-column flex-wrap align-items-center justify-content-start gap-5 p-5">
+  
+  <section class="d-flex d-column flex-wrap align-items-center justify-content-start gap-5 p-5">
     <div class="text-center">
       <img src="{{user.avatar}}" class="rounded-circle w-75" alt="{{user.alias}} avatar">
       {{#isCurrentUser currentUser user.id}}
-      <div class="d-flex flex-column flex-wrap justify-content-center align-items-center gap-1 pt-2">
-        <a href="/users/me/update" class="btn second-button"><i class="fa-solid fa-pen-to-square pe-2"></i>Edit my
-          profile</a>
-        <form method="POST" action="/users/me/delete">
-          <button class="btn main-button"><i class="fa-solid fa-trash pe-2"></i>Delete account</button>
-        </form>
-      </div>
+        <div class="d-flex flex-column justify-content-center align-items-center gap-1 pt-2">
+          <a href="/users/me/update" class="btn second-button"><i class="fa-solid fa-pen-to-square pe-2"></i>Edit my profile</a>
+          <form method="POST" action="/users/me/delete">
+            <button class="btn main-button"><i class="fa-solid fa-trash pe-2"></i>Delete account</button>
+          </form>
+        </div>
       {{else}}
-      <a class="btn second-button" href="/users/{{../userId}}/chat">Open chat</a>
+      <div class="d-flex flex-column justify-content-center align-items-stretch gap-1 pt-2">
+        <a class="btn second-button" href="/users/{{../userId}}/chat">Open chat</a>
+      </div>
       {{/isCurrentUser}}
     </div>
     <div>
@@ -20,52 +22,56 @@
         <h1 class="pe-3">{{user.surname}}</h1>
         <h5>(@{{user.alias}})</h5>
       </div>
-      <p><strong>Participating in {{projects.length}} projects on HeyDev!</strong></p>
+      <p><strong>Participating in {{user.projects.length}} projects on HeyDev!</strong></p>
       <div class="d-flex flex-row flex-wrap align-items-baseline gap-3">
         {{#if user.location}}<p><i class="fa-solid fa-location-dot contact-icon pe-2"></i>{{user.location}}</p>{{/if}}
         {{#if user.phone}}<p><i class="fa-solid fa-phone contact-icon pe-2"></i>{{user.phone}}</p>{{/if}}
-        {{#if user.mail}}<p><i class="fa-solid fa-envelope contact-icon pe-2"></i>{{user.mail}}</p>{{/if}}
+        <p><i class="fa-solid fa-envelope contact-icon pe-2"></i>{{user.email}}</p>
       </div>
       <div class="d-flex flex-row flex-wrap align-items-baseline gap-3">
-        <a href="{{user.github}}" class="btn main-button" target="_blank"><i
-            class="fa-brands fa-github pe-2"></i>GitHub</a>
-        <a href="{{user.linkedin}}" class="btn main-button" target="_blank"><i
-            class="fa-brands fa-linkedin-in pe-2"></i>LinkedIn</a>
-        <a href="{{user.website}}" class="btn main-button" target="_blank"><i
-            class="fa-solid fa-laptop pe-2"></i>Web</a>
+        <a href="{{user.github}}" class="btn main-button" target="_blank"><i class="fa-brands fa-github pe-2"></i>GitHub</a>
+        <a href="{{user.linkedin}}" class="btn main-button" target="_blank"><i class="fa-brands fa-linkedin-in pe-2"></i>LinkedIn</a>
+        <a href="{{user.website}}" class="btn main-button" target="_blank"><i class="fa-solid fa-laptop pe-2"></i>Web</a>
       </div>
     </div>
-  </div>
-  <div class="latest-projects p-5">
+  </section>
+
+  <section class="latest-projects p-5">
     {{#if user.about}}
-    <h3>About</h3>
-    <p>{{user.about}}</p>
+      <h3>About</h3>
+      <p>{{user.about}}</p>
     {{/if}}
-    <h3 class="pb-2 pt-2">Programming Languages</h3>
-    <div class="d-flex flex-row flex-wrap justify-content-start gap-4 pb-3">
-      {{#each user.devLanguages as |devLanguage|}}
-      <span class="user-DevIcon">{{{languageIcon devLanguage}}}</span>
-      {{/each}}
-    </div>
-    <h3 class="pb-2 pt-3">Languages</h3>
-    <div class="d-flex flex-row flex-wrap justify-content-start gap-2">
-      {{#each user.languages as |language|}}
-      <p class="user-language">{{language}}</p>
-      {{/each}}
-    </div>
-  </div>
-  <div class="d-flex flex-wrap flex-column align-items-center p-5">
-    <h3 class="pb-3">Projects</h3>
-    <div class="d-flex flex-wrap flex-row justify-content-center gap-3">
-      {{#each user.projects as |project|}}
-      <div class="card m-2" style="width: 18rem;">
-        <img class="card-img-top" src="{{project.image}}" alt="Profile picture">
-        <div class="card-body">
-          <h5 class="card-title">{{project.name}}</h5>
-          <a href="/projects/{{project.id}}" class="btn second-button">More info</a>
+    <div class="row justify-content-center align-items-center text-center mt-2">
+      <div class="col-sm-12 col-md-6">
+        <h3 class="pb-2 pt-2">Programming Languages</h3>
+        <div class="d-flex flex-row flex-wrap justify-content-center gap-4 pb-3">
+          {{#each user.devLanguages as |devLanguage|}}
+            <span class="user-DevIcon">{{{languageIcon devLanguage}}}</span>
+          {{/each}}
         </div>
       </div>
-      {{/each}}
+      <div class="col-sm-12 col-md-6">
+        <h3 class="pb-2 pt-3">Languages</h3>
+        <div class="d-flex flex-row flex-wrap justify-content-center gap-2">
+          {{#each user.languages as |language|}}
+            <p class="user-language">{{language}}</p>
+          {{/each}}
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <section class="row justify-content-center text-center px-5">
+    <h2 class="mt-5 mb-4">Projects</h2>
+    {{#each user.projects as |project|}}
+      <div class="col-sm-12 col-md-4 px-4 mb-3">
+        <div class="home-project d-flex flex-column justify-content-center profile-project p-3">
+          <img src="{{project.image}}" alt="{{project.name}}" class="w-100">
+          <h4 class="text-body-secondary">{{project.name}}</h4>
+          <a href="/projects/{{project.id}}" class="btn second-button w-100">More info</a>
+        </div>
+      </div>
+    {{/each}}
+  </section>
+
 </div>

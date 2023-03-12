@@ -315,6 +315,10 @@ input[type="checkbox"]:checked + label {
   border-radius: 15px
 }
 
+.profile-project:hover {
+  box-shadow: 5px 5px #51c0c479;
+}
+
 /* TOAST DIV */
 #toast-div {
 	background-color:#51c0c4;
