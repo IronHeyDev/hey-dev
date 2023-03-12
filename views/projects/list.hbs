@@ -139,9 +139,8 @@
         <div class="col-sm-12 col-lg-4 text-center p-1">
         <div class="home-project d-flex flex-column justify-content-between p-3 h-100 project-card">
           <img src="{{project.image}}" alt="{{project.name}}" class="w-100">
-          <h4 class="black-color">{{project.name}}</h4>
-          <p class="black-color">{{project.description}}</p>
-          <div class="d-flex flex-row flex-wrap py-4 px-5 justify-content-around">
+          <h4 class="text-body-secondary">{{project.name}}</h4>
+          <div class="d-flex flex-row flex-wrap py-4 px-5 justify-content-around text-body-secondary">
             {{#each project.devLanguages as |devLanguage|}}
             {{{languageIcon devLanguage}}}
             {{/each}}
