@@ -4,12 +4,12 @@
     <div class="col-lg-2"></div>
     <div class="container col-sm-10 col-md-6 col-lg-5 text-center p-1">
       <img src="{{project.image}}" class="w-100">
-      <div class="project-buttons d-flex flex-row justify-content-center">
+      <div class="project-buttons">
         {{#isLoggedIn currentUser}}
           {{#isOpen ../projectState}}
             {{#isNotContributor ../currentUser.id ../projectUsers }}
               <form method="POST" action="/projects/{{../project.id}}/join">
-                <button class="btn second-button flex-fill" type="submit"><i class="fa-solid fa-plus pe-2"></i>Join project</button>
+                <button class="btn second-button w-100" type="submit"><i class="fa-solid fa-plus pe-2"></i>Join project</button>
               </form>
             {{/isNotContributor}}
           {{/isOpen}}
@@ -35,10 +35,12 @@
         </div>
         {{/isLoggedIn}}
         {{#isOwnedBy currentUser project}}
-          <a href="/projects/{{../project.id}}/update" class="btn second-button">Edit project</a>
-          <form method="POST" action="/projects/{{../project.id}}/delete">
-            <button class="btn second-button">Delete project</button>
-          </form>
+          <div class="d-flex flex-wrap flex-row justify-content-center">
+            <a href="/projects/{{../project.id}}/update" class="btn second-button">Edit project</a>
+            <form method="POST" action="/projects/{{../project.id}}/delete">
+              <button class="btn second-button">Delete project</button>
+            </form>
+          </div>
         {{/isOwnedBy}}
       </div>
     </div>
