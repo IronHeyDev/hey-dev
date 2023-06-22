@@ -2,7 +2,7 @@
 
 Hey Dev! is a web portal that brings junior web developers together, providing oportunities for them to collaborate, share projects and learn from eachother.
 <br>
-Once you have created and account, you will be able to edit your profile, create a new projects for others to join, join other juniors' projects, check other developers profiles and projects, chat with toher users, and so much more! ✨
+Once you have created and account, you will be able to edit your profile, create a new project for others to join, join other juniors' projects, check other developers profiles and projects out, chat with toher users, and so much more! ✨
 
 Tech info: Back-end Framework + full-stack app with users full CRUD.
 <br>
